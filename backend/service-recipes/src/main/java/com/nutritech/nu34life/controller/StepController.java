@@ -18,56 +18,57 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nutritech.nu34life.exception.ResourceNotFoundException;
-import com.nutritech.nu34life.model.entity.Food;
-import com.nutritech.nu34life.service.FoodService;
+import com.nutritech.nu34life.model.entity.Step;
+import com.nutritech.nu34life.service.StepService;
 
 @RestController
-@RequestMapping("/foods")
-public class FoodController {
+@RequestMapping("/steps")
+public class StepController {
 
 	@Autowired
 	private Environment env;
 
 	@Autowired
-	private FoodService foodService;
+	private StepService stepService;
 	
 	@GetMapping
-	public ResponseEntity<List<Food>> getFoods() {
-		List<Food> foods = foodService.getAll().stream().map(food -> {
-			return food;
+	public ResponseEntity<List<Step>> getSteps() {
+		List<Step> steps = stepService.getAll().stream().map(step -> {
+			return step;
 		}).collect(Collectors.toList());
-		return new ResponseEntity<List<Food>>(foods, HttpStatus.OK);
+		return new ResponseEntity<List<Step>>(steps, HttpStatus.OK);
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Food> getFoodById(@PathVariable Long id) {
-		 Optional<Food> food = foodService.getOne(id);
-	        if (!food.isPresent()) {
+	public ResponseEntity<Step> getStepById(@PathVariable Long id) {
+		 Optional<Step> step = stepService.getOne(id);
+	        if (!step.isPresent()) {
 	           new ResourceNotFoundException("Id " + id + " is not existed");
 	        }
-	        return ResponseEntity.ok(food.get());
+	        return ResponseEntity.ok(step.get());
 	}
 	
 	@PostMapping
-	public ResponseEntity<Food> createFood(@RequestBody Food food) {
-		foodService.create(food);
-		return new ResponseEntity<Food>(food, HttpStatus.CREATED);
+	public ResponseEntity<Step> createStep(@RequestBody Step step) {
+		stepService.create(step);
+		return new ResponseEntity<Step>(step, HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/{id}")
-    public ResponseEntity<Food> updateFood(@PathVariable Long id,  @RequestBody Food food) {
-        if (!foodService.getOne(id).isPresent()) {
-        	new ResourceNotFoundException("Food not found with id " + id);
+    public ResponseEntity<Step> updateStep(@PathVariable Long id,  @RequestBody Step step) {
+        if (!stepService.getOne(id).isPresent()) {
+        	new ResourceNotFoundException("Step not found with id " + id);
         }
-        return ResponseEntity.ok(foodService.create(food));
+        return ResponseEntity.ok(stepService.create(step));
     }
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> deleteFood(@PathVariable("id") Long id) {
-		return foodService.getOne(id).map(food -> {
-			foodService.deleteById(id);
+	public ResponseEntity<?> deleteStep(@PathVariable("id") Long id) {
+		return stepService.getOne(id).map(step -> {
+			stepService.deleteById(id);
 			return ResponseEntity.ok().build();
-		}).orElseThrow(() -> new ResourceNotFoundException("Food not found with id " + id));
+		}).orElseThrow(() -> new ResourceNotFoundException("Step not found with id " + id));
 	}
 	
 }
+

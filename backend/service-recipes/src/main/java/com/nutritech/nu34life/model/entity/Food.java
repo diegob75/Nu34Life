@@ -19,8 +19,6 @@ public class Food {
 	@Column(name = "name", length = 50)
 	private String name;
 	
-	@Transient
-	private Integer port;
 
 	public Long getId() {
 		return id;
@@ -38,12 +36,5 @@ public class Food {
 		this.name = name;
 	}
 
-	public Integer getPort() {
-		return port;
-	}
 
-	public void setPort(Integer port) {
-		this.port = port;
-	}
-	
 }
