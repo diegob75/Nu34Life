@@ -29,7 +29,7 @@ public class Mapper {
 		
 		RecipeViewModel viewModel = new RecipeViewModel();
 		viewModel.setId(entity.getId());
-		viewModel.setIngredient(entity.getIngredients()
+		viewModel.setIngredients(entity.getIngredients()
 				.stream()
 				.map(ingredient -> convertToIngredientViewModel(ingredient))
 				.collect(Collectors.toList()));

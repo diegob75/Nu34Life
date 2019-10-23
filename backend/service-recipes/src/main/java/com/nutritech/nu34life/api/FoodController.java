@@ -34,7 +34,6 @@ public class FoodController {
 	@GetMapping
 	public ResponseEntity<List<Food>> getFoods() {
 		List<Food> foods = foodService.getAll().stream().map(food -> {
-			food.setPort(Integer.parseInt(env.getProperty("local.server.port")));
 			return food;
 		}).collect(Collectors.toList());
 		return new ResponseEntity<List<Food>>(foods, HttpStatus.OK);
@@ -43,7 +42,6 @@ public class FoodController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Food> getFoodById(@PathVariable Long id) {
 		 Optional<Food> food = foodService.getOne(id);
-		 food.get().setPort(Integer.parseInt(env.getProperty("local.server.port")));
 	        if (!food.isPresent()) {
 	           new ResourceNotFoundException("Id " + id + " is not existed");
 	        }

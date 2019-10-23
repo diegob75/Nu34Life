@@ -14,7 +14,7 @@ public class RecipeViewModel {
 	
 	private List<Step> steps;
 	
-	private List<IngredientViewModel> ingredient;
+	private List<IngredientViewModel> ingredients;
 
 	public Long getId() {
 		return id;
@@ -48,12 +48,12 @@ public class RecipeViewModel {
 		this.steps = steps;
 	}
 
-	public List<IngredientViewModel> getIngredient() {
-		return ingredient;
+	public List<IngredientViewModel> getIngredients() {
+		return ingredients;
 	}
 
-	public void setIngredient(List<IngredientViewModel> ingredient) {
-		this.ingredient = ingredient;
+	public void setIngredients(List<IngredientViewModel> ingredients) {
+		this.ingredients = ingredients;
 	}
 	
 	
