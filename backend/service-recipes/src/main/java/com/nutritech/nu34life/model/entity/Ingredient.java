@@ -10,6 +10,8 @@ import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "ingredients")
 public class Ingredient {
@@ -20,12 +22,13 @@ public class Ingredient {
 	@ManyToOne
     @MapsId("recipe_id")
     @JoinColumn(name = "recipe_id")
-    private Recipe recipe;
+	@JsonBackReference
+	private Recipe recipe;
 	
 	@ManyToOne
     @MapsId("food_id")
     @JoinColumn(name = "food_id")
-    private Food food;
+	private Food food;
 
 	@Column(name = "quantity")
 	private Integer quantity;

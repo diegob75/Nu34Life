@@ -11,6 +11,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "recipes")
 public class Recipe {
@@ -28,9 +30,11 @@ public class Recipe {
 	@Transient
 	private Integer port;
 	
+	@JsonManagedReference
 	@OneToMany(mappedBy = "recipe")
     List<Step> steps;
 	
+	@JsonManagedReference
 	@OneToMany(mappedBy = "recipe")
     List<Ingredient> ingredients;
 
