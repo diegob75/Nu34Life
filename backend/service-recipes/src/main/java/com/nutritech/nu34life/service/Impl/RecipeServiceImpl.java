@@ -1,11 +1,13 @@
 package com.nutritech.nu34life.service.Impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.nutritech.nu34life.model.entity.Food;
 import com.nutritech.nu34life.model.entity.Recipe;
 import com.nutritech.nu34life.model.repository.RecipeRepository;
 import com.nutritech.nu34life.service.RecipeService;
@@ -24,14 +26,14 @@ public class RecipeServiceImpl implements RecipeService{
 
 	@Override
 	public List<Recipe> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Recipe> recipes = new ArrayList<>();
+		recipeRepository.findAll().iterator().forEachRemaining(recipes::add);
+		return recipes;
 	}
 
 	@Override
 	public Optional<Recipe> getOne(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return recipeRepository.findById(id);
 	}
 
 	@Override

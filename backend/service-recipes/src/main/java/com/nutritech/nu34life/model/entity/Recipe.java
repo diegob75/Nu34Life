@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "recipes")
@@ -23,6 +24,9 @@ public class Recipe {
 	
 	@Column(name = "servings")
 	private Integer servings;
+	
+	@Transient
+	private Integer port;
 	
 	@OneToMany(mappedBy = "recipe")
     List<Step> steps;
@@ -68,6 +72,14 @@ public class Recipe {
 
 	public void setIngredients(List<Ingredient> ingredients) {
 		this.ingredients = ingredients;
+	}
+
+	public Integer getPort() {
+		return port;
+	}
+
+	public void setPort(Integer port) {
+		this.port = port;
 	}
 
 }
