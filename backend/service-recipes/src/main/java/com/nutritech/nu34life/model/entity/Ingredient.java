@@ -10,6 +10,8 @@ import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "ingredients")
 public class Ingredient {
@@ -17,6 +19,8 @@ public class Ingredient {
 	@EmbeddedId
 	PkIngredient id;
 	
+	
+	@JsonBackReference
 	@ManyToOne
     @MapsId("recipe_id")
     @JoinColumn(name = "recipe_id")
