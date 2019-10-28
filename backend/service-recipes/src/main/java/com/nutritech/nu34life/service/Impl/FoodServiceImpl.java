@@ -42,5 +42,10 @@ public class FoodServiceImpl implements FoodService{
 	public void deleteById(Long id) {
 		foodRepository.deleteById(id);
 	}
+	
+	@Override
+	public List<Food> getByNameLike(String string){
+		return foodRepository.findByNameContainingIgnoreCase(string);
+	}
 
 }

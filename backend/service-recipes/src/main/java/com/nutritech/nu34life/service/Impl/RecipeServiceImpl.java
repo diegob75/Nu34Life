@@ -49,7 +49,7 @@ public class RecipeServiceImpl implements RecipeService{
 	
 	@Override
 	public List<RecipeViewModel> getByNameLike(String string){
-		List<RecipeViewModel> recipes = recipeRepository.findByNameContaining(string)
+		List<RecipeViewModel> recipes = recipeRepository.findByNameContainingIgnoreCase(string)
 									.stream()
 									.map(recipe -> this.mapper.convertToRecipeViewModel(recipe))
 									.collect(Collectors.toList());
