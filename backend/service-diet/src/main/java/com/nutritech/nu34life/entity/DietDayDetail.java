@@ -1,3 +1,4 @@
+
 package com.nutritech.nu34life.entity;
 
 import lombok.Data;
