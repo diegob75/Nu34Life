@@ -1,9 +1,20 @@
-<h2>Product List</h2>
-
-
-
-<ul class="products">
-  <li *ngFor="let p of products; let i=index;">
-      <span class="badge">{{i+1}}</span> {{p.name}}
+<h2>Foods</h2>
+<ul class="foods">
+  <li *ngFor="let food of foods"
+    [class.selected]="food === selectedFood"
+    (click)="onSelect(food)">
+    <span class="badge">{{food.id}}</span> {{food.name}}
   </li>
 </ul>
+
+<div *ngIf="selectedFood">
+
+  <h2>{{selectedFood.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{selectedFood.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="selectedFood.name" placeholder="name"/>
+    </label>
+  </div>
+
+</div>

@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from '../rest.service';
 import { ActivatedRoute, Router } from '@angular/router';
-
 @Component({
   selector: 'app-foods',
   templateUrl: './foods.component.html',
   styleUrls: ['./foods.component.css']
 })
-export class ProductComponent implements OnInit {
+
+export class FoodsComponent implements OnInit {
 
   foods:any = [];
 
