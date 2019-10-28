@@ -6,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name = "foods")
@@ -35,6 +34,5 @@ public class Food {
 	public void setName(String name) {
 		this.name = name;
 	}
-
 
 }

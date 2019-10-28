@@ -2,16 +2,16 @@ package com.nutritech.nu34life.model.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "recipes")
@@ -27,17 +27,18 @@ public class Recipe {
 	@Column(name = "servings")
 	private Integer servings;
 	
-	@Transient
-	private Integer port;
-	
-	@JsonManagedReference
-	@OneToMany(mappedBy = "recipe")
+	@OneToMany
+	@JoinColumn(name = "recipe_id")
     List<Step> steps;
 	
-	@JsonManagedReference
-	@OneToMany(mappedBy = "recipe")
+	@OneToMany
+	@JoinColumn(name = "recipe_id")
     List<Ingredient> ingredients;
 
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "nutr_fact_id")
+	private NutritionFact nutrFact;
+	
 	public Long getId() {
 		return id;
 	}
@@ -78,12 +79,12 @@ public class Recipe {
 		this.ingredients = ingredients;
 	}
 
-	public Integer getPort() {
-		return port;
+	public NutritionFact getNutrFact() {
+		return nutrFact;
 	}
 
-	public void setPort(Integer port) {
-		this.port = port;
+	public void setNutrFact(NutritionFact nutrFact) {
+		this.nutrFact = nutrFact;
 	}
 
 }

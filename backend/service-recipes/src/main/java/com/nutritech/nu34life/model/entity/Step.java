@@ -5,11 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "steps")
@@ -24,11 +20,6 @@ public class Step {
 	
 	@Column(name = "step_number")
 	private Integer stepNumber;
-	
-	@ManyToOne
-    @JoinColumn(name = "recipe_id")
-	@JsonBackReference
-    private Recipe recipe;
 
 	public Long getId() {
 		return id;
@@ -52,14 +43,6 @@ public class Step {
 
 	public void setStepNumber(Integer stepNumber) {
 		this.stepNumber = stepNumber;
-	}
-
-	public Recipe getRecipe() {
-		return recipe;
-	}
-
-	public void setRecipe(Recipe recipe) {
-		this.recipe = recipe;
 	}
 	
 }

@@ -1,20 +1,14 @@
 package com.nutritech.nu34life.api.viewmodel;
 
-import java.util.List;
-
-import com.nutritech.nu34life.model.entity.Step;
-
 public class RecipeViewModel {
 	
 	private Long id;
 	
 	private String name;
 	
-	private Integer servings;
+	private String mainIngredient;
 	
-	private List<Step> steps;
-	
-	private List<IngredientViewModel> ingredients;
+	private Double energeticValue;
 
 	public Long getId() {
 		return id;
@@ -32,29 +26,20 @@ public class RecipeViewModel {
 		this.name = name;
 	}
 
-	public Integer getServings() {
-		return servings;
+	public String getMainIngredient() {
+		return mainIngredient;
 	}
 
-	public void setServings(Integer servings) {
-		this.servings = servings;
+	public void setMainIngredient(String mainIngredient) {
+		this.mainIngredient = mainIngredient;
 	}
 
-	public List<Step> getSteps() {
-		return steps;
+	public Double getEnergeticValue() {
+		return energeticValue;
 	}
 
-	public void setSteps(List<Step> steps) {
-		this.steps = steps;
+	public void setEnergeticValue(Double energeticValue) {
+		this.energeticValue = energeticValue;
 	}
-
-	public List<IngredientViewModel> getIngredients() {
-		return ingredients;
-	}
-
-	public void setIngredients(List<IngredientViewModel> ingredients) {
-		this.ingredients = ingredients;
-	}
-	
 	
 }
