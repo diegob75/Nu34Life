@@ -1,1 +1,9 @@
-<p>foods works!</p>
+<h2>Product List</h2>
+
+
+
+<ul class="products">
+  <li *ngFor="let p of products; let i=index;">
+      <span class="badge">{{i+1}}</span> {{p.name}}
+  </li>
+</ul>

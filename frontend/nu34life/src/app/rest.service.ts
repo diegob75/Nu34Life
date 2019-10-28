@@ -22,15 +22,37 @@ export class RestService {
     return body || { };
   }
 
-  getProducts(): Observable<any> {
-    return this.http.get(endpoint + 'products').pipe(
+  getFoods(): Observable<any> {
+    return this.http.get(endpoint + 'foods').pipe(
       map(this.extractData));
   }
 
-  getProduct(id): Observable<any> {
-    return this.http.get(endpoint + 'products/' + id).pipe(
+  getIngredients(): Observable<any> {
+    return this.http.get(endpoint + 'ingredients').pipe(
       map(this.extractData));
   }
+
+  getNutritionFacts(): Observable<any> {
+    return this.http.get(endpoint + 'nutritionfacts').pipe(
+      map(this.extractData));
+  }
+
+  getPlanRecipes(): Observable<any> {
+    return this.http.get(endpoint + 'planrecipes').pipe(
+      map(this.extractData));
+  }
+
+  getRecipes(): Observable<any> {
+    return this.http.get(endpoint + 'recipes').pipe(
+      map(this.extractData));
+  }
+
+  getSteps(): Observable<any> {
+    return this.http.get(endpoint + 'steps').pipe(
+      map(this.extractData));
+  }
+
+
 }
 
 
