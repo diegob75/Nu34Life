@@ -3,7 +3,15 @@
   <li *ngFor="let recipe of recipes"
     [class.selected]="recipe === selectedRecipe"
     (click)="onSelect(recipe)">
-    <span class="badge">{{recipe.id}}</span> {{recipe.name}}
+    <span class="badge">{{recipe.name}}</span>
+    
+    <div *ngFor="let ingredient of recipe.ingredients">
+        {{ ingredient.food.name }}
+
+        
+
+    </div>
+
   </li>
 </ul>
 
