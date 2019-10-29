@@ -1,0 +1,68 @@
+<mat-toolbar>
+  <span>Crear dieta</span>
+  <span class="fill-space"></span>
+  <button mat-raised-button (click)="createDiet()">Enviar Dieta</button>
+</mat-toolbar>
+<mat-drawer-container>
+  <mat-drawer position="end" opened mode="side">
+    <mat-toolbar>
+      <button mat-icon-button>
+        <mat-icon></mat-icon>
+      </button>
+      <span>Agregar Platos</span>
+    </mat-toolbar>
+
+
+  </mat-drawer>
+  <mat-drawer-content>
+
+    <div class="control-bar">
+      <div>
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" [(ngModel)]="diet.starDate" placeholder="Fecha de inicio" requiered
+                 (dateChange)="getDayNameList()">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-button [mat-menu-trigger-for]="mealMenu">
+          <span>Seleccionar Turnos</span>
+          <mat-icon>keyboard_arrow_down</mat-icon>
+        </button>
+      </div>
+      <div>
+        <mat-menu #mealMenu>
+          <mat-selection-list #mealList (selectionChange)="toggleMeals($event)">
+            <mat-list-option *ngFor="let meal of meals" [value]="meal" selected="true">
+              {{meal.name}}
+            </mat-list-option>
+          </mat-selection-list>
+        </mat-menu>
+        <button mat-button (click)="addRecipe()">Cargar Recetas</button>
+      </div>
+    </div>
+
+    <!--Diet table -->
+    <div class="container" cdkDropListGroup>
+      <div class="day-column" *ngFor="let day of diet.schedule; index as i">
+        <h3>{{dayList[i]}}</h3>
+        <div class="meal-wrapper" *ngFor="let meal of day; index as j"
+             cdkDropList [cdkDropListData]="meal.detail"
+             (cdkDropListDropped)="drop($event)">
+          <p class="meal-label">{{meal.name.toUpperCase()}}</p>
+          <div class="meal-list">
+            <div *ngFor="let detail of meal.detail" cdkDrag>
+              <div class="drag-placeholder" *cdkDragPlaceholder></div>
+              <app-dish [recipe]="detail.recipe"></app-dish>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </mat-drawer-content>
+</mat-drawer-container>
+
+
+
