@@ -1,0 +1,9 @@
+#root-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  mat-sidenav-container {
+    height: calc(100% - 64px);
+  }
+}

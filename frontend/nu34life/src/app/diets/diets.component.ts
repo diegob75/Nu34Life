@@ -4,6 +4,8 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 import {DietDetail} from '../model/diet-detail';
 import {Meal} from '../model/meal';
 import {ApiService} from '../shared/api-service';
+import {Recipe} from '../model/recipe';
+import {MealSchedule} from "../model/meal-schedule";
 
 @Component({
   selector: 'app-diets',
@@ -16,8 +18,13 @@ export class DietsComponent implements OnInit {
   dayList: string[];
   meals: Meal[];
   diet: Diet;
+  selected: MealSchedule;
 
-  constructor(private apiService: ApiService) { }
+  // REMOVE?
+  recipesList: Recipe[];
+
+  constructor(private apiService: ApiService) {
+  }
 
   ngOnInit() {
     this.daysNumber = 7;
@@ -31,18 +38,20 @@ export class DietsComponent implements OnInit {
     };
     this.getDayNameList();
     this.loadMeals();
+    this.getRecipes(null);
+    this.selected = this.diet.schedule[0][0];
   }
 
-  loadMeals()  {
+  loadMeals() {
     this.meals = this.apiService.getAllMeals();
 
     this.meals.forEach(m => {
-      this.diet.schedule.forEach(x => x.push({ id: m.id, name: m.name, detail: new Array<DietDetail>() }));
+      this.diet.schedule.forEach(x => x.push({id: m.id, name: m.name, detail: new Array<DietDetail>()}));
     });
   }
 
-getDayNameList() {
-    const weekdays = [ 'Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+  getDayNameList() {
+    const weekdays = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
     const day = this.diet.starDate;
     this.dayList = [];
     for (let i = 0; i < this.daysNumber; i++) {
@@ -52,9 +61,16 @@ getDayNameList() {
     }
   }
 
-  addRecipe() {
-    const recipes = this.apiService.getAllRecipes();
-    this.diet.schedule[0][0].detail = recipes.map(x => ({id: null, recipe: x}));
+  addRecipe(recipe: Recipe) {
+    this.selected.detail.push({id: null, recipe});
+  }
+
+  selectMeal(meal: MealSchedule) {
+    this.selected = meal;
+  }
+
+  getRecipes(query: string) {
+    this.recipesList = this.apiService.getAllRecipes();
   }
 
   createDiet() {
@@ -65,7 +81,7 @@ getDayNameList() {
     const element = event.option.value;
 
     if (event.option.selected) {
-      this.diet.schedule.forEach(x => x.push({ id: element.id, name: element.name, detail: new Array<DietDetail>() }));
+      this.diet.schedule.forEach(x => x.push({id: element.id, name: element.name, detail: new Array<DietDetail>()}));
       console.log(JSON.stringify(this.diet.schedule));
     } else {
       this.diet.schedule.forEach(x => {

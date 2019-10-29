@@ -1,4 +1,4 @@
-<div style="height: 80vh;">
+<div id="root-container">
   <mat-toolbar color="primary">
     <mat-toolbar-row>
       <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
@@ -12,16 +12,14 @@
     </mat-toolbar-row>
   </mat-toolbar>
 
-  <mat-sidenav-container fxFlexFill>
+  <mat-sidenav-container autosize>
     <mat-sidenav #sidenav>
       <mat-nav-list>
         <!--TODO: agregar opciones-->
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content fxFlexFill>
-
-      <app-diets></app-diets>
-
+      <ng-content></ng-content>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>

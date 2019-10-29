@@ -6,9 +6,15 @@ import {NutritionFactsComponent} from './nutritionfacts/nutritionfacts.component
 import {PlanRecipesComponent} from './plan-recipes/plan-recipes.component';
 import {RecipesComponent} from './recipes/recipes.component';
 import {StepsComponent} from './steps/steps.component';
+import {DietsComponent} from './diets/diets.component';
 
 
 const routes: Routes = [
+  {
+    path: 'diets',
+    component: DietsComponent,
+    data: { title: 'Crear Dieta' }
+  },
   {
     path: 'foods',
     component: FoodsComponent,

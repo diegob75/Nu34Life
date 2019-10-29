@@ -30,6 +30,10 @@
   font-size: small;
 }
 
+.selected-meal {
+  background: #2425b5;
+}
+
 .meal-label {
   font-size: 16px;
   font-weight: bold;
@@ -49,6 +53,10 @@
 
 .side-drawer {
   background: #405061;
+}
+
+mat-drawer-container {
+  height: calc(100% - 64px);
 }
 
 /*# sourceMappingURL=diets.component.css.map */
