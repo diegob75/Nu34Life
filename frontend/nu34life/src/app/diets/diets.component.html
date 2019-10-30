@@ -55,7 +55,7 @@
 
         <div>
           <mat-form-field>
-            <input matInput [matDatepicker]="picker" [(ngModel)]="diet.starDate" placeholder="Fecha de inicio" requiered
+            <input matInput [matDatepicker]="picker" [(ngModel)]="dietPlan.diet.starDate" placeholder="Fecha de inicio" requiered
                    (dateChange)="getDayNameList()">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
@@ -65,21 +65,21 @@
 
       <!-- Diet table -->
       <div class="container" cdkDropListGroup>
-        <div class="day-column" *ngFor="let day of diet.schedule; index as i">
+        <div class="day-column" *ngFor="let day of dietPlan.schedule; index as i">
           <h3>{{dayList[i]}}</h3>
-          <div class="meal-wrapper" *ngFor="let mealSch of day; index as j"
+          <div class="meal-wrapper" *ngFor="let mealSch of day"
                (click)="selectMeal(mealSch)"
                [ngClass]="{'selected-meal': selected == mealSch}"
                cdkDropList [cdkDropListData]="mealSch.detail"
                (cdkDropListDropped)="drop($event)">
             <p class="meal-label">{{mealSch.name.toUpperCase()}}</p>
             <div class="meal-list">
-              <div *ngFor="let detail of mealSch.detail; index as k" cdkDrag>
+              <div *ngFor="let detail of mealSch.detail; index as detailIndex" cdkDrag>
                 <div class="drag-placeholder" *cdkDragPlaceholder></div>
 
                 <div class="dish-card">
                   <a [routerLink]="">{{detail.recipe.name}}</a>
-                  <button mat-icon-button (click)="removeRecipe(k, mealSch)">
+                  <button mat-icon-button (click)="removeRecipe(detailIndex, mealSch)">
                     <mat-icon>close</mat-icon>
                   </button>
                 </div>
