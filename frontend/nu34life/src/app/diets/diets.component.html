@@ -2,7 +2,7 @@
   <mat-toolbar>
     <span>Crear dieta</span>
     <span class="fill-space"></span>
-    <button mat-raised-button (click)="createDiet()">Enviar Dieta</button>
+    <button mat-raised-button (click)="createDiet()">Guardar y Enviar Dieta</button>
   </mat-toolbar>
   <mat-drawer-container>
 
@@ -74,9 +74,16 @@
                (cdkDropListDropped)="drop($event)">
             <p class="meal-label">{{mealSch.name.toUpperCase()}}</p>
             <div class="meal-list">
-              <div *ngFor="let detail of mealSch.detail" cdkDrag>
+              <div *ngFor="let detail of mealSch.detail; index as k" cdkDrag>
                 <div class="drag-placeholder" *cdkDragPlaceholder></div>
-                <app-dish [recipe]="detail.recipe"></app-dish>
+
+                <div class="dish-card">
+                  <a [routerLink]="">{{detail.recipe.name}}</a>
+                  <button mat-icon-button (click)="removeRecipe(k, mealSch)">
+                    <mat-icon>close</mat-icon>
+                  </button>
+                </div>
+
               </div>
             </div>
           </div>

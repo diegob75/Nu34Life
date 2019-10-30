@@ -63,3 +63,25 @@
 mat-drawer-container {
   height: calc(100% - 64px);
 }
+
+.dish-card {
+  padding: 5px 10px;
+  background: white;
+  border-radius: 5px;
+  height: 30px;
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  button {
+    margin-right: -10px;
+  }
+
+  mat-icon {
+    display: none;
+    color: blue;
+  }
+  :hover mat-icon{
+    display: inline-flex;
+  }
+}

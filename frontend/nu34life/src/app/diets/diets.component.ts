@@ -5,7 +5,8 @@ import {DietDetail} from '../model/diet-detail';
 import {Meal} from '../model/meal';
 import {ApiService} from '../shared/api-service';
 import {Recipe} from '../model/recipe';
-import {MealSchedule} from "../model/meal-schedule";
+import {MealSchedule} from '../model/meal-schedule';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-diets',
@@ -22,6 +23,7 @@ export class DietsComponent implements OnInit {
 
   // REMOVE?
   recipesList: Recipe[];
+  stash: { index: number; arr: DietDetail[]; detail: DietDetail }[];
 
   constructor(private apiService: ApiService) {
   }
@@ -40,6 +42,8 @@ export class DietsComponent implements OnInit {
     this.loadMeals();
     this.getRecipes(null);
     this.selected = this.diet.schedule[0][0];
+
+    this.stash = [];
   }
 
   loadMeals() {
@@ -64,6 +68,17 @@ export class DietsComponent implements OnInit {
   addRecipe(recipe: Recipe) {
     this.selected.detail.push({id: null, recipe});
   }
+
+  removeRecipe(index: number, meal: MealSchedule) {
+    this.stash.push({ index, arr: meal.detail, detail: meal[index]});
+    meal.detail.splice(index, 1);
+  }
+
+  undoRemove() {
+    const { index, arr, detail } = this.stash.pop();
+    arr.splice(index, 0, detail);
+  }
+
 
   selectMeal(meal: MealSchedule) {
     this.selected = meal;
