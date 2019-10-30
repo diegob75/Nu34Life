@@ -18,7 +18,7 @@ export class FoodAddComponent implements OnInit {
 
   addProduct() {
     this.rest.addFood(this.foodData).subscribe((result) => {
-      this.router.navigate(['/foods/']);
+      this.router.navigate(['/foods']);
     }, (err) => {
       console.log(err);
     });
