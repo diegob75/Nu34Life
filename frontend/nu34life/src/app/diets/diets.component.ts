@@ -53,11 +53,19 @@ export class DietsComponent implements OnInit {
   }
 
   loadMeals() {
-    this.meals = this.apiService.getAllMeals();
+    this.apiService.getAllMeals().subscribe(
+      res => {
+        this.meals = res;
+        this.meals.forEach(m => {
+          this.dietPlan.schedule.forEach(x => x.push({id: m.id, name: m.name, detail: new Array<DietDetail>()}));
+        });
+      },
+      err => {
+        alert("An error has occurred;")
+      }
+    );
 
-    this.meals.forEach(m => {
-      this.dietPlan.schedule.forEach(x => x.push({id: m.id, name: m.name, detail: new Array<DietDetail>()}));
-    });
+
   }
 
   getDayNameList() {
@@ -100,7 +108,14 @@ export class DietsComponent implements OnInit {
   }
 
   getRecipes(query: string) {
-    this.recipesList = this.apiService.getAllRecipes();
+    this.apiService.getAllRecipes().subscribe(
+      res => {
+        this.recipesList = res;
+      },
+      err => {
+        alert("An error has occurred;")
+      }
+    );
   }
 
   createDiet() {

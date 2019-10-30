@@ -9,20 +9,31 @@ import {Diet} from "../model/diet";
   providedIn: 'root'
 })
 export class ApiService {
-  private BASE_URL = '';
+  private BASE_URL_DIET = 'http://localhost:8090/service-diet';
+  private BASE_URL_RECIPE = 'localhost:8022'
 
+  private ALL_DIETS_URL = `${this.BASE_URL_DIET}/diets`;
+  private SAVE_UPDATE_DIET_URL = `${this.BASE_URL_DIET}/diets`;
+  private DELETE_DIET_URL = `${this.BASE_URL_DIET}/diets/`;
+  private DIET_BY_ID_URL = `${this.BASE_URL_DIET}/diets/`;
+
+  private ALL_MEALS_URL = `${this.BASE_URL_DIET}/diets/meals`;
+
+  private ALL_RECIPES_URL = `${this.BASE_URL_RECIPE}/recipes`;
   constructor(private http: HttpClient) { }
 
-  getAllMeals(): Meal[] {
-    const meals = new Array<Meal>();
+  getAllMeals(): Observable<Meal[]> {
+    return this.http.get<Meal[]>(this.ALL_MEALS_URL);
+    /*const meals = new Array<Meal>();
     meals.push({id: 1, name: 'Breakfast'});
     meals.push({id: 2, name: 'Lunch'});
     meals.push({id: 3, name: 'Dinner'});
-    return meals;
+    return meals;*/
   }
 
-  getAllRecipes(): Recipe[] {
-    const recipes = new Array<Recipe>();
+  getAllRecipes(): Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(this.ALL_RECIPES_URL);
+    /*const recipes = new Array<Recipe>();
     recipes.push({ id: 1, name: 'test1', servings: 1 });
     recipes.push({ id: 2, name: 'test2', servings: 1 });
     recipes.push({ id: 3, name: 'test3', servings: 1 });
@@ -35,11 +46,14 @@ export class ApiService {
     recipes.push({ id: 10, name: 'test10', servings: 1 });
     recipes.push({ id: 11, name: 'test11', servings: 1 });
     recipes.push({ id: 12, name: 'test12', servings: 1 });
-    return recipes;
+    return recipes;*/
   }
 
-  postDiet(diet: Diet): void {
+  postDiet(diet: Diet): Observable<any> {
+    return this.http.post(this.SAVE_UPDATE_DIET_URL, diet);
     console.log(diet);
     console.log(JSON.stringify(diet, null, 2));
   }
+
+  
 }

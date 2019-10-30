@@ -12,7 +12,7 @@ public class Mapper {
 
 	public DietDayViewModel convertDietViewModel(Diet entity) {
 		
-    /*DietDayViewModel viewModel = new DietDayViewModel();
+    /*DietViewModel viewModel = new DietDayViewModel();
     viewModel.setId(entity.getId());
     viewModel.setName(entity.getName());
     viewModel.setMainIngredient(entity.getIngredients().get(0).getFood().getName());

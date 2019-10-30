@@ -33,7 +33,7 @@ public class RecipeController {
 	}
 	
 	@GetMapping("/name/{string}")
-	public List<RecipeViewModel> getRecipesByNameLike(@PathVariable String string){
+	public List<Recipe> getRecipesByNameLike(@PathVariable String string){
 		return recipeService.getByNameLike(string);
 	}
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.nutritech.entity.*;
 import com.nutritech.nu34life.service.DietService;
+import com.nutritech.nu34life.service.MealService;
 
 
 @RestController
@@ -17,6 +18,9 @@ import com.nutritech.nu34life.service.DietService;
 public class DietController {
 	@Autowired
 	private DietService dietService;
+	
+	@Autowired
+	private MealService mealService;
 	
 	
 	@GetMapping
@@ -43,5 +47,9 @@ public class DietController {
      dietService.delete(id);
      return diet;   
    }
-	
+   
+   @GetMapping(path="/meals")
+   public List<Meal> getMeals(){
+     return mealService.findAll();
+   }
 }

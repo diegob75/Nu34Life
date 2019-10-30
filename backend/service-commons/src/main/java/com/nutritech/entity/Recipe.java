@@ -15,25 +15,25 @@ public class Recipe {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	public Long id;
 
 	@Column(name = "name", nullable = false, length = 50)
-	private String name;
+	public String name;
 	
 	@Column(name = "servings")
-	private Integer servings;
+	public Integer servings;
 	
 	
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "recipe_id")
-	private List<Step> steps;
+	public List<Step> steps;
 	
 	
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "recipe_id", insertable = false, updatable = false)
-	private List<Ingredient> ingredients;
+	public List<Ingredient> ingredients;
 	
 	@OneToOne
 	@JoinColumn(name = "nutr_fact_id")
-	private NutritionFact nutrFact;
+	public NutritionFact nutrFact;
 }
