@@ -2,16 +2,16 @@ package com.nutritech.nu34life;
 
 import org.springframework.stereotype.Component;
 
-import com.nutritech.nu34life.api.viewmodel.RecipeViewModel;
+import com.nutritech.nu34life.api.viewmodel.DietDayViewModel;
 import com.nutritech.entity.Recipe;
 
 @Component
 public class Mapper {
 	
 
-	public RecipeViewModel convertToRecipeViewModel(Recipe entity) {
+	public DietDayViewModel convertToRecipeViewModel(Recipe entity) {
 		
-    RecipeViewModel viewModel = new RecipeViewModel();
+    DietDayViewModel viewModel = new DietDayViewModel();
     viewModel.setId(entity.getId());
     viewModel.setName(entity.getName());
     viewModel.setMainIngredient(entity.getIngredients().get(0).getFood().getName());
@@ -20,7 +20,7 @@ public class Mapper {
 		return viewModel;
 	}
 	
-	public Recipe convertToRecipe(RecipeViewModel entity) {
+	public Recipe convertToRecipe(DietDayViewModel entity) {
 	  Recipe recipe = new Recipe();
 	  recipe.setId(entity.getId());
 	  recipe.setName(entity.getName());

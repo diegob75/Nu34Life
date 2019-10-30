@@ -1,6 +1,6 @@
 package com.nutritech.nu34life.service;
 
-import com.nutritech.nu34life.entity.Diet;
+import com.nutritech.entity.*;
 
 public interface DietService extends CrudService<Diet,Long> {
 

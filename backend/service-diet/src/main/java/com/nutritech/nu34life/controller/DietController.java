@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.nutritech.nu34life.entity.Diet;
+import com.nutritech.entity.*;
 import com.nutritech.nu34life.service.DietService;
 
 
@@ -29,10 +29,8 @@ public class DietController {
 	}
 	
     @PostMapping
-    public ResponseEntity<Diet> createPatientState(@RequestBody Diet diet){
-    	
-    	Diet result = dietService.save(diet);
-    	
+    public ResponseEntity<Diet> createDiet(@RequestBody Diet diet){
+    	Diet result = dietService.save(diet);	
         return new ResponseEntity<Diet>(result, HttpStatus.CREATED);
     }
 	
