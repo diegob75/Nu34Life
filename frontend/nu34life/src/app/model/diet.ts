@@ -1,5 +1,6 @@
 import {DietDetail} from './diet-detail';
 import {MealSchedule} from './meal-schedule';
+import {DietDay} from './diet-day';
 
 export class Diet {
   id: number;
@@ -7,5 +8,5 @@ export class Diet {
   stateId: number;
   duration: number;
   starDate: Date;
-  schedule: MealSchedule[][];
+  dietDays: DietDay[];
 }
