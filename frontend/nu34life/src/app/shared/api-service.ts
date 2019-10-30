@@ -22,18 +22,18 @@ export class ApiService {
 
   getAllRecipes(): Recipe[] {
     const recipes = new Array<Recipe>();
-    recipes.push({ id: 1, name: 'test1' });
-    recipes.push({ id: 2, name: 'test2' });
-    recipes.push({ id: 3, name: 'test3' });
-    recipes.push({ id: 4, name: 'test4' });
-    recipes.push({ id: 5, name: 'test5' });
-    recipes.push({ id: 6, name: 'test6' });
-    recipes.push({ id: 7, name: 'test7' });
-    recipes.push({ id: 8, name: 'test8' });
-    recipes.push({ id: 9, name: 'test9' });
-    recipes.push({ id: 10, name: 'test10' });
-    recipes.push({ id: 11, name: 'test11' });
-    recipes.push({ id: 12, name: 'test12' });
+    recipes.push({ id: 1, name: 'test1', servings: 1 });
+    recipes.push({ id: 2, name: 'test2', servings: 1 });
+    recipes.push({ id: 3, name: 'test3', servings: 1 });
+    recipes.push({ id: 4, name: 'test4', servings: 1 });
+    recipes.push({ id: 5, name: 'test5', servings: 1 });
+    recipes.push({ id: 6, name: 'test6', servings: 1 });
+    recipes.push({ id: 7, name: 'test7', servings: 1 });
+    recipes.push({ id: 8, name: 'test8', servings: 1 });
+    recipes.push({ id: 9, name: 'test9', servings: 1 });
+    recipes.push({ id: 10, name: 'test10', servings: 1 });
+    recipes.push({ id: 11, name: 'test11', servings: 1 });
+    recipes.push({ id: 12, name: 'test12', servings: 1 });
     return recipes;
   }
 

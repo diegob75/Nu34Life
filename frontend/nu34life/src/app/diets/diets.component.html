@@ -15,22 +15,24 @@
         <span>Agregar Platos</span>
       </mat-toolbar>
 
-      <mat-form-field>
-        <input #searchInput matInput placeholder="Buscar recceta" (keydown.enter)="getRecipes(searchInput.value)">
-        <button mat-button matSuffix mat-icon-button (click)="getRecipes(searchInput.value)">
-          <mat-icon>search</mat-icon>
-        </button>
-      </mat-form-field>
-
-      <mat-list>
-        <mat-list-item *ngFor="let item of recipesList">
-          <span>{{item.name}}</span>
-          <span class="fill-space"></span>
-          <button mat-button mat-icon-button (click)="addRecipe(item)">
-            <mat-icon>add</mat-icon>
+      <div class="recipe-menu">
+        <mat-form-field>
+          <input #searchInput matInput placeholder="Buscar recceta" (keydown.enter)="getRecipes(searchInput.value)">
+          <button mat-button matSuffix mat-icon-button (click)="getRecipes(searchInput.value)">
+            <mat-icon>search</mat-icon>
           </button>
-        </mat-list-item>
-      </mat-list>
+        </mat-form-field>
+
+        <mat-list>
+          <mat-list-item *ngFor="let item of recipesList">
+            <span>{{item.name}}</span>
+            <span class="fill-space"></span>
+            <button mat-button mat-icon-button (click)="addRecipe(item)">
+              <mat-icon>add</mat-icon>
+            </button>
+          </mat-list-item>
+        </mat-list>
+      </div>
 
     </mat-drawer>
     <mat-drawer-content>
@@ -38,20 +40,10 @@
       <!-- Configuration forms -->
       <div class="control-bar">
         <div>
-          <mat-form-field>
-            <input matInput [matDatepicker]="picker" [(ngModel)]="diet.starDate" placeholder="Fecha de inicio" requiered
-                   (dateChange)="getDayNameList()">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
-        </div>
-        <div>
           <button mat-button [mat-menu-trigger-for]="mealMenu">
             <span>Seleccionar Turnos</span>
             <mat-icon>keyboard_arrow_down</mat-icon>
           </button>
-        </div>
-        <div>
           <mat-menu #mealMenu>
             <mat-selection-list #mealList (selectionChange)="toggleMeals($event)">
               <mat-list-option *ngFor="let meal of meals" [value]="meal" selected="true">
@@ -59,7 +51,15 @@
               </mat-list-option>
             </mat-selection-list>
           </mat-menu>
-          <button mat-button>Cargar Recetas</button>
+        </div>
+
+        <div>
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker" [(ngModel)]="diet.starDate" placeholder="Fecha de inicio" requiered
+                   (dateChange)="getDayNameList()">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
         </div>
       </div>
 

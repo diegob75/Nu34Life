@@ -17,6 +17,11 @@
   text-align: center;
 }
 
+.recipe-menu {
+  margin: 10px;
+  padding: 10px;
+}
+
 .meal-wrapper {
   min-height: 60px;
   margin: 5px;
