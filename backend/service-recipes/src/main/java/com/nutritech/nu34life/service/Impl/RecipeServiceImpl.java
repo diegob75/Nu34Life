@@ -8,9 +8,9 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.nutritech.entity.Recipe;
 import com.nutritech.nu34life.Mapper;
 import com.nutritech.nu34life.api.viewmodel.RecipeViewModel;
-import com.nutritech.entity.Recipe;
 import com.nutritech.nu34life.model.repository.RecipeRepository;
 import com.nutritech.nu34life.service.RecipeService;
 

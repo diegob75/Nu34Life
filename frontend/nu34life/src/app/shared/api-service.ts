@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {Recipe} from '../model/recipe';
 import {Meal} from '../model/meal';
-import {Diet} from "../model/diet";
 
 @Injectable({
   providedIn: 'root'
@@ -36,10 +35,5 @@ export class ApiService {
     recipes.push({ id: 11, name: 'test11', servings: 1 });
     recipes.push({ id: 12, name: 'test12', servings: 1 });
     return recipes;
-  }
-
-  postDiet(diet: Diet): void {
-    console.log(diet);
-    console.log(JSON.stringify(diet, null, 2));
   }
 }

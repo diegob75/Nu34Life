@@ -2,8 +2,8 @@ package com.nutritech.nu34life;
 
 import org.springframework.stereotype.Component;
 
-import com.nutritech.nu34life.api.viewmodel.RecipeViewModel;
 import com.nutritech.entity.Recipe;
+import com.nutritech.nu34life.api.viewmodel.RecipeViewModel;
 
 @Component
 public class Mapper {
