@@ -1,7 +1,7 @@
 package com.nutritech.nu34life.api.viewmodel;
 
-import com.nutritech.nu34life.model.entity.Food;
-import com.nutritech.nu34life.model.entity.NutritionFact;
+import com.nutritech.entity.Food;
+import com.nutritech.entity.NutritionFact;
 
 public class IngredientViewModel {
 	private Food food;

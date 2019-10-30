@@ -3,7 +3,7 @@ package com.nutritech.nu34life;
 import org.springframework.stereotype.Component;
 
 import com.nutritech.nu34life.api.viewmodel.RecipeViewModel;
-import com.nutritech.nu34life.model.entity.Recipe;
+import com.nutritech.entity.Recipe;
 
 @Component
 public class Mapper {

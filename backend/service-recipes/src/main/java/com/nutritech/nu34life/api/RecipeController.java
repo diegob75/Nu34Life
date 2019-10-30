@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nutritech.nu34life.api.viewmodel.RecipeViewModel;
-import com.nutritech.nu34life.model.entity.Recipe;
+import com.nutritech.entity.Recipe;
 import com.nutritech.nu34life.service.RecipeService;
 
 @RestController
