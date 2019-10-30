@@ -4,8 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-add',
-  templateUrl: './product-add.component.html',
-  styleUrls: ['./product-add.component.css']
+  templateUrl: './food-add.component.html',
+  styleUrls: ['./food-add.component.css']
 })
 export class FoodAddComponent implements OnInit {
 

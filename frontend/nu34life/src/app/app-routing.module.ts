@@ -7,6 +7,8 @@ import {PlanRecipesComponent} from './plan-recipes/plan-recipes.component';
 import {RecipesComponent} from './recipes/recipes.component';
 import {StepsComponent} from './steps/steps.component';
 import {DietsComponent} from './diets/diets.component';
+import {FoodAddComponent} from './food-add/food-add.component';
+import {RecipeAddComponent} from './recipe-add/recipe-add.component';
 
 
 const routes: Routes = [
@@ -39,6 +41,16 @@ const routes: Routes = [
     path: 'recipes',
     component: RecipesComponent,
     data: { title: 'Recipes List' }
+  },
+  {
+    path: 'food-add',
+    component: FoodAddComponent,
+    data: { title: 'Food Add' }
+  },
+  {
+    path: 'recipe-add',
+    component: RecipeAddComponent,
+    data: { title: 'Recipe Add' }
   },
   {
     path: 'steps',
