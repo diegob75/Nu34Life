@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class Meal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    public Long id;
 
-    private String name;    
+    public String name;    
 }

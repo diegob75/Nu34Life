@@ -16,26 +16,26 @@ public class NutritionFact {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	public Long id;
 
 	@Column(name = "energetic_value")
-	private Double energeticValue;
+	public Double energeticValue;
 	
 	@Column(name = "total_fat")
-	private Double totalFat;
+	public Double totalFat;
 	
 	@Column(name = "saturated_fats")
-	private Double saturatedFats;
+	public Double saturatedFats;
 	
 	@Column(name = "carbohydrates")
-	private Double carbohydrates;
+	public Double carbohydrates;
 	
 	@Column(name = "sugars")
-	private Double sugars;
+	public Double sugars;
 	
 	@Column(name = "protein")
-	private Double protein;
+	public Double protein;
 	
 	@Column(name = "salt")
-	private Double salt;	
+	public Double salt;	
 }

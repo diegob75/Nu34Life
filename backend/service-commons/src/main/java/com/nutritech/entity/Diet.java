@@ -14,12 +14,10 @@ public class Diet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     
     @Column
     private Long nutritionistId;
 
-    
     @ManyToOne
     @JoinColumn(name = "patient_state_id")
     private PatientState patientState;

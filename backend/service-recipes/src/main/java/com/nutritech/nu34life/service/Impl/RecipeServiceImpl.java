@@ -3,14 +3,12 @@ package com.nutritech.nu34life.service.Impl;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.nutritech.entity.Recipe;
-import com.nutritech.nu34life.Mapper;
-import com.nutritech.nu34life.api.viewmodel.RecipeViewModel;
+
 import com.nutritech.nu34life.model.repository.RecipeRepository;
 import com.nutritech.nu34life.service.RecipeService;
 
@@ -20,9 +18,6 @@ public class RecipeServiceImpl implements RecipeService{
 	@Autowired
 	private RecipeRepository recipeRepository;
 
-	@Autowired
-	private Mapper mapper;
-	
 	@Override
 	public Recipe create(Recipe entity) {
 		// TODO Auto-generated method stub
@@ -48,11 +43,8 @@ public class RecipeServiceImpl implements RecipeService{
 	}
 	
 	@Override
-	public List<RecipeViewModel> getByNameLike(String string){
-		List<RecipeViewModel> recipes = recipeRepository.findByNameContainingIgnoreCase(string)
-									.stream()
-									.map(recipe -> this.mapper.convertToRecipeViewModel(recipe))
-									.collect(Collectors.toList());
+	public List<Recipe> getByNameLike(String string){
+		List<Recipe> recipes = recipeRepository.findByNameContainingIgnoreCase(string);
 		
 		return recipes;
 	}

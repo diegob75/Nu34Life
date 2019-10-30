@@ -7,5 +7,5 @@ import com.nutritech.nu34life.api.viewmodel.RecipeViewModel;
 
 public interface RecipeService extends CrudService<Recipe, Long>{
 
-	public List<RecipeViewModel> getByNameLike(String string);
+	public List<Recipe> getByNameLike(String string);
 }

@@ -7,6 +7,10 @@ INSERT INTO public.foods( name) VALUES ('palta');
 INSERT INTO public.foods( name) VALUES ('apio');
 INSERT INTO public.foods( name) VALUES ('aceite de oliva');
 
+INSERT INTO public.meals( name) VALUES ('desayuno');
+INSERT INTO public.meals( name) VALUES ('almuerzo');
+INSERT INTO public.meals( name) VALUES ('merienda');
+INSERT INTO public.meals( name) VALUES ('cena');
 
 INSERT INTO public.nutrition_facts( carbohydrates, energetic_value, protein, salt, saturated_fats, sugars, total_fat) VALUES (3, 120, 24, 7, 0,  0, 1);
 INSERT INTO public.nutrition_facts( carbohydrates, energetic_value, protein, salt, saturated_fats, sugars, total_fat) VALUES (14, 50, 2, 0, 0,  0, 0);	
