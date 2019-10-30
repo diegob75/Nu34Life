@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
+import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { FoodsComponent } from './foods/foods.component';
 import { IngredientsComponent } from './ingredients/ingredients.component';
@@ -31,7 +32,52 @@ import {
   MatMenuModule, MatNativeDateModule, MatSelectModule, MatSidenavModule,
   MatToolbarModule, NativeDateModule
 } from '@angular/material';
+import { FoodAddComponent } from './food-add/food-add.component';
+import { RecipeAddComponent } from './recipe-add/recipe-add.component';
 
+
+const appRoutes: Routes = [
+  {
+    path: 'foods',
+    component: FoodsComponent,
+    data: { title: 'Foods List' }
+  },
+  {
+    path: 'ingredients',
+    component: IngredientsComponent,
+    data: { title: 'Ingredients List' }
+  },
+  {
+    path: 'ingredients',
+    component: NutritionFactsComponent,
+    data: { title: 'NutritionFact List' }
+  },
+  {
+    path: 'planrecipes',
+    component: PlanRecipesComponent,
+    data: { title: 'PlanRecipe List' }
+  },
+  {
+    path: 'recipes',
+    component: RecipesComponent,
+    data: { title: 'Recipes List' }
+  },
+  {
+    path: 'food-add',
+    component: FoodAddComponent,
+    data: { title: 'Food Add' }
+  },
+  {
+    path: 'recipe-add',
+    component: RecipeAddComponent,
+    data: { title: 'Recipe Add' }
+  },
+  {
+    path: 'steps',
+    component: StepsComponent,
+    data: { title: 'Steps List' }
+  }
+];
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +89,9 @@ import {
     NutritionFactsComponent,
     PlanRecipesComponent,
     RecipesComponent,
-    StepsComponent
+    StepsComponent,
+    FoodAddComponent,
+    RecipeAddComponent
   ],
   imports: [
     FormsModule,
