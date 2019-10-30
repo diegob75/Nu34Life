@@ -2,13 +2,10 @@
     <h2>Recipe Add</h2>
     <div>
       <label>Recipe Name:
-        <input [(ngModel)]="recipeData" placeholder="Product Name"/>
+        <input [(ngModel)]="recipeData.name" placeholder="Product Name"/>
       </label><br>
-      <label>Recipe Desc:
-        <input [(ngModel)]="recipeData" placeholder="Recipe quantity"/>
-      </label><br>
-      <label>Recipe Price:
-        <input [(ngModel)]="recipeData" placeholder="Recipe ingredient"/>
+      <label>Recipe Servings:
+        <input [(ngModel)]="recipeData.servings" placeholder="Recipe servings"/>
       </label><br>
     </div>
     <button (click)="addRecipe()">Save</button>

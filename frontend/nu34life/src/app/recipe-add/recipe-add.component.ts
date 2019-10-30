@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class RecipeAddComponent implements OnInit {
 
-  @Input() recipeData = { name:'' };
+  @Input() recipeData = { name:'', servings: 0 };
 
   constructor(public rest:RestService, private route: ActivatedRoute, private router: Router) { }
 
@@ -18,7 +18,7 @@ export class RecipeAddComponent implements OnInit {
 
   addRecipe() {
     this.rest.addRecipe(this.recipeData).subscribe((result) => {
-      this.router.navigate(['/recipes/']);
+      this.router.navigate(['/recipes']);
     }, (err) => {
       console.log(err);
     });
