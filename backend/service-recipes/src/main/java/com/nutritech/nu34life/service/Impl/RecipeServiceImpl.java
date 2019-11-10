@@ -20,7 +20,8 @@ public class RecipeServiceImpl implements RecipeService{
 	@Override
 	public Recipe create(Recipe entity) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		return recipeRepository.save(entity);
 	}
 
 	@Override
