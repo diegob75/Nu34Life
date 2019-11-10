@@ -1,7 +1,7 @@
 import {Recipe} from './recipe';
 import {Meal} from './meal';
 
-export class DietDetail {
+export interface DietDetail {
   id: number;
   recipe: Recipe;
   meal: Meal;

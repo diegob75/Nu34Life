@@ -1,0 +1,54 @@
+<div id="root-container">
+  <mat-toolbar color="primary">
+    <div>
+      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <a mat-button routerLink="/home">
+        <span>Nut34Life</span>
+      </a>
+    </div>
+    <div class="bar-menu">
+      <button mat-icon-button>
+        <mat-icon>notifications</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon>settings</mat-icon>
+      </button>
+
+      <ngx-avatar size="40" [src]="avatar" [name]="name"></ngx-avatar>
+
+    </div>
+  </mat-toolbar>
+
+  <mat-sidenav-container autosize hasBackdrop="false">
+    <mat-sidenav #sidenav [(opened)]="opened">
+      <mat-nav-list dense>
+        <!-- TODO: Avatar -->
+        <p matSubheader>Pacientes</p>
+        <div fxLayout="row">
+          <mat-list-item fxLayout="column">
+            <a mat-list-item (click)="sidenav.toggle()">Mis pacientes</a>
+          </mat-list-item>
+          <mat-list-item fxLayout="column">
+            <a mat-list-item (click)="sidenav.toggle()">Agregar</a>
+          </mat-list-item>
+        </div>
+        <p matSubheader>Recetas</p>
+        <div fxLayout="row">
+          <mat-list-item fxLayout="column">
+            <a mat-list-item (click)="sidenav.toggle()">Todas las recetas</a>
+          </mat-list-item>
+          <mat-list-item fxLayout="column">
+            <a mat-list-item (click)="sidenav.toggle()">Crear</a>
+          </mat-list-item>
+        </div>
+        <mat-list-item></mat-list-item>
+        <mat-list-item></mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content fxFlexFill>
+      <ng-content></ng-content>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

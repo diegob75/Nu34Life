@@ -1,0 +1,20 @@
+<div class="content">
+  <mat-drawer-container class="account-container">
+    <mat-drawer mode="side" opened>
+      <div class="avatar-wrapper">
+        <ngx-avatar size="100" [src]="avatar" [name]="name"></ngx-avatar>
+        <div>{{name}}</div>
+      </div>
+      <mat-nav-list>
+        <a routerLink="/account/edit-profile" mat-list-item>Perfil</a>
+        <a routerLink="/account/edit-account" mat-list-item>Cuenta</a>
+        <a routerLink="/account/edit-payment" mat-list-item>Métodos de pago</a>
+        <a routerLink="/account/close-account" mat-list-item>Cerrar Cuenta</a>
+      </mat-nav-list>
+    </mat-drawer>
+    <mat-drawer-content>
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
+
+</div>

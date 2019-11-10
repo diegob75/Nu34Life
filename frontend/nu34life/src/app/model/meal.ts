@@ -1,4 +1,4 @@
-export class Meal {
+export interface Meal {
   id: number;
   name: string;
 }

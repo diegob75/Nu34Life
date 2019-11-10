@@ -1,0 +1,24 @@
+.content {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+mat-drawer-container {
+  height: 600px;
+  border: solid 1px rgba(0,0,0,.12);
+}
+mat-drawer {
+  width: 230px;
+}
+mat-drawer-content {
+  min-width: 500px;
+  width: 45vw;
+  background-color: white;
+}
+.avatar-wrapper {
+  margin: 10px 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
