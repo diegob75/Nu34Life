@@ -9,7 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.nutritech.entity.Food;
+import com.nutritech.nu34life.entity.*;
 import com.nutritech.nu34life.model.repository.FoodRepository;
 import com.nutritech.nu34life.service.FoodService;
 

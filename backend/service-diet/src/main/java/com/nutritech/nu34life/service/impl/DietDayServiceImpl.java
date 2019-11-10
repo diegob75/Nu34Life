@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.nutritech.entity.*;
+import com.nutritech.nu34life.model.*;
 import com.nutritech.nu34life.repository.DietDayRepository;
 import com.nutritech.nu34life.service.DietDayService;
 @Service

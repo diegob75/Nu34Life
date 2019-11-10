@@ -12,7 +12,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableEurekaClient
 @EnableFeignClients
 @SpringBootApplication
-@EntityScan("com.nutritech.entity")
 public class ServiceDietApplication {
 
 	public static void main(String[] args) {

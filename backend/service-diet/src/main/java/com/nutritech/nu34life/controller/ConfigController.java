@@ -18,13 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/configs")
 public class ConfigController {
-
+/*
 	private static Logger log = LoggerFactory.getLogger(ConfigController.class);
 	
 	@Autowired
 	private Environment env;
 
-	@Value("${config.text}")
+	@Value("${config.server.git.uri}")
 	private String text;
 
 	@GetMapping
@@ -41,5 +41,5 @@ public class ConfigController {
 		}
 		return new ResponseEntity<Map<String, String>>(json, HttpStatus.OK);
 	}
-
+*/
 }

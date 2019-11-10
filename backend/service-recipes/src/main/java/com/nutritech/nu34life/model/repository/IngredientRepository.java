@@ -3,7 +3,7 @@ package com.nutritech.nu34life.model.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.nutritech.entity.Ingredient;
+import com.nutritech.nu34life.entity.*;
 
 @Repository
 public interface IngredientRepository extends JpaRepository<Ingredient, Long>{
