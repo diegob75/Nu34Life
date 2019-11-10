@@ -9,6 +9,7 @@ import {StepsComponent} from './steps/steps.component';
 import {DietsComponent} from './diets/diets.component';
 import {FoodAddComponent} from './food-add/food-add.component';
 import {RecipeAddComponent} from './recipe-add/recipe-add.component';
+import {RecipeDetailComponent} from './recipe-detail/recipe-detail.component';
 
 
 const routes: Routes = [
@@ -46,6 +47,11 @@ const routes: Routes = [
     path: 'food-add',
     component: FoodAddComponent,
     data: { title: 'Food Add' }
+  }, 
+  {
+    path: 'recipe-details/:id',
+    component: RecipeDetailComponent,
+    data: { title: 'Recipe Details' }
   },
   {
     path: 'recipe-add',

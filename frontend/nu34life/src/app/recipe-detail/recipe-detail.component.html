@@ -1,0 +1,8 @@
+
+        <div *ngIf="recipe" class="recipes">
+                <h2>{{recipe.name | uppercase}}</h2>
+                <div *ngFor="let ingredient of recipe.ingredients" >
+                        {{ ingredient.food.name }}
+                <div>
+                </div>
+              </div>

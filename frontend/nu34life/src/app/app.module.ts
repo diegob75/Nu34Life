@@ -33,6 +33,7 @@ import {
 } from '@angular/material';
 import { FoodAddComponent } from './food-add/food-add.component';
 import { RecipeAddComponent } from './recipe-add/recipe-add.component';
+import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { RecipeAddComponent } from './recipe-add/recipe-add.component';
     RecipesComponent,
     StepsComponent,
     FoodAddComponent,
-    RecipeAddComponent
+    RecipeAddComponent,
+    RecipeDetailComponent
   ],
   imports: [
     FormsModule,
