@@ -4,6 +4,128 @@ import {Observable} from 'rxjs';
 import {Recipe} from '../model/recipe';
 import {Meal} from '../model/meal';
 
+const gaa = {
+  id: null,
+  name: 'asd',
+  servings: 5,
+  steps: [
+    {
+      id: null,
+      instruction: 'asdga',
+      stepNumber: 1
+    },
+    {
+      id: null,
+      instruction: 'asdga',
+      stepNumber: 1
+    },
+    {
+      id: null,
+      instruction: 'asdga',
+      stepNumber: 1
+    }
+  ],
+  ingredients: [
+    {
+      id: null,
+      food: {
+        id: null,
+        name: 'asdgf',
+        nutrFact: {
+          id: null,
+          energeticValue: 3.2,
+          totalFat: 3.2,
+          saturatedFats: 3.2,
+          carbohydrates: 3.2,
+          sugars: 3.2,
+          protein: 3.2,
+          salt: 3.2
+        }
+      },
+      quantity: 1,
+      unit: 'adag',
+      nutrFact: {
+        id: null,
+        energeticValue: 3.2,
+        totalFat: 3.2,
+        saturatedFats: 3.2,
+        carbohydrates: 3.2,
+        sugars: 3.2,
+        protein: 3.2,
+        salt: 3.2
+      }
+    },
+    {
+      id: null,
+      food: {
+        id: null,
+        name: 'asdgf',
+        nutrFact: {
+          id: 1,
+          energeticValue: 3.2,
+          totalFat: 3.2,
+          saturatedFats: 3.2,
+          carbohydrates: 3.2,
+          sugars: 3.2,
+          protein: 3.2,
+          salt: 3.2
+        }
+      },
+      quantity: 1,
+      unit: 'adag',
+      nutrFact: {
+        id: null,
+        energeticValue: 3.2,
+        totalFat: 3.2,
+        saturatedFats: 3.2,
+        carbohydrates: 3.2,
+        sugars: 3.2,
+        protein: 3.2,
+        salt: 3.2
+      }
+    },
+    {
+      id: null,
+      food: {
+        id: null,
+        name: 'asdgf',
+        nutrFact: {
+          id: 1,
+          energeticValue: 3.2,
+          totalFat: 3.2,
+          saturatedFats: 3.2,
+          carbohydrates: 3.2,
+          sugars: 3.2,
+          protein: 3.2,
+          salt: 3.2
+        }
+      },
+      quantity: 1,
+      unit: 'adag',
+      nutrFact: {
+        id: null,
+        energeticValue: 3.2,
+        totalFat: 3.2,
+        saturatedFats: 3.2,
+        carbohydrates: 3.2,
+        sugars: 3.2,
+        protein: 3.2,
+        salt: 3.2
+      }
+    }
+  ],
+  nutrFact: {
+    id: null,
+    energeticValue: 3.2,
+    totalFat: 3.2,
+    saturatedFats: 3.2,
+    carbohydrates: 3.2,
+    sugars: 3.2,
+    protein: 3.2,
+    salt: 3.2
+  }
+};
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,6 +135,9 @@ export class InMemoryDataService implements InMemoryDbService {
   }
 
   createDb() {
+    // FOODS
+
+
     // RECIPES
     const recipes = new Array<Recipe>();
     recipes.push({id: 1, name: 'test1', servings: 1});

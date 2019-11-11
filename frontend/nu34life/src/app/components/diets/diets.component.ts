@@ -61,7 +61,6 @@ export class DietsComponent implements OnInit {
         });
       },
       err => {
-        this.apiService.viewRoutes();
       }
     );
 
@@ -113,7 +112,6 @@ export class DietsComponent implements OnInit {
         this.recipesList = res;
       },
       err => {
-        // alert("An error has occurred;")
       }
     );
   }

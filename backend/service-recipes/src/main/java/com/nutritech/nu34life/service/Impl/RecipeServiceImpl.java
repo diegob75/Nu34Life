@@ -7,8 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.nutritech.entity.Recipe;
-
+import com.nutritech.nu34life.entity.*;
 import com.nutritech.nu34life.model.repository.RecipeRepository;
 import com.nutritech.nu34life.service.RecipeService;
 
@@ -21,7 +20,8 @@ public class RecipeServiceImpl implements RecipeService{
 	@Override
 	public Recipe create(Recipe entity) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		return recipeRepository.save(entity);
 	}
 
 	@Override

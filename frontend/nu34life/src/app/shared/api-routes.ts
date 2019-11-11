@@ -14,7 +14,7 @@ export const API_ROUTES: ApiRoutes = {
   }
 };
 
-export class ApiRoutes {
+export interface ApiRoutes {
   diets: {
     GET_DIETS: string;
     POST_DIET: string;

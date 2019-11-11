@@ -47,6 +47,11 @@ export class RestService {
       map(this.extractData));
   }
 
+  getFood(id): Observable<any> {
+    return this.http.get(endpoint + 'recipes/' + id).pipe(
+      map(this.extractData));
+  }
+
   getSteps(): Observable<any> {
     return this.http.get(endpoint + 'steps').pipe(
       map(this.extractData));

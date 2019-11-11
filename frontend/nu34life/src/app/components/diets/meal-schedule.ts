@@ -1,6 +1,6 @@
 import {DietDetail} from '../../model/diet-detail';
 
-export class MealSchedule {
+export interface MealSchedule {
   id: number;
   name: string;
   detail: DietDetail[];

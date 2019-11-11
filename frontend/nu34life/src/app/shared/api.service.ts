@@ -15,12 +15,7 @@ const ENDPOINTS: ApiRoutes = MOCK_ROUTES;
 export class ApiService {
   constructor(private http: HttpClient) { }
 
-  viewRoutes() {
-    console.log(ENDPOINTS);
-  }
-
   getAllMeals(): Observable<Meal[]> {
-    alert(ENDPOINTS.diets.GET_MEALS);
     return this.http.get<Meal[]>(ENDPOINTS.diets.GET_MEALS);
   }
 

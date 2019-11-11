@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.nutritech.entity.Food;
+import com.nutritech.nu34life.entity.*;
 import com.nutritech.nu34life.service.FoodService;
 
 @RestController

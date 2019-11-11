@@ -1,14 +1,13 @@
 package com.nutritech.nu34life.controller;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.nutritech.entity.*;
+import com.nutritech.nu34life.model.*;
 import com.nutritech.nu34life.service.DietService;
 import com.nutritech.nu34life.service.MealService;
 

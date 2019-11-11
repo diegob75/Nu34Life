@@ -18,7 +18,9 @@ import {EditProfileComponent} from './components/account/edit-profile/edit-profi
 import {CloseAccountComponent} from './components/account/close-account/close-account.component';
 import {EditPaymentComponent} from './components/account/edit-payment/edit-payment.component';
 import {NotFoundComponent} from './components/account/not-found/not-found.component';
-
+import {RecipeDetailComponent} from './recipe-detail/recipe-detail.component';
+import {RegisterComponent} from './components/auth/register/register.component';
+import {LoginComponent} from './components/auth/login/login.component';
 
 const routes: Routes = [
   {
@@ -28,8 +30,28 @@ const routes: Routes = [
   },
   {
     path: '',
-    pathMatch: 'full',
-    redirectTo: '/home'
+    redirectTo: '/home',
+    pathMatch: 'full'
+  },
+  {
+    path: 'auth',
+    redirectTo: 'auth/login',
+    pathMatch: 'full'
+  },
+  {
+    path: 'auth',
+    children: [
+      {
+        path: 'login',
+        component: LoginComponent,
+        data: { title: 'Iniciar sesión'}
+      },
+      {
+        path: 'register',
+        component: RegisterComponent,
+        data: { title: 'Registrar'}
+      },
+    ]
   },
   {
     path: 'patients',
@@ -42,7 +64,7 @@ const routes: Routes = [
     data: {title: 'Crear dieta'}
   },
   {
-    path: 'dishes',
+    path: 'dish-detail/:id',
     component: DishComponent,
     data: {title: 'Recetas'}
   },
@@ -53,12 +75,17 @@ const routes: Routes = [
   },
   {
     path: 'account',
+    redirectTo: 'account/edit-account',
+    pathMatch: 'full'
+  },
+  {
+    path: 'account',
     component: AccountComponent,
     children: [
-      {path: 'edit-account', component: EditAccountComponent},
-      {path: 'edit-profile', component: EditProfileComponent},
-      {path: 'edit-payment', component: EditPaymentComponent},
-      {path: 'close-account', component: CloseAccountComponent}
+      {path: 'edit-account', component: EditAccountComponent, data: { title: 'Editar cuenta'}},
+      {path: 'edit-profile', component: EditProfileComponent, data: { title: 'Editar Perfil'}},
+      {path: 'edit-payment', component: EditPaymentComponent, data: { title: 'Editar métodos de pago'}},
+      {path: 'close-account', component: CloseAccountComponent, data: { title: 'Cerrar cuenta'}}
     ]
   },
   {
@@ -84,10 +111,15 @@ const routes: Routes = [
   {
     path: 'food-add',
     component: FoodAddComponent,
-    data: {title: 'Food Add'}
+    data: { title: 'Food Add' }
   },
   {
-    path: 'recipe-add',
+    path: 'recipe-details/:id',
+    component: RecipeDetailComponent,
+    data: { title: 'Recipe Details' }
+  },
+  {
+    path: 'recipes',
     component: RecipeAddComponent,
     data: {title: 'Recipe Add'}
   },

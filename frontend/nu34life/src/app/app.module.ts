@@ -47,7 +47,9 @@ import { EditPaymentComponent } from './components/account/edit-payment/edit-pay
 import { CloseAccountComponent } from './components/account/close-account/close-account.component';
 import { EditProfileComponent } from './components/account/edit-profile/edit-profile.component';
 import { NotFoundComponent } from './components/account/not-found/not-found.component';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
+import { RegisterComponent } from './components/auth/register/register.component';
 
 
 @NgModule({
@@ -73,7 +75,9 @@ import { LoginComponent } from './components/login/login.component';
     CloseAccountComponent,
     EditProfileComponent,
     NotFoundComponent,
-    LoginComponent
+    LoginComponent,
+    RecipeDetailComponent,
+    RegisterComponent
   ],
   imports: [
     FormsModule,

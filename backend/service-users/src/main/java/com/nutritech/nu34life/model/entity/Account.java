@@ -30,7 +30,7 @@ public class Account {
 	@Column(name = "birthday")
 	private Date birthday;
 
-	@Column(name = "register_date", unique = true, length = 100)
+	@Column(name = "email", unique = true, length = 100)
 	private String email;
 	
 	@Column

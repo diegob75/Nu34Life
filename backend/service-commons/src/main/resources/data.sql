@@ -1,4 +1,4 @@
-INSERT INTO public.foods( name) VALUES ('pescado');
+/*INSERT INTO public.foods( name) VALUES ('pescado');
 INSERT INTO public.foods( name) VALUES ('zanahoria');
 INSERT INTO public.foods( name) VALUES ('lechuga');
 INSERT INTO public.foods( name) VALUES ('tomate');
@@ -41,4 +41,4 @@ INSERT INTO public.ingredients(food_id, recipe_id, quantity, unit) VALUES (8, 2,
 
 INSERT INTO public.steps(instruction, step_number, recipe_id) VALUES ( 'Pasos a seguir: ...', 3, 1);
 INSERT INTO public.steps(instruction, step_number, recipe_id) VALUES ( 'Pasos a seguir: ...', 5, 3);
-INSERT INTO public.steps(instruction, step_number, recipe_id) VALUES ( 'Pasos a seguir: ...', 2, 2);
+INSERT INTO public.steps(instruction, step_number, recipe_id) VALUES ( 'Pasos a seguir: ...', 2, 2);*/

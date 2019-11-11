@@ -8,8 +8,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.nutritech.entity.Step;
+import com.nutritech.nu34life.entity.*;
 import com.nutritech.nu34life.model.repository.StepRepository;
 import com.nutritech.nu34life.service.StepService;
 

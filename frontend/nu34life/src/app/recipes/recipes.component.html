@@ -1,28 +1,15 @@
-<h2>Recipes</h2>
+<h2>Product List</h2>
+
+<div>
+  <button (click)="add()">
+    Add
+  </button>
+</div>
+
 <ul class="recipes">
-  <li *ngFor="let recipe of recipes"
-    [class.selected]="recipe === selectedRecipe"
-    (click)="onSelect(recipe)">
-    <span class="badge">{{recipe.name}}</span>
-    
-    <div *ngFor="let ingredient of recipe.ingredients">
-        {{ ingredient.food.name }}
-
-        
-
-    </div>
-
+  <li *ngFor="let recipe of recipes; let i=index;">
+    <a routerLink="/recipe-details/{{recipe.id}}">
+      <span class="badge">{{i+1}}</span> {{recipe.name}}
+    </a>
   </li>
 </ul>
-
-<div *ngIf="selectedRecipe">
-
-  <h2>{{selectedRecipe.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{selectedRecipe.id}}</div>
-  <div>
-    <label>name:
-      <input [(ngModel)]="selectedRecipe.name" placeholder="name"/>
-    </label>
-  </div>
-
-</div>
