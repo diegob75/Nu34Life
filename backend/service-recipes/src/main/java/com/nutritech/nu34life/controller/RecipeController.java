@@ -1,4 +1,4 @@
-package com.nutritech.nu34life.api;
+package com.nutritech.nu34life.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.nutritech.nu34life.controller.viewmodel.RecipeViewModel;
 import com.nutritech.nu34life.entity.*;
-import com.nutritech.nu34life.api.viewmodel.RecipeViewModel;
 import com.nutritech.nu34life.service.RecipeService;
 
 @RestController

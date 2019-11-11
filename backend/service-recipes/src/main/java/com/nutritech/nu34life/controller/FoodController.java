@@ -1,4 +1,4 @@
-package com.nutritech.nu34life.api;
+package com.nutritech.nu34life.controller;
 
 import java.util.List;
 

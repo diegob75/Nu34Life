@@ -1,4 +1,4 @@
-package com.nutritech.nu34life.api.viewmodel;
+package com.nutritech.nu34life.controller.viewmodel;
 
 import com.nutritech.nu34life.entity.*;
 
