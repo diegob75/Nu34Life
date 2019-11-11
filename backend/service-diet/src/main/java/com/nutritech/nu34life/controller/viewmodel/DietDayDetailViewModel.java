@@ -1,4 +1,4 @@
-package com.nutritech.nu34life.api.viewmodel;
+package com.nutritech.nu34life.controller.viewmodel;
 
 public class DietDayDetailViewModel {
 
