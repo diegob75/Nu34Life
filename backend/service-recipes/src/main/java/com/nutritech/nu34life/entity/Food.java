@@ -1,7 +1,9 @@
 package com.nutritech.nu34life.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,7 +25,7 @@ public class Food {
 	@Column(name = "name", length = 50)
 	private String name;
 
-	@OneToOne
+	@OneToOne(fetch=FetchType.LAZY,cascade={CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE},optional=false)
 	@JoinColumn(name = "nutr_fact_id")
 	private NutritionFact nutrFact;
 }

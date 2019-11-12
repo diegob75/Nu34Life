@@ -33,7 +33,7 @@ public class Recipe {
 	@JoinColumn(name = "recipe_id", insertable = false, updatable = false)
 	public List<Ingredient> ingredients;
 	
-	@OneToOne
+	@OneToOne(fetch=FetchType.LAZY,cascade={CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE},optional=false)
 	@JoinColumn(name = "nutr_fact_id")
 	public NutritionFact nutrFact;
 }
