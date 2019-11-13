@@ -11,6 +11,8 @@ import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import lombok.Data;
 
@@ -20,12 +22,13 @@ import lombok.Data;
 public class Ingredient {
 
 	@EmbeddedId
-	private IngredientId id;
+	private IngredientId id = new IngredientId();
 	
-/*	@ManyToOne
+	@ManyToOne
+	@JsonProperty(access = Access.WRITE_ONLY)
     @MapsId("recipeId")
     @JoinColumn(name = "recipe_id")
-	private Recipe recipe;*/
+	private Recipe recipe;
 	
 	@ManyToOne
     @MapsId("foodId")
@@ -37,8 +40,4 @@ public class Ingredient {
 	
 	@Column(name = "unit", length = 2)
 	private String unit;
-
-	@OneToOne(fetch=FetchType.LAZY,cascade={CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE},optional=false)
-	@JoinColumn(name = "nutr_fact_id")
-	private NutritionFact nutrFact;
 }

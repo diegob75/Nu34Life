@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.persistence.*;
 
-
-
 import lombok.Data;
 
 @Data
@@ -28,12 +26,12 @@ public class Recipe {
 	@JoinColumn(name = "recipe_id")
 	public List<Step> steps;
 	
-	
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, orphanRemoval = true)
 	@JoinColumn(name = "recipe_id", insertable = false, updatable = false)
 	public List<Ingredient> ingredients;
 	
-	@OneToOne(fetch=FetchType.LAZY,cascade={CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE},optional=false)
+
+	@OneToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL,optional=false)
 	@JoinColumn(name = "nutr_fact_id")
 	public NutritionFact nutrFact;
 }

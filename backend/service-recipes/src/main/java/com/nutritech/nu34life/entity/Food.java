@@ -12,10 +12,15 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
 @Entity
+@Getter
+@Setter
 @Table(name = "foods")
+@EqualsAndHashCode(of = {"id"})
 public class Food {
 	
 	@Id

@@ -10,7 +10,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @EnableEurekaClient
 @SpringBootApplication
-@EntityScan("com.nutritech.nu34life.entity")
 public class ServiceRecipesApplication {
 
 	public static void main(String[] args) {
