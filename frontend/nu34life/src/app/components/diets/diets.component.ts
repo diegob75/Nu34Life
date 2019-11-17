@@ -4,8 +4,10 @@ import {DietDetail} from '../../model/diet-detail';
 import {Meal} from '../../model/meal';
 import {ApiService} from '../../shared/api.service';
 import {Recipe} from '../../model/recipe';
-import {MealSchedule} from './meal-schedule';
-import {DietPlanner} from './diet-planner';
+import {MatDialog} from '@angular/material';
+import {Diet} from '../../model/diet';
+import {DishComponent} from '../dish/dish.component';
+import {ModalComponent} from '../dish/modal/modal.component';
 
 @Component({
   selector: 'app-diets',
@@ -22,10 +24,9 @@ export class DietsComponent implements OnInit {
 
   // REMOVE?
   recipesList: Recipe[];
-  stash: { index: number; arr: DietDetail[]; detail: DietDetail }[];
 
-  constructor(private apiService: ApiService) {
-  }
+  constructor(private apiService: ApiService,
+              private dialog: MatDialog) { }
 
   ngOnInit() {
     this.daysNumber = 7;
@@ -38,18 +39,24 @@ export class DietsComponent implements OnInit {
         stateId: 0,
         dietDays: []
       },
-      schedule: [[], [], [], [], [], [], []]
+      schedule: []
     };
+
+    for (let i = 0; i < this.daysNumber; i++) {
+      this.dietPlan.schedule[i] = [];
+    }
+
     this.getDayNameList();
     this.loadMeals();
-    this.getRecipes(null);
+    this.loadRecipes(null);
+
     for (let i = 0; i < this.dietPlan.diet.duration; i++) {
       this.dietPlan.diet.dietDays.push({id: null, day: i + 1, details: []});
     }
+  }
 
-    this.selected = this.dietPlan.schedule[0][0];
-
-    this.stash = [];
+  selectMeal(mealSch: MealSchedule) {
+    this.selected = mealSch;
   }
 
   loadMeals() {
@@ -58,13 +65,12 @@ export class DietsComponent implements OnInit {
         this.meals = res;
         this.meals.forEach(m => {
           this.dietPlan.schedule.forEach(x => x.push({id: m.id, name: m.name, detail: new Array<DietDetail>()}));
+          this.selected = this.dietPlan.schedule[0][0];
         });
       },
       err => {
       }
     );
-
-
   }
 
   getDayNameList() {
@@ -83,8 +89,19 @@ export class DietsComponent implements OnInit {
   }
 
   removeRecipe(index: number, meal: MealSchedule) {
-    // this.stash.push({ index, arr: meal.detail, detail: meal[index]});
     meal.detail.splice(index, 1);
+  }
+
+  viewRecipeDetails(recipe): void {
+    const dialogRef = this.dialog.open(ModalComponent, {
+      width: '800px',
+      panelClass: 'card-dialog',
+      data: recipe
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+    });
   }
 
   mapDiet() {
@@ -96,17 +113,7 @@ export class DietsComponent implements OnInit {
     }
   }
 
-  // undoRemove() {
-  //   const { index, arr, detail } = this.stash.pop();
-  //   arr.splice(index, 0, detail);
-  // }
-
-
-  selectMeal(mealSch: MealSchedule) {
-    this.selected = mealSch;
-  }
-
-  getRecipes(query: string) {
+  loadRecipes(query: string) {
     this.apiService.getAllRecipes().subscribe(
       res => {
         this.recipesList = res;
@@ -126,7 +133,6 @@ export class DietsComponent implements OnInit {
 
     if (event.option.selected) {
       this.dietPlan.schedule.forEach(x => x.push({id: element.id, name: element.name, detail: new Array<DietDetail>()}));
-      console.log(JSON.stringify(this.dietPlan.schedule));
     } else {
       this.dietPlan.schedule.forEach(x => {
         const index = x.findIndex(m => m.id === element.id);
@@ -147,4 +153,15 @@ export class DietsComponent implements OnInit {
         event.currentIndex);
     }
   }
+}
+
+interface  DietPlanner {
+  diet: Diet;
+  schedule: MealSchedule[][];
+}
+
+interface MealSchedule {
+  id: number;
+  name: string;
+  detail: DietDetail[];
 }

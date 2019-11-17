@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Recipe} from '../../model/recipe';
-import {MockResources} from '../../mocks/mock-resources';
 
 @Component({
   selector: 'app-dish',
@@ -9,16 +8,11 @@ import {MockResources} from '../../mocks/mock-resources';
 })
 export class DishComponent implements OnInit {
 
-  @Input() recipe: Recipe;
+  @Input() private recipe: Recipe;
 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit() {
-  }
-
-  get image() {
-    return MockResources.recipePicture();
   }
 
 }

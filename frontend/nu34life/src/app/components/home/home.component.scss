@@ -2,6 +2,7 @@
   margin: 24px 50px;
   text-align: center;
 }
+
 .container {
   margin-top: 40px;
   display: flex;
@@ -30,5 +31,45 @@
 }
 
 .grid-box {
-  background-color: #CFD8DC;
+  background-size: cover;
+  background-position: center center;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  align-items: stretch;
+  justify-content: flex-end;
+  text-align: center;
+  font-variant-caps: all-small-caps;
+  font-size: 1rem;
+  font-weight: bold;
+  //-webkit-text-stroke: 0.2px black;
+  .box-title {
+    padding: 0 5px;
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+.box-recipes {
+  background-color: coral;
+  background-image: url('/assets/img/recipe.webp');
+}
+
+.box-foods {
+  background-color: forestgreen;
+  background-image: url('/assets/img/foods.jpg');
+}
+
+.box-patients {
+  background-color: dodgerblue;
+  background-image: url('/assets/img/dietitian.jpg');
+}
+
+.box-account {
+  background-color: #999999;
+
+}
+
+.box-diets {
+  background-color: darkcyan;
+  background-image: url('/assets/img/planning.png');
 }

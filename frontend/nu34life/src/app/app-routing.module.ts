@@ -17,10 +17,11 @@ import {EditAccountComponent} from './components/account/edit-account/edit-accou
 import {EditProfileComponent} from './components/account/edit-profile/edit-profile.component';
 import {CloseAccountComponent} from './components/account/close-account/close-account.component';
 import {EditPaymentComponent} from './components/account/edit-payment/edit-payment.component';
-import {NotFoundComponent} from './components/account/not-found/not-found.component';
+import {NotFoundComponent} from './components/not-found/not-found.component';
 import {RecipeDetailComponent} from './recipe-detail/recipe-detail.component';
 import {RegisterComponent} from './components/auth/register/register.component';
 import {LoginComponent} from './components/auth/login/login.component';
+import {Recipes2Component} from './components/recipes/recipes.component';
 
 const routes: Routes = [
   {
@@ -61,12 +62,7 @@ const routes: Routes = [
   {
     path: 'diets',
     component: DietsComponent,
-    data: {title: 'Crear dieta'}
-  },
-  {
-    path: 'dish-detail/:id',
-    component: DishComponent,
-    data: {title: 'Recetas'}
+    data: {title: 'Crear dieta'},
   },
   {
     path: 'foods',
@@ -105,7 +101,7 @@ const routes: Routes = [
   },
   {
     path: 'recipes',
-    component: RecipesComponent,
+    component: Recipes2Component,
     data: {title: 'Recipes List'}
   },
   {

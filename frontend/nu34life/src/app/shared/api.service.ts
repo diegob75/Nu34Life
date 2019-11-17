@@ -23,6 +23,10 @@ export class ApiService {
     return this.http.get<Recipe[]>(ENDPOINTS.recipes.GET_RECIPES);
   }
 
+  findRecipe(id: number): Observable<Recipe> {
+    return this.http.get<Recipe>(ENDPOINTS.recipes.GET_RECIPES + '/' + id);
+  }
+
   postDiet(diet: Diet): Observable<any> {
     return this.http.post(ENDPOINTS.diets.POST_DIET, diet);
   }

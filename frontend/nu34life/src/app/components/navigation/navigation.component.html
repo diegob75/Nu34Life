@@ -9,14 +9,25 @@
       </a>
     </div>
     <div class="bar-menu">
-      <button mat-icon-button>
+      <button mat-icon-button [matMenuTriggerFor]="notificationMenu">
         <mat-icon>notifications</mat-icon>
       </button>
-      <button mat-icon-button>
+      <mat-menu #notificationMenu="matMenu" xPosition="before">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+      </mat-menu>
+      <button mat-icon-button [matMenuTriggerFor]="settings">
         <mat-icon>settings</mat-icon>
       </button>
-
-      <ngx-avatar size="40" [src]="avatar" [name]="name"></ngx-avatar>
+      <mat-menu #settings="matMenu" xPosition="before">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+      </mat-menu>
+      <ngx-avatar size="40" [matMenuTriggerFor]="account" [src]="avatar" [name]="name"></ngx-avatar>
+      <mat-menu #account="matMenu" xPosition="before">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+      </mat-menu>
 
     </div>
   </mat-toolbar>

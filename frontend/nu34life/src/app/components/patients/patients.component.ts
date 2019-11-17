@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {MatDialog, MatTableDataSource} from '@angular/material';
+import {MatSort} from '@angular/material/sort';
+import {Patient} from '../../model/patient';
+import {SelectionModel} from '@angular/cdk/collections';
+import {MockResources} from '../../mocks/mock-resources';
+import {AffiliateComponent} from './affiliate/affiliate.component';
 
 @Component({
   selector: 'app-patients',
@@ -7,9 +13,53 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PatientsComponent implements OnInit {
 
-  constructor() { }
+  // @ts-ignore
+  patients: Patient[] = [
+    { id: 1, email: 'afsdfsf@afsdf.com', firstName: 'afdadasd', lastName: 'asdfsdf', userId: 1, image: MockResources.avatar() },
+    { id: 2, email: 'dfsdf435@afsdf.com', firstName: 'jujhju', lastName: 'jrfgghgh', userId: 1, image: MockResources.avatar() }
+  ];
+  columns = [ 'select', 'avatar', 'firstName', 'lastName', 'email'];
+  dataSource: MatTableDataSource<Patient>;
+  selection = new SelectionModel<Patient>(true, []);
+
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
+
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
+    this.dataSource = new MatTableDataSource<Patient>(this.patients);
+    this.dataSource.sort = this.sort;
   }
 
+  affiliatePatient() {
+    const dialogRef = this.dialog.open(AffiliateComponent, {
+      width: '300px'
+    });
+    dialogRef.afterClosed().subscribe(res => {
+
+    });
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  isAllSelected(): boolean {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+
+  masterToggle() {
+    this.isAllSelected() ?
+      this.selection.clear() :
+      this.dataSource.data.forEach(row => this.selection.select(row));
+  }
+
+  checkboxLabel(row?: Patient): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
+    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id}`;
+  }
 }

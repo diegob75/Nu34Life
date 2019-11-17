@@ -13,13 +13,13 @@
     height: 1.6em;
     border-radius: 4px;
   }
-  
+
   .recipes li:hover {
     color: #607D8B;
     background-color: #DDD;
     left: .1em;
   }
-  
+
   .recipes a {
     color: #888;
     text-decoration: none;
@@ -27,11 +27,11 @@
     display: block;
     width: 250px;
   }
-  
+
   .recipes a:hover {
     color:#607D8B;
   }
-  
+
   .recipes .badge {
     display: inline-block;
     font-size: small;
@@ -53,11 +53,9 @@
     border: none;
     padding: 5px 10px;
     border-radius: 4px;
-    cursor: pointer;
-    cursor: hand;
-    font-family: Arial;
+    font-family: Arial, serif;
   }
-  
+
   button:hover {
     background-color: #cfd8dc;
   }

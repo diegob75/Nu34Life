@@ -31,14 +31,14 @@ import {
   MatCheckboxModule, MatDatepickerModule,
   MatFormFieldModule, MatIconModule, MatInputModule,
   MatListModule,
-  MatMenuModule, MatNativeDateModule, MatSelectModule, MatSidenavModule,
+  MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatSelectModule, MatSidenavModule, MatSortModule, MatTableModule,
   MatToolbarModule, NativeDateModule
 } from '@angular/material';
 import { FoodAddComponent } from './food-add/food-add.component';
 import { RecipeAddComponent } from './recipe-add/recipe-add.component';
-import {HomeComponent} from './components/home/home.component';
-import {LocationStrategy, PathLocationStrategy} from '@angular/common';
-import {AvatarModule} from 'ngx-avatar';
+import { HomeComponent} from './components/home/home.component';
+import { LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { AvatarModule } from 'ngx-avatar';
 import { PatientsComponent } from './components/patients/patients.component';
 import { AccountComponent } from './components/account/account.component';
 import { PaymentComponent } from './components/payment/payment.component';
@@ -46,10 +46,14 @@ import { EditAccountComponent } from './components/account/edit-account/edit-acc
 import { EditPaymentComponent } from './components/account/edit-payment/edit-payment.component';
 import { CloseAccountComponent } from './components/account/close-account/close-account.component';
 import { EditProfileComponent } from './components/account/edit-profile/edit-profile.component';
-import { NotFoundComponent } from './components/account/not-found/not-found.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { RegisterComponent } from './components/auth/register/register.component';
+import { Recipes2Component } from './components/recipes/recipes.component';
+import { FactsComponent } from './components/facts/facts.component';
+import {ModalComponent} from './components/dish/modal/modal.component';
+import { AffiliateComponent } from './components/patients/affiliate/affiliate.component';
 
 
 @NgModule({
@@ -57,6 +61,7 @@ import { RegisterComponent } from './components/auth/register/register.component
     AppComponent,
     NavigationComponent,
     DietsComponent,
+    ModalComponent,
     DishComponent,
     FoodsComponent,
     IngredientsComponent,
@@ -77,7 +82,10 @@ import { RegisterComponent } from './components/auth/register/register.component
     NotFoundComponent,
     LoginComponent,
     RecipeDetailComponent,
-    RegisterComponent
+    RegisterComponent,
+    FactsComponent,
+    Recipes2Component,
+    AffiliateComponent
   ],
   imports: [
     FormsModule,
@@ -104,12 +112,19 @@ import { RegisterComponent } from './components/auth/register/register.component
     FlexLayoutModule,
     AvatarModule,
     HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { apiBase: '/', dataEncapsulation: false }
-    )
+      InMemoryDataService, {apiBase: '/', dataEncapsulation: false}
+    ),
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [
       { provide: LocationStrategy, useClass: PathLocationStrategy }
     ],
+  entryComponents: [
+    AffiliateComponent,
+    ModalComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

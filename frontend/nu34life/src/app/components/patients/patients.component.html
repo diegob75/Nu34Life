@@ -1,1 +1,61 @@
-<p>patients works!</p>
+<div class="patient-page">
+  <div class="menu-toolbar">
+    <h1>Pacientes</h1>
+    <button mat-mini-fab (click)="affiliatePatient()"></button>
+  </div>
+  <div class="patient-table">
+    <mat-form-field>
+      <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Buscar">
+    </mat-form-field>
+
+    <table [dataSource]="dataSource" mat-table matSort>
+      <!-- Checkbox Column -->
+      <ng-container matColumnDef="select">
+        <th *matHeaderCellDef mat-header-cell>
+          <mat-checkbox (change)="$event ? masterToggle() : null"
+                        [aria-label]="checkboxLabel()"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()">
+          </mat-checkbox>
+        </th>
+        <td *matCellDef="let row" mat-cell>
+          <mat-checkbox (change)="$event ? selection.toggle(row) : null"
+                        (click)="$event.stopPropagation()"
+                        [aria-label]="checkboxLabel(row)"
+                        [checked]="selection.isSelected(row)">
+          </mat-checkbox>
+        </td>
+      </ng-container>
+
+      <!-- FirstName Column -->
+      <ng-container matColumnDef="avatar">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>Paciente</th>
+        <td *matCellDef="let element" mat-cell>
+          <ngx-avatar [src]="element.image" size="35"></ngx-avatar>
+        </td>
+      </ng-container>
+
+      <!-- FirstName Column -->
+      <ng-container matColumnDef="firstName">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>Nombres</th>
+        <td *matCellDef="let element" mat-cell> {{element.firstName}} </td>
+      </ng-container>
+
+      <!-- LastName Column -->
+      <ng-container matColumnDef="lastName">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>Apellidos</th>
+        <td *matCellDef="let element" mat-cell> {{element.lastName}} </td>
+      </ng-container>
+
+      <!-- Email Column -->
+      <ng-container matColumnDef="email">
+        <th *matHeaderCellDef mat-header-cell>Correo electronico</th>
+        <td *matCellDef="let element" mat-cell> {{element.email}} </td>
+      </ng-container>
+
+      <tr *matHeaderRowDef="columns" mat-header-row></tr>
+      <tr *matRowDef="let row; columns: columns;" mat-row></tr>
+    </table>
+    <mat-paginator [length]="patients.length" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>
