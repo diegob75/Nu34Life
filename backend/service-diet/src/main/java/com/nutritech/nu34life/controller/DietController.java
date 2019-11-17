@@ -24,10 +24,6 @@ public class DietController {
 	
 	@GetMapping
 	public List<Diet> getDiets(){
-		/*List<Diet> diets = dietService.findAll()
-			      .stream()
-			      .collect(Collectors.toList());
-	return new ResponseEntity<List<Diet>>(diets, HttpStatus.OK);*/
 		return dietService.findAll();
 	 }
 	

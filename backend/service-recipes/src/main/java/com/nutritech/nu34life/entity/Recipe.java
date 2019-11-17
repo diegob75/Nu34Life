@@ -21,6 +21,8 @@ public class Recipe {
 	@Column(name = "servings")
 	public Integer servings;
 	
+	@Column(name = "imagen")
+	public String imagen;
 	
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "recipe_id")

@@ -2,6 +2,7 @@ package com.nutritech.nu34life.entity;
 
 import lombok.Data;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,7 +25,22 @@ public class Patient {
 	
 	@OneToOne(targetEntity = Account.class)
 	@JoinColumn(name = "user_id")
-	private Long idUser;
+	private Account idUser;
+	
+	@Column
+    private Double height;
+    
+    @Column
+    private Double weight;
+    
+    @Column 
+    private String firstName;
+    
+    @Column
+    private String lastName;
+    
+    @Column
+    private String imagen;
 	
     @ManyToOne
     @JoinColumn(name = "current_nutritionist")

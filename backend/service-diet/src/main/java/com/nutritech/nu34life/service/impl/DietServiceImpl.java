@@ -17,6 +17,9 @@ public class DietServiceImpl implements DietService {
 	
 	@Override
 	public Diet save(Diet entity) {
+		entity.getDietDays().forEach(x -> x.setDiet(entity));
+		entity.getDietDays().forEach(x -> x.getDetails().forEach(y-> y.setDietDay(x)));
+		
 		return dietRepository.save(entity);
 	}
 
@@ -33,7 +36,6 @@ public class DietServiceImpl implements DietService {
 
 	@Override
 	public void delete(Long id) {
-		// TODO Auto-generated method stub
 		dietRepository.deleteById(id);
 	}
 

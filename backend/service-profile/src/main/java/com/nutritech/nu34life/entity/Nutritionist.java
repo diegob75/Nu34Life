@@ -17,10 +17,20 @@ public class Nutritionist {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+    @Column 
+    private String firstName;
+    
+    @Column
+    private String lastName;
+    
+    @Column
+    private String imagen;
+	
 	@OneToOne(targetEntity = Account.class)
 	@JoinColumn(name = "user_id")
-	private Long idUser;
+	private Account idUser;
 
-    @OneToMany(mappedBy = "nutritionist", cascade = CascadeType.ALL, orphanRemoval = true)
+	
+    @OneToMany(mappedBy = "nutritionist", cascade={CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE}, orphanRemoval = true)
     private List<Affiliation> patients;
 }
