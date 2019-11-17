@@ -13,8 +13,6 @@ import javax.persistence.Table;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
 @Data
@@ -28,6 +26,9 @@ public class Food {
 
 	@Column(name = "name", length = 50)
 	private String name;
+	
+	@Column(name="imagen")
+	private String imagen;
 
 	@OneToOne(fetch=FetchType.LAZY,cascade={CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE},optional=false)
 	@JoinColumn(name = "nutr_fact_id")

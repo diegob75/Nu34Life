@@ -4,6 +4,8 @@ import lombok.Data;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import com.nutritech.nu34life.util.Recipe;
 
 
@@ -15,6 +17,7 @@ public class DietDayDetail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JsonProperty(access = Access.WRITE_ONLY)
     @ManyToOne
     @JoinColumn(name = "diet_day")
     private DietDay dietDay;
@@ -22,7 +25,7 @@ public class DietDayDetail {
     
     @ManyToOne(targetEntity = Recipe.class)
     @JoinColumn(name = "recipe_id")
-    private Long idRecipe;
+    private Recipe idRecipe;
 
     @ManyToOne
     @JoinColumn(name = "meal_id")

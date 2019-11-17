@@ -24,35 +24,19 @@ public class Account {
 	private Long id;
 	
 	@Column(name = "account_status")
-	private int account_status;
-	
-
-	@Column(name = "birthday")
-	private Date birthday;
+	private int accountStatus;
 
 	@Column(name = "email", unique = true, length = 100)
 	private String email;
 	
 	@Column
-	private Boolean email_validated;
+	private Boolean emailValidated;
 	
-	@Column(name = "first_name", length = 20)
-	private String first_name;
-
-	@Column(name = "last_name", length = 20)
-	private String last_name;
-	
-
-
-	@Column(length = 60)
-	private String password_hash;
-	@Column(length = 60)
-	private String password_hint;
-	@Column(length = 60)
-	private String password_salt;
+	@Column(name = "password")
+	private String password;
 	
 	@Column(name = "register_date")
-	private Date register_date;
+	private Date registerDate;
 	
 	@Column(name = "username", unique = true, length = 20)
 	private String username;
@@ -71,22 +55,6 @@ public class Account {
 		this.id = id;
 	}
 
-	public int getAccount_status() {
-		return account_status;
-	}
-
-	public void setAccount_status(int account_status) {
-		this.account_status = account_status;
-	}
-
-	public Date getBirthday() {
-		return birthday;
-	}
-
-	public void setBirthday(Date birthday) {
-		this.birthday = birthday;
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -95,60 +63,38 @@ public class Account {
 		this.email = email;
 	}
 
-	public Boolean getEmail_validated() {
-		return email_validated;
+	public Boolean getEmailValidated() {
+		return emailValidated;
 	}
 
 	public void setEmail_validated(Boolean email_validated) {
-		this.email_validated = email_validated;
+		this.emailValidated = email_validated;
 	}
 
-	public String getFirst_name() {
-		return first_name;
+
+
+	public int getAccountStatus() {
+		return accountStatus;
 	}
 
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
+	public void setAccountStatus(int accountStatus) {
+		this.accountStatus = accountStatus;
 	}
 
-	public String getLast_name() {
-		return last_name;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-	public String getPassword_hash() {
-		return password_hash;
+	public Date getRegisterDate() {
+		return registerDate;
 	}
 
-	public void setPassword_hash(String password_hash) {
-		this.password_hash = password_hash;
-	}
-
-	public String getPassword_hint() {
-		return password_hint;
-	}
-
-	public void setPassword_hint(String password_hint) {
-		this.password_hint = password_hint;
-	}
-
-	public String getPassword_salt() {
-		return password_salt;
-	}
-
-	public void setPassword_salt(String password_salt) {
-		this.password_salt = password_salt;
-	}
-
-	public Date getRegister_date() {
-		return register_date;
-	}
-
-	public void setRegister_date(Date register_date) {
-		this.register_date = register_date;
+	public void setRegisterDate(Date registerDate) {
+		this.registerDate = registerDate;
 	}
 
 	public String getUsername() {
