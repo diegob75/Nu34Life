@@ -47,13 +47,14 @@ import { EditPaymentComponent } from './components/account/edit-payment/edit-pay
 import { CloseAccountComponent } from './components/account/close-account/close-account.component';
 import { EditProfileComponent } from './components/account/edit-profile/edit-profile.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { LoginComponent } from './components/auth/login/login.component';
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { Recipes2Component } from './components/recipes/recipes.component';
 import { FactsComponent } from './components/facts/facts.component';
 import {ModalComponent} from './components/dish/modal/modal.component';
 import { AffiliateComponent } from './components/patients/affiliate/affiliate.component';
+import { LoginFormComponent } from './components/auth/login/login-form/login-form.component';
+import { MatRadioModule } from '@angular/material/radio';
 
 
 @NgModule({
@@ -80,12 +81,12 @@ import { AffiliateComponent } from './components/patients/affiliate/affiliate.co
     CloseAccountComponent,
     EditProfileComponent,
     NotFoundComponent,
-    LoginComponent,
     RecipeDetailComponent,
     RegisterComponent,
     FactsComponent,
     Recipes2Component,
-    AffiliateComponent
+    AffiliateComponent,
+    LoginFormComponent
   ],
   imports: [
     FormsModule,
@@ -116,7 +117,8 @@ import { AffiliateComponent } from './components/patients/affiliate/affiliate.co
     ),
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatRadioModule
   ],
   providers: [
       { provide: LocationStrategy, useClass: PathLocationStrategy }
