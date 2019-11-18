@@ -1,9 +1,18 @@
-<div>
+<div class="container">
     <h2>Food Add</h2>
-    <div>
-      <label>Food Name:
-        <input [(ngModel)]="foodData.name" placeholder="Product Name"/>
-      </label><br>
+    <form>
+    <div class="group">
+        <input  type="text" required   [(ngModel)]="foodData.name" />
+        <span class="highlight"></span>
+        <span class="bar"></span>
+        <label>Name</label>
     </div>
-    <button (click)="addFood()">Save</button>
+    <button (click)="addFood()" class="learn-more">
+        <span class="circle">
+          <span class="icon arrow"></span>
+        </span>
+        <span class="button-text">Agregar</span>
+      </button>
+      </form>
   </div>
+  

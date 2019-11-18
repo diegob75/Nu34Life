@@ -24,6 +24,8 @@ export class FoodsComponent implements OnInit {
       this.foods = data;
     });
   }
+
+
 /*
   add() {
     this.router.navigate(['/product-add']);

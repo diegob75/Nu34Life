@@ -1,43 +1,24 @@
-.foods {
-  margin: 0 0 2em 0;
-  list-style-type: none;
-  padding: 0;
-  width: 15em;
+.recipe-body {
+  margin: 25px 5vw;
 }
-.foods li {
-  cursor: pointer;
-  position: relative;
-  left: 0;
-  background-color: #EEE;
-  margin: .5em;
-  padding: .3em 0;
-  height: 1.6em;
-  border-radius: 4px;
+
+.recipe-dashboard {
+  display: flex;
 }
-.foods li:hover {
-  color: #607D8B;
-  background-color: #DDD;
-  left: .1em;
+
+.recipe-table {
+  padding: 10px;
 }
-.foods li.selected {
-  background-color: #CFD8DC;
-  color: white;
+
+table.mat-table {
+  width: 100%;
+  border-spacing: 0 10px;
+  background: transparent;
 }
-.foods li.selected:hover {
-  background-color: #BBD8DC;
-  color: white;
+.mat-column-select {
+  width: 50px;
 }
-.foods .badge {
-  display: inline-block;
-  font-size: small;
-  color: white;
-  padding: 0.8em 0.7em 0 0.7em;
-  background-color:#405061;
-  line-height: 1em;
-  position: relative;
-  left: -1px;
-  top: -4px;
-  height: 1.8em;
-  margin-right: .8em;
-  border-radius: 4px 0 0 4px;
+
+.mat-column-image {
+  width: 100px;
 }
