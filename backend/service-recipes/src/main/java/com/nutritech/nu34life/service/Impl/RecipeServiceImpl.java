@@ -69,8 +69,7 @@ public class RecipeServiceImpl implements RecipeService{
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
+		recipeRepository.deleteById(id);
 	}
 	
 	@Override
@@ -82,6 +81,36 @@ public class RecipeServiceImpl implements RecipeService{
 			r.setNutrFact(null);
 		}
 		return recipes;
+	}
+
+	@Override
+	public Recipe update(Recipe entity) {
+		entity.getIngredients().forEach(x -> {
+			x.setFood(foodRepository.findById(x.getFood().getId()).get());
+			x.setRecipe(entity);
+		});
+		entity.getSteps().forEach(x -> x.setRecipe(entity));
+		
+		NutritionFact nutrFact = new NutritionFact();
+		nutrFact.setCarbohydrates(Double.valueOf(0));
+		nutrFact.setEnergeticValue(Double.valueOf(0));
+		nutrFact.setProtein(Double.valueOf(0));
+		nutrFact.setSalt(Double.valueOf(0));
+		nutrFact.setSaturatedFats(Double.valueOf(0));
+		nutrFact.setSugars(Double.valueOf(0));
+		nutrFact.setTotalFat(Double.valueOf(0));
+		
+		for(Ingredient i : entity.getIngredients()) {
+			nutrFact.setCarbohydrates(BigDecimal.valueOf(nutrFact.getCarbohydrates() + i.getFood().getNutrFact().getCarbohydrates() *  i.getQuantity()/100).setScale(4).doubleValue());
+			nutrFact.setEnergeticValue(BigDecimal.valueOf(nutrFact.getEnergeticValue() + i.getFood().getNutrFact().getEnergeticValue() *  i.getQuantity()/100).setScale(4).doubleValue());
+			nutrFact.setProtein(BigDecimal.valueOf(nutrFact.getProtein() + i.getFood().getNutrFact().getProtein() *  i.getQuantity()/100).setScale(4).doubleValue());
+			nutrFact.setSalt(BigDecimal.valueOf(nutrFact.getSalt() + i.getFood().getNutrFact().getSalt() *  i.getQuantity()/100).setScale(4).doubleValue());
+			nutrFact.setSaturatedFats(BigDecimal.valueOf(nutrFact.getSaturatedFats() + i.getFood().getNutrFact().getSaturatedFats() *  i.getQuantity()/100).setScale(4).doubleValue());
+			nutrFact.setSugars(BigDecimal.valueOf(nutrFact.getSugars() + i.getFood().getNutrFact().getSugars() *  i.getQuantity()/100).setScale(4).doubleValue());
+			nutrFact.setTotalFat(BigDecimal.valueOf(nutrFact.getTotalFat() + i.getFood().getNutrFact().getTotalFat() * i.getQuantity()/100).setScale(4).doubleValue());
+		}
+		entity.setNutrFact(nutrFact);
+		return recipeRepository.save(entity);
 	}
 
 }
