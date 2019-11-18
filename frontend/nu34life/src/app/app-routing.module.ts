@@ -113,7 +113,7 @@ const routes: Routes = [
     data: { title: 'Recipe Details' }
   },
   {
-    path: 'recipes',
+    path: 'recipes-add',
     component: RecipeAddComponent,
     data: {title: 'Recipe Add'}
   },
