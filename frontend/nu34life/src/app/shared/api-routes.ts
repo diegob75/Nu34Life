@@ -1,5 +1,5 @@
-const BASE_URL_DIET = 'http://localhost:8090/service-diet';
-const BASE_URL_RECIPE = 'http://localhost:8090/service-recipe';
+const BASE_URL_DIET = 'http://localhost:8090/service-diets';
+const BASE_URL_RECIPE = 'http://localhost:8090/service-recipes';
 // ROUTE
 export const API_ROUTES: ApiRoutes = {
   diets: {

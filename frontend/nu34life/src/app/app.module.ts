@@ -27,7 +27,7 @@ import { InMemoryDataService } from './mocks/in-memory-data.service';
 import {
   MatButtonModule,
   MatCardModule,
-  MatCheckboxModule, MatDatepickerModule,
+  MatCheckboxModule, MatDatepickerModule, MatRadioModule,
   MatFormFieldModule, MatIconModule, MatInputModule,
   MatListModule,
   MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatSelectModule, MatSidenavModule, MatSortModule, MatTableModule,
@@ -45,15 +45,15 @@ import { EditPaymentComponent } from './components/account/edit-payment/edit-pay
 import { CloseAccountComponent } from './components/account/close-account/close-account.component';
 import { EditProfileComponent } from './components/account/edit-profile/edit-profile.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { LoginComponent } from './components/auth/login/login.component';
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { RegisterComponent } from './components/auth/register/register.component';
-import {ModalComponent} from './components/recipe/dish/modal/modal.component';
-import {DishComponent} from './components/recipe/dish/dish.component';
-import {PatientsComponent} from './components/patient/patients/patients.component';
+import { DishComponent} from './components/recipe/dish/dish.component';
+import { PatientsComponent} from './components/patient/patients/patients.component';
+import { LoginFormComponent } from './components/auth/login/login-form/login-form.component';
 import {FactsComponent} from './components/recipe/facts/facts.component';
 import {Recipes2Component} from './components/recipe/recipes/recipes.component';
 import {AffiliateComponent} from './components/patient/affiliate/affiliate.component';
+import {ModalComponent} from './components/recipe/dish/modal/modal.component';
 
 
 
@@ -81,12 +81,12 @@ import {AffiliateComponent} from './components/patient/affiliate/affiliate.compo
     CloseAccountComponent,
     EditProfileComponent,
     NotFoundComponent,
-    LoginComponent,
     RecipeDetailComponent,
     RegisterComponent,
     FactsComponent,
     Recipes2Component,
-    AffiliateComponent
+    AffiliateComponent,
+    LoginFormComponent
   ],
   imports: [
     FormsModule,
@@ -117,7 +117,8 @@ import {AffiliateComponent} from './components/patient/affiliate/affiliate.compo
     ),
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatRadioModule
   ],
   providers: [
       { provide: LocationStrategy, useClass: PathLocationStrategy }

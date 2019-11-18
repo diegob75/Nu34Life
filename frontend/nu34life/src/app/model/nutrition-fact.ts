@@ -1,3 +1,3 @@
-export interface NutritionFact {
+export class NutritionFact {
   id: number;
 }

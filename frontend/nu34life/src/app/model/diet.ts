@@ -1,6 +1,6 @@
 import {DietDay} from './diet-day';
 
-export interface Diet {
+export class Diet {
   id: number;
   nutritionistId: { id: number };
   patientId: { id: number };

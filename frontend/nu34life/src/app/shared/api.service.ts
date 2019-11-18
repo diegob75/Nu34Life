@@ -8,7 +8,7 @@ import {API_ROUTES, ApiRoutes} from './api-routes';
 import {MOCK_ROUTES} from '../mocks/mock-routes';
 import {Patient} from '../model/patient';
 
-const ENDPOINTS: ApiRoutes = MOCK_ROUTES;
+const ENDPOINTS: ApiRoutes = API_ROUTES;
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +29,6 @@ export class ApiService {
   }
 
   postDiet(diet: Diet): Observable<any> {
-    localStorage.getItem()
 
     return this.http.post(ENDPOINTS.diets.POST_DIET, diet);
   }

@@ -1,6 +1,6 @@
 import {User} from './user';
 
-export interface Patient {
+export class Patient {
   id: number;
   userId: number;
   firstName: string;

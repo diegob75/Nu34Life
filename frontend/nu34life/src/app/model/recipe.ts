@@ -4,7 +4,7 @@ import {NutritionFact} from './nutrition-fact';
 
 
 
-export interface Recipe {
+export class Recipe {
   id: number;
   name: string;
   servings: number;

@@ -17,9 +17,9 @@ import {EditPaymentComponent} from './components/account/edit-payment/edit-payme
 import {NotFoundComponent} from './components/not-found/not-found.component';
 import {RecipeDetailComponent} from './recipe-detail/recipe-detail.component';
 import {RegisterComponent} from './components/auth/register/register.component';
-import {LoginComponent} from './components/auth/login/login.component';
 import {PatientsComponent} from './components/patient/patients/patients.component';
 import {Recipes2Component} from './components/recipe/recipes/recipes.component';
+import {LoginFormComponent} from './components/auth/login/login-form/login-form.component';
 
 const routes: Routes = [
   {
@@ -42,7 +42,7 @@ const routes: Routes = [
     children: [
       {
         path: 'login',
-        component: LoginComponent,
+        component: LoginFormComponent,
         data: { title: 'Iniciar sesión'}
       },
       {
