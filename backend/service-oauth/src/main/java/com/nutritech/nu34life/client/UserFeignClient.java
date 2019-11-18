@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.nutritech.nu34life.model.entity.Account;
 
-@FeignClient(name = "service-users", url = "localhost:9008")
+@FeignClient(name = "service-users")
 public interface UserFeignClient {
 
 	@GetMapping("/users/getByUserName")

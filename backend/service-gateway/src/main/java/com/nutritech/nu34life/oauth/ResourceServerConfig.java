@@ -77,7 +77,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 			.anyRequest().authenticated()
 
 			.and().cors().configurationSource(corsConfigurationSource());
-		
 		/*
 		 * .antMatchers(HttpMethod.POST,"/api/service-products/products",
 		 * "/api/service-users/users").hasRole("ADMIN")
