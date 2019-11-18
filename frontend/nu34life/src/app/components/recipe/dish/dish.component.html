@@ -5,20 +5,20 @@
     <mat-card-subtitle>Alcanza: {{recipe.servings}} porciones</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <div fxLayout="row">
-      <div class="ingredients" fxLayout="column" fxFlex="25">
+    <div class="dish-content" fxLayout.gt-xs="row" fxLayout="column">
+      <div class="ingredients" fxLayout="column" fxFlex.gt-xs="25">
         <h4>Ingredientes</h4>
         <ul>
           <li *ngFor="let ing of recipe.ingredients">{{ing.food.name}}</li>
         </ul>
       </div>
-      <div class="directions" fxLayout="column" fxFlex="45">
+      <div class="directions" fxLayout="column" fxFlex.gt-xs="45">
         <h4>Procedimiento</h4>
         <ol>
           <li *ngFor="let step of recipe.steps">{{step.instruction}}</li>
         </ol>
       </div>
-      <div class="information" fxLayout="column" fxFlex="30">
+      <div class="information" fxLayout="column" fxFlex.gt-xs="30">
         <h4>Informacion Nutricional</h4>
         <ul>
           <li>Test</li>

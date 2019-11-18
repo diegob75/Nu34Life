@@ -11,6 +11,9 @@ export const API_ROUTES: ApiRoutes = {
   },
   recipes: {
     GET_RECIPES: `${BASE_URL_RECIPE}/recipes`
+  },
+  patients: {
+    GET_PATIENTS: ``
   }
 };
 
@@ -24,5 +27,8 @@ export interface ApiRoutes {
   };
   recipes: {
     GET_RECIPES: string;
+  };
+  patients: {
+    GET_PATIENTS: string;
   };
 }

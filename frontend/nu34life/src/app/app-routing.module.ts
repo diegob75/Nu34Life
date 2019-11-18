@@ -4,14 +4,11 @@ import {FoodsComponent} from './foods/foods.component';
 import {IngredientsComponent} from './ingredients/ingredients.component';
 import {NutritionFactsComponent} from './nutritionfacts/nutritionfacts.component';
 import {PlanRecipesComponent} from './plan-recipes/plan-recipes.component';
-import {RecipesComponent} from './recipes/recipes.component';
 import {StepsComponent} from './steps/steps.component';
 import {DietsComponent} from './components/diets/diets.component';
 import {FoodAddComponent} from './food-add/food-add.component';
 import {RecipeAddComponent} from './recipe-add/recipe-add.component';
 import {HomeComponent} from './components/home/home.component';
-import {PatientsComponent} from './components/patients/patients.component';
-import {DishComponent} from './components/dish/dish.component';
 import {AccountComponent} from './components/account/account.component';
 import {EditAccountComponent} from './components/account/edit-account/edit-account.component';
 import {EditProfileComponent} from './components/account/edit-profile/edit-profile.component';
@@ -21,7 +18,8 @@ import {NotFoundComponent} from './components/not-found/not-found.component';
 import {RecipeDetailComponent} from './recipe-detail/recipe-detail.component';
 import {RegisterComponent} from './components/auth/register/register.component';
 import {LoginComponent} from './components/auth/login/login.component';
-import {Recipes2Component} from './components/recipes/recipes.component';
+import {PatientsComponent} from './components/patient/patients/patients.component';
+import {Recipes2Component} from './components/recipe/recipes/recipes.component';
 
 const routes: Routes = [
   {

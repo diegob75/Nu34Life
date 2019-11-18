@@ -49,7 +49,7 @@
 
         <div>
           <mat-form-field>
-            <input matInput [matDatepicker]="picker" [(ngModel)]="dietPlan.diet.starDate" placeholder="Fecha de inicio"
+            <input matInput [matDatepicker]="picker" [(ngModel)]="dietPlanner.fromDate" placeholder="Fecha de inicio"
                    required
                    (dateChange)="getDayNameList()">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -61,7 +61,7 @@
       <!-- Diet table -->
       <div class="schedule-table" cdkDropListGroup>
         <!--- Days columns -->
-        <div class="day-column" *ngFor="let day of dietPlan.schedule; index as i">
+        <div class="day-column" *ngFor="let day of dietPlanner.schedule; index as i">
           <h3>{{dayList[i]}}</h3>
 
           <!-- Meal Rows -->

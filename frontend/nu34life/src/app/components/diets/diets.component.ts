@@ -5,9 +5,8 @@ import {Meal} from '../../model/meal';
 import {ApiService} from '../../shared/api.service';
 import {Recipe} from '../../model/recipe';
 import {MatDialog} from '@angular/material';
-import {Diet} from '../../model/diet';
-import {DishComponent} from '../dish/dish.component';
-import {ModalComponent} from '../dish/modal/modal.component';
+import {ModalComponent} from '../recipe/dish/modal/modal.component';
+import {DietPlanner, mapDiet, MealSchedule} from './diet-planner';
 
 @Component({
   selector: 'app-diets',
@@ -16,10 +15,9 @@ import {ModalComponent} from '../dish/modal/modal.component';
 })
 export class DietsComponent implements OnInit {
 
-  daysNumber: number;
   dayList: string[];
   meals: Meal[];
-  dietPlan: DietPlanner;
+  dietPlanner: DietPlanner;
   selected: MealSchedule;
 
   // REMOVE?
@@ -29,30 +27,19 @@ export class DietsComponent implements OnInit {
               private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.daysNumber = 7;
-    this.dietPlan = {
-      diet: {
-        id: null,
-        starDate: new Date(),
-        duration: this.daysNumber,
-        nutritionistId: 0,
-        stateId: 0,
-        dietDays: []
-      },
+    this.dietPlanner = {
+      duration: 7,
+      fromDate: new Date(),
       schedule: []
     };
 
-    for (let i = 0; i < this.daysNumber; i++) {
-      this.dietPlan.schedule[i] = [];
+    for (let i = 0; i < this.dietPlanner.duration; i++) {
+      this.dietPlanner.schedule[i] = [];
     }
 
     this.getDayNameList();
     this.loadMeals();
     this.loadRecipes(null);
-
-    for (let i = 0; i < this.dietPlan.diet.duration; i++) {
-      this.dietPlan.diet.dietDays.push({id: null, day: i + 1, details: []});
-    }
   }
 
   selectMeal(mealSch: MealSchedule) {
@@ -64,8 +51,8 @@ export class DietsComponent implements OnInit {
       res => {
         this.meals = res;
         this.meals.forEach(m => {
-          this.dietPlan.schedule.forEach(x => x.push({id: m.id, name: m.name, detail: new Array<DietDetail>()}));
-          this.selected = this.dietPlan.schedule[0][0];
+          this.dietPlanner.schedule.forEach(x => x.push({id: m.id, name: m.name, detail: new Array<DietDetail>()}));
+          this.selected = this.dietPlanner.schedule[0][0];
         });
       },
       err => {
@@ -75,9 +62,9 @@ export class DietsComponent implements OnInit {
 
   getDayNameList() {
     const weekdays = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
-    const day = this.dietPlan.diet.starDate;
+    const day = this.dietPlanner.fromDate;
     this.dayList = [];
-    for (let i = 0; i < this.daysNumber; i++) {
+    for (let i = 0; i < this.dietPlanner.duration; i++) {
       const newDate = new Date();
       newDate.setDate(day.getDate() + i);
       this.dayList.push(`${weekdays[newDate.getDay()]} ${newDate.getDate()}`);
@@ -104,15 +91,6 @@ export class DietsComponent implements OnInit {
     });
   }
 
-  mapDiet() {
-    const diet = this.dietPlan.diet;
-    for (let i = 0; i < diet.duration; i++) {
-      const dailySch = this.dietPlan.schedule[i];
-      const details = dailySch.map(x => x.detail).reduce((acc, val) => acc.concat(val));
-      diet.dietDays[i] = {id: null, day: i + 1, details: [...details]};
-    }
-  }
-
   loadRecipes(query: string) {
     this.apiService.getAllRecipes().subscribe(
       res => {
@@ -124,17 +102,18 @@ export class DietsComponent implements OnInit {
   }
 
   createDiet() {
-    this.mapDiet();
-    this.apiService.postDiet(this.dietPlan.diet);
+    const diet = mapDiet(this.dietPlanner);
+    console.log(diet);
+    this.apiService.postDiet(diet);
   }
 
   toggleMeals(event) {
     const element = event.option.value;
 
     if (event.option.selected) {
-      this.dietPlan.schedule.forEach(x => x.push({id: element.id, name: element.name, detail: new Array<DietDetail>()}));
+      this.dietPlanner.schedule.forEach(x => x.push({id: element.id, name: element.name, detail: new Array<DietDetail>()}));
     } else {
-      this.dietPlan.schedule.forEach(x => {
+      this.dietPlanner.schedule.forEach(x => {
         const index = x.findIndex(m => m.id === element.id);
         if (index > -1) {
           x.splice(index, 1);
@@ -155,13 +134,3 @@ export class DietsComponent implements OnInit {
   }
 }
 
-interface  DietPlanner {
-  diet: Diet;
-  schedule: MealSchedule[][];
-}
-
-interface MealSchedule {
-  id: number;
-  name: string;
-  detail: DietDetail[];
-}

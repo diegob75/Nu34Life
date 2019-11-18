@@ -6,6 +6,7 @@ import {Meal} from '../model/meal';
 import {Diet} from '../model/diet';
 import {API_ROUTES, ApiRoutes} from './api-routes';
 import {MOCK_ROUTES} from '../mocks/mock-routes';
+import {Patient} from '../model/patient';
 
 const ENDPOINTS: ApiRoutes = MOCK_ROUTES;
 
@@ -28,6 +29,16 @@ export class ApiService {
   }
 
   postDiet(diet: Diet): Observable<any> {
+    localStorage.getItem()
+
     return this.http.post(ENDPOINTS.diets.POST_DIET, diet);
+  }
+
+  getAllPatients(): Observable<Patient[]> {
+    return this.http.get<Patient[]>(ENDPOINTS.patients.GET_PATIENTS);
+  }
+
+  getAffiliatedPatients(id: number): Observable<Patient[]> {
+    return this.http.get<Patient[]>(`${ENDPOINTS.patients.GET_PATIENTS}?nutritionistId=${id}`);
   }
 }

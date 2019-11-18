@@ -1,0 +1,17 @@
+
+.error {
+  text-align: center;
+  color: slategrey;
+}
+
+mat-icon {
+  --size: 150px;
+  font-size: var(--size);
+  position: relative;
+  left: calc(var(--size)/-2 + 24px);
+}
+
+.error-message {
+  color: #888888;
+  font-weight: normal;
+}

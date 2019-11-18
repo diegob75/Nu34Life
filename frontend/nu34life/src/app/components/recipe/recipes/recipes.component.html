@@ -1,7 +1,12 @@
-<div class="recipe-body">
+<div class="view-body">
   <h1>Recetas</h1>
-  <div class="recipe-dashboard">
-    <div class="recipe-table" fxFlex="60">
+  <div class="recipe-dashboard" fxLayout="column" fxLayout.gt-sm="row">
+
+    <div class="recipe-detail" *ngIf="expandedElement != null" fxFlex.gt-sm="40" fxFlexOrder.gt-sm="2">
+      <app-dish [recipe]="expandedElement"></app-dish>
+    </div>
+
+    <div class="recipe-table" fxFlex.gt-sm="60">
       <mat-form-field>
         <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar">
       </mat-form-field>
@@ -54,8 +59,6 @@
       </table>
       <mat-paginator [length]="recipes.length" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
     </div>
-    <div *ngIf="expandedElement != null" fxFlex="40">
-      <app-dish [recipe]="expandedElement"></app-dish>
-    </div>
+
   </div>
 </div>

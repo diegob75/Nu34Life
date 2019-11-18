@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 import {recipeDb} from './data/recipe-db';
 import {mealDb} from './data/meal-db';
 import {foodDB} from './data/food-db';
+import {patientDb} from './data/patient-fb';
 
 
 @Injectable({
@@ -17,7 +18,8 @@ export class InMemoryDataService implements InMemoryDbService {
     return {
       meals: mealDb,
       recipes: recipeDb,
-      foods: foodDB
+      foods: foodDB,
+      patients: patientDb
     };
   }
 }

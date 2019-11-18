@@ -1,8 +1,15 @@
-.patient-page {
-  margin: 25px 5vw;
+.recipe-dashboard {
+  display: flex;
+}
+.recipe-detail {
+  //min-width: 500px;
 }
 
-.patient-table {
+@media only screen and (max-width: 600px) {
+
+}
+
+.recipe-table {
   padding: 10px;
 }
 
@@ -18,6 +25,6 @@ table.mat-table {
   width: 50px;
 }
 
-.mat-column-avatar {
+.mat-column-image {
   width: 100px;
 }

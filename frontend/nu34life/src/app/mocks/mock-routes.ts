@@ -11,5 +11,8 @@ export const MOCK_ROUTES: ApiRoutes = {
   },
   recipes: {
     GET_RECIPES: 'recipes'
+  },
+  patients: {
+    GET_PATIENTS: 'patients'
   }
 };

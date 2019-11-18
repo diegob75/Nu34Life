@@ -1,10 +1,11 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatDialog, MatTableDataSource} from '@angular/material';
 import {MatSort} from '@angular/material/sort';
-import {Patient} from '../../model/patient';
+import {Patient} from '../../../model/patient';
 import {SelectionModel} from '@angular/cdk/collections';
-import {MockResources} from '../../mocks/mock-resources';
-import {AffiliateComponent} from './affiliate/affiliate.component';
+import {MockResources} from '../../../mocks/mock-resources';
+import {AffiliateComponent} from '../affiliate/affiliate.component';
+import {ApiService} from '../../../shared/api.service';
 
 @Component({
   selector: 'app-patients',
@@ -14,21 +15,25 @@ import {AffiliateComponent} from './affiliate/affiliate.component';
 export class PatientsComponent implements OnInit {
 
   // @ts-ignore
-  patients: Patient[] = [
-    { id: 1, email: 'afsdfsf@afsdf.com', firstName: 'afdadasd', lastName: 'asdfsdf', userId: 1, image: MockResources.avatar() },
-    { id: 2, email: 'dfsdf435@afsdf.com', firstName: 'jujhju', lastName: 'jrfgghgh', userId: 1, image: MockResources.avatar() }
-  ];
+  patients: Patient[];
   columns = [ 'select', 'avatar', 'firstName', 'lastName', 'email'];
   dataSource: MatTableDataSource<Patient>;
   selection = new SelectionModel<Patient>(true, []);
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private apiService: ApiService,
+              private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.dataSource = new MatTableDataSource<Patient>(this.patients);
-    this.dataSource.sort = this.sort;
+    this.apiService.getAllPatients().subscribe(res => {
+      console.log(res);
+      this.patients = res;
+      this.dataSource = new MatTableDataSource<Patient>(this.patients);
+      this.dataSource.sort = this.sort;
+    }, err => {
+
+    });
   }
 
   affiliatePatient() {

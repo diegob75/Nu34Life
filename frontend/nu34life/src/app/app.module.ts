@@ -13,7 +13,6 @@ import { RecipesComponent } from './recipes/recipes.component';
 import { StepsComponent } from './steps/steps.component';
 
 import { DietsComponent} from './components/diets/diets.component';
-import { DishComponent } from './components/dish/dish.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 
 import {HttpClientModule} from '@angular/common/http';
@@ -39,7 +38,6 @@ import { RecipeAddComponent } from './recipe-add/recipe-add.component';
 import { HomeComponent} from './components/home/home.component';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { AvatarModule } from 'ngx-avatar';
-import { PatientsComponent } from './components/patients/patients.component';
 import { AccountComponent } from './components/account/account.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { EditAccountComponent } from './components/account/edit-account/edit-account.component';
@@ -50,10 +48,13 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { RegisterComponent } from './components/auth/register/register.component';
-import { Recipes2Component } from './components/recipes/recipes.component';
-import { FactsComponent } from './components/facts/facts.component';
-import {ModalComponent} from './components/dish/modal/modal.component';
-import { AffiliateComponent } from './components/patients/affiliate/affiliate.component';
+import {ModalComponent} from './components/recipe/dish/modal/modal.component';
+import {DishComponent} from './components/recipe/dish/dish.component';
+import {PatientsComponent} from './components/patient/patients/patients.component';
+import {FactsComponent} from './components/recipe/facts/facts.component';
+import {Recipes2Component} from './components/recipe/recipes/recipes.component';
+import {AffiliateComponent} from './components/patient/affiliate/affiliate.component';
+
 
 
 @NgModule({

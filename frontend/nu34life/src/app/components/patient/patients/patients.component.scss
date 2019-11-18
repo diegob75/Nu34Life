@@ -1,13 +1,10 @@
-.recipe-body {
-  margin: 25px 5vw;
-}
-
-.recipe-dashboard {
-  display: flex;
-}
-
-.recipe-table {
+.patient-table {
   padding: 10px;
+}
+
+.menu-toolbar {
+  display: flex;
+  justify-content: space-between;
 }
 
 table.mat-table {
@@ -22,6 +19,6 @@ table.mat-table {
   width: 50px;
 }
 
-.mat-column-image {
+.mat-column-avatar {
   width: 100px;
 }

@@ -1,5 +1,5 @@
 import {Component, Inject, Input, OnInit} from '@angular/core';
-import {Recipe} from '../../../model/recipe';
+import {Recipe} from '../../../../model/recipe';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
 
 @Component({

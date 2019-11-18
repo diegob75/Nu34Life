@@ -5,7 +5,6 @@ export class MockResources {
   static nutritionist() {
     return 'Mock Nutritionist';
   }
-
   static recipePicture() {
     return 'https://joyfoodsunshine.com/wp-content/uploads/2016/09/easy-pizza-casserole-recipe-4-500x500.jpg';
   }
