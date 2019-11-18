@@ -28,6 +28,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(this.userService).passwordEncoder(passwordEncoder());
+		 auth
+         .inMemoryAuthentication()
+         .withUser("admin").password(passwordEncoder().encode("123456")).roles("NUTRITIONIST","PATIENT","ADMIN");
 	}
 	
 	

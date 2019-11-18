@@ -7,7 +7,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
@@ -30,53 +32,42 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 
-		http.authorizeRequests()
-			.antMatchers("/api/service-oauth/oauth/token")
-			.permitAll()
-			
-			.antMatchers(HttpMethod.GET, 
-					"/service-diets/diets", 
-					"/service-recipes/recipes", 
-					"/service-recipes/foods", 
-					"/service-users/users")
-			.permitAll()
-			
+		//http.authorizeRequests().antMatchers("/api/service-oauth/oauth/token").permitAll()
+		http
+        .authorizeRequests()
+        .antMatchers("/**").authenticated()
+        .antMatchers("/").permitAll()
 				/*
+				 * .antMatchers(HttpMethod.GET, "/service-diets/diets",
+				 * "/service-recipes/recipes", "/service-recipes/foods", "/service-users/users")
+				 * .permitAll()
+				 * 
+				 * 
 				 * .antMatchers(HttpMethod.GET, "/api/service-products/products/{id}",
 				 * //"/api/service-items/items/product/{id}/quantity/{quantity}",
 				 * "/api/service-items/items/product/{id}", "/api/service-users/users/{id}")
 				 * .hasAnyRole("ADMIN","USER")
+				 * 
+				 * 
+				 * .antMatchers(HttpMethod.POST, "/service-profile/profile/**",
+				 * "/service-users/users/**") .permitAll()
+				 * 
+				 * .antMatchers(HttpMethod.GET, "/service-diets/diets/{id}",
+				 * "/service-recipes/recipes/{id}", "/service-users/users/{id}",
+				 * "/service-profiles/profile/**") .hasAnyRole("NUTRITIONIST",
+				 * "NUTRITIONIST_PREMIUM") .anyRequest().authenticated()
+				 * 
+				 * .antMatchers(HttpMethod.POST, "/service-diets/diets/**",
+				 * "/service-recipes/foods", "/service-recipes/recipes")
+				 * .hasAnyRole("NUTRITIONIST", "NUTRITIONIST_PREMIUM")
+				 * .anyRequest().authenticated()
+				 * 
+				 * .antMatchers("/service-diets/diets/**", "/service-recipes/recipes/**",
+				 * "/service-recipes/foods/**", "/service-users/users/**",
+				 * "/service-profiles/**") .hasRole("ADMIN") .anyRequest().authenticated()
 				 */
-			
-			.antMatchers(HttpMethod.POST, 
-					"/service-profile/profile/**", 
-					"/service-users/users/**")
-			.permitAll()
-			
-			.antMatchers(HttpMethod.GET, 
-					"/service-diets/diets/{id}", 
-					"/service-recipes/recipes/{id}",
-					"/service-users/users/{id}", 
-					"/service-profiles/profile/**")
-			.hasAnyRole("NUTRITIONIST", "NUTRITIONIST_PREMIUM")
-			.anyRequest().authenticated()
 
-			.antMatchers(HttpMethod.POST, 
-					"/service-diets/diets/**", 
-					"/service-recipes/foods",
-					"/service-recipes/recipes")
-			.hasAnyRole("NUTRITIONIST", "NUTRITIONIST_PREMIUM")
-			.anyRequest().authenticated()
-
-			.antMatchers("/service-diets/diets/**", 
-					"/service-recipes/recipes/**",
-					"/service-recipes/foods/**",
-					"/service-users/users/**", 
-					"/service-profiles/**")
-			.hasRole("ADMIN")
-			.anyRequest().authenticated()
-
-			.and().cors().configurationSource(corsConfigurationSource());
+				.and().cors().configurationSource(corsConfigurationSource());
 		/*
 		 * .antMatchers(HttpMethod.POST,"/api/service-products/products",
 		 * "/api/service-users/users").hasRole("ADMIN")
@@ -121,4 +112,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 		tokenConverter.setSigningKey("algun_codigo_secreto_aeiou");
 		return tokenConverter;
 	}
+	   @Bean
+	    public BCryptPasswordEncoder passwordEncoder(){ 
+	        return new BCryptPasswordEncoder(); 
+	    }
 }
