@@ -30,38 +30,63 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 
+		http.authorizeRequests()
+			.antMatchers("/api/service-oauth/oauth/token")
+			.permitAll()
+			
+			.antMatchers(HttpMethod.GET, 
+					"/service-diets/diets", 
+					"/service-recipes/recipes", 
+					"/service-recipes/foods", 
+					"/service-users/users")
+			.permitAll()
+			
+				/*
+				 * .antMatchers(HttpMethod.GET, "/api/service-products/products/{id}",
+				 * //"/api/service-items/items/product/{id}/quantity/{quantity}",
+				 * "/api/service-items/items/product/{id}", "/api/service-users/users/{id}")
+				 * .hasAnyRole("ADMIN","USER")
+				 */
+			
+			.antMatchers(HttpMethod.POST, 
+					"/service-profile/profile/**", 
+					"/service-users/users/**")
+			.permitAll()
+			
+			.antMatchers(HttpMethod.GET, 
+					"/service-diets/diets/{id}", 
+					"/service-recipes/recipes/{id}",
+					"/service-users/users/{id}", 
+					"/service-profiles/profile/**")
+			.hasAnyRole("NUTRITIONIST", "NUTRITIONIST_PREMIUM")
+			.anyRequest().authenticated()
+
+			.antMatchers(HttpMethod.POST, 
+					"/service-diets/diets/**", 
+					"/service-recipes/foods",
+					"/service-recipes/recipes")
+			.hasAnyRole("NUTRITIONIST", "NUTRITIONIST_PREMIUM")
+			.anyRequest().authenticated()
+
+			.antMatchers("/service-diets/diets/**", 
+					"/service-recipes/recipes/**",
+					"/service-recipes/foods/**",
+					"/service-users/users/**", 
+					"/service-profiles/**")
+			.hasRole("ADMIN")
+			.anyRequest().authenticated()
+
+			.and().cors().configurationSource(corsConfigurationSource());
 		
-		  http.authorizeRequests() .antMatchers("/api/service-oauth/oauth/token")
-		  .permitAll()
-		  .antMatchers(HttpMethod.GET, "/service-diets/diets",
-		  "/service-recipes/recipes", "/service-recipes/foods","/service-users/users").permitAll()
-		  /*
-		  .antMatchers(HttpMethod.GET, "/api/service-products/products/{id}",
-		  //"/api/service-items/items/product/{id}/quantity/{quantity}",
-		  "/api/service-items/items/product/{id}", "/api/service-users/users/{id}")
-		  .hasAnyRole("ADMIN","USER")*/
-		  .antMatchers(HttpMethod.POST,"/service-profile/profile/**","/service-users/users/**").permitAll()
-		  .antMatchers(HttpMethod.GET, "/service-diets/diets/{id}",
-		  "/service-recipes/recipes/{id}", "/service-users/users/{id}","/service-profiles/profile/**")
-		  .hasAnyRole("NUTRITIONIST","NUTRITIONIST_PREMIUM") .anyRequest().authenticated()
-		  
-		  .antMatchers(HttpMethod.POST,"/service-diets/diets/**","/service-recipes/foods"
-				  ,"/service-recipes/recipes") .hasAnyRole("NUTRITIONIST","NUTRITIONIST_PREMIUM")
-		  .anyRequest().authenticated()	
-		  
-		  .antMatchers("/service-diets/diets/**", "/service-recipes/recipes/**","/service-recipes/foods/**"
-				  ,"/service-users/users/**","/service-profiles/**")
-		  .hasRole("ADMIN") .anyRequest().authenticated()
-		  
-		  .and().cors().configurationSource(corsConfigurationSource());
 		/*
-		  .antMatchers(HttpMethod.POST,"/api/service-products/products",
-		  "/api/service-users/users").hasRole("ADMIN")
-		  .antMatchers(HttpMethod.PUT,"/api/service-products/products/{id}",
-		  "/api/service-users/users/{id}").hasRole("ADMIN")
-		  .antMatchers(HttpMethod.DELETE,"/api/service-products/products/{id}",
-		  "/api/service-users/users/{id}").hasRole("ADMIN");*/
-		 
+		 * .antMatchers(HttpMethod.POST,"/api/service-products/products",
+		 * "/api/service-users/users").hasRole("ADMIN")
+		 * .antMatchers(HttpMethod.PUT,"/api/service-products/products/{id}",
+		 * "/api/service-users/users/{id}").hasRole("ADMIN")
+		 * .antMatchers(HttpMethod.DELETE,"/api/service-products/products/{id}",
+		 * "/api/service-users/users/{id}").hasRole("ADMIN");
+		 */
+
 	}
 
 	@Bean

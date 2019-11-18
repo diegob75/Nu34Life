@@ -19,7 +19,7 @@ import {RecipeDetailComponent} from './recipe-detail/recipe-detail.component';
 import {RegisterComponent} from './components/auth/register/register.component';
 import {PatientsComponent} from './components/patient/patients/patients.component';
 import {Recipes2Component} from './components/recipe/recipes/recipes.component';
-import {LoginFormComponent} from './components/auth/login/login-form/login-form.component';
+import {LoginComponent} from './components/auth/login/login.component';
 
 const routes: Routes = [
   {
@@ -42,7 +42,7 @@ const routes: Routes = [
     children: [
       {
         path: 'login',
-        component: LoginFormComponent,
+        component: LoginComponent,
         data: { title: 'Iniciar sesión'}
       },
       {

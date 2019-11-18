@@ -31,7 +31,7 @@ import {
   MatFormFieldModule, MatIconModule, MatInputModule,
   MatListModule,
   MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatSelectModule, MatSidenavModule, MatSortModule, MatTableModule,
-  MatToolbarModule, NativeDateModule
+  MatToolbarModule, NativeDateModule, MatSnackBarModule
 } from '@angular/material';
 import { FoodAddComponent } from './food-add/food-add.component';
 import { RecipeAddComponent } from './recipe-add/recipe-add.component';
@@ -49,11 +49,11 @@ import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { DishComponent} from './components/recipe/dish/dish.component';
 import { PatientsComponent} from './components/patient/patients/patients.component';
-import { LoginFormComponent } from './components/auth/login/login-form/login-form.component';
 import {FactsComponent} from './components/recipe/facts/facts.component';
 import {Recipes2Component} from './components/recipe/recipes/recipes.component';
 import {AffiliateComponent} from './components/patient/affiliate/affiliate.component';
 import {ModalComponent} from './components/recipe/dish/modal/modal.component';
+import { LoginComponent } from './components/auth/login/login.component';
 
 
 
@@ -86,7 +86,7 @@ import {ModalComponent} from './components/recipe/dish/modal/modal.component';
     FactsComponent,
     Recipes2Component,
     AffiliateComponent,
-    LoginFormComponent
+    LoginComponent
   ],
   imports: [
     FormsModule,
@@ -118,7 +118,8 @@ import {ModalComponent} from './components/recipe/dish/modal/modal.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatRadioModule
+    MatRadioModule,
+    MatSnackBarModule
   ],
   providers: [
       { provide: LocationStrategy, useClass: PathLocationStrategy }

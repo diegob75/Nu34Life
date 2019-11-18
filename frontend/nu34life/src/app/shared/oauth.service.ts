@@ -40,11 +40,11 @@ export class OauthService {
 
     const urlEndpoint = 'http://localhost:8090/api/service-oauth/oauth/token';
 
-    const credenciales = btoa('frontendapp' + ':' + '12345');
+    const credentials = btoa('frontendapp' + ':' + '12345');
 
     const httpHeaders = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded',
-      Authorization: 'Basic ' + credenciales
+      Authorization: 'Basic ' + credentials
     });
 
 

@@ -10,6 +10,6 @@ import com.nutritech.nu34life.model.entity.Account;
 public interface UserFeignClient {
 
 	@GetMapping("/users/getByUserName")
-	Account findByUserName(@PathVariable String username);
+	Account findByUserName(@RequestParam String username);
 
 }

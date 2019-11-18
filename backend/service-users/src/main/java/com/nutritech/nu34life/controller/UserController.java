@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nutritech.nu34life.model.entity.Account;
@@ -20,7 +21,7 @@ public class UserController {
 	UserService userService;
 	
 	@GetMapping(path="/getByUserName")
-	Account getByUsername(@PathVariable String _username){
+	Account getByUsername(@RequestParam String _username){
 		return userService.getByUsername(_username);
 	}
 	
