@@ -55,9 +55,11 @@ public class RecipeServiceImpl implements RecipeService{
 	public List<Recipe> getAll() {
 		List<Recipe> recipes = recipeRepository.findAll();
 		for(Recipe r : recipes) {
+			if(r!=null) {
 			r.setIngredients(null);
 			r.setSteps(null);
 			r.setNutrFact(null);
+			}
 		}
 		return recipes;
 	}
@@ -76,9 +78,11 @@ public class RecipeServiceImpl implements RecipeService{
 	public List<Recipe> getByNameLike(String string){
 		List<Recipe> recipes = recipeRepository.findByNameContainingIgnoreCase(string);
 		for(Recipe r : recipes) {
+			if (r!=null) {
 			r.setIngredients(null);
 			r.setSteps(null);
 			r.setNutrFact(null);
+			}
 		}
 		return recipes;
 	}
