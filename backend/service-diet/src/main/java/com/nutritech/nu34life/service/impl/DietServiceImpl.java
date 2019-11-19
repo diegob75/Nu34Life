@@ -11,6 +11,7 @@ import com.nutritech.nu34life.client.RecipeFeignClient;
 import com.nutritech.nu34life.model.*;
 import com.nutritech.nu34life.repository.DietRepository;
 import com.nutritech.nu34life.service.DietService;
+import com.nutritech.nu34life.util.Recipe;
 @Service
 public class DietServiceImpl implements DietService {
 
@@ -35,7 +36,8 @@ public class DietServiceImpl implements DietService {
 	@Override
 	public List<Diet> findAll() {
 		// TODO Auto-generated method stub
-		return dietRepository.findAll();
+		
+		return addNameRecipe(dietRepository.findAll());
 	}
 
 	@Override
@@ -45,7 +47,35 @@ public class DietServiceImpl implements DietService {
 	
 	@Override
 	public Diet findDietsbyPatient(Long id){
-		return dietRepository.findByPatientId(id);
+		Diet d = dietRepository.findByPatientId(id);
+		if(d != null) {
+			for(DietDay dd : d.getDietDays()) {
+				for(DietDayDetail ddd : dd.getDetails()) {
+					if(ddd.getIdRecipe() != null)
+					{
+						Recipe recipe = recipeFeignClient.getRecipes(ddd.getIdRecipe().getId());
+						ddd.setIdRecipe(recipe);
+					}
+				}
+			}
+		}
+		return d;
 	}
-
+	
+	private List<Diet> addNameRecipe(List<Diet> diets){
+		if(diets == null) return null;
+		
+		for(Diet d : diets) {
+			for(DietDay dd : d.getDietDays()) {
+				for(DietDayDetail ddd : dd.getDetails()) {
+					if(ddd.getIdRecipe() != null)
+					{
+						Recipe recipe = recipeFeignClient.getRecipes(ddd.getIdRecipe().getId());
+						ddd.setIdRecipe(recipe);
+					}
+				}
+			}
+		}
+		return diets;
+	}
 }
