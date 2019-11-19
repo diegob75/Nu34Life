@@ -7,12 +7,15 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.nutritech.nu34life.client.RecipeFeignClient;
 import com.nutritech.nu34life.model.*;
 import com.nutritech.nu34life.repository.DietRepository;
 import com.nutritech.nu34life.service.DietService;
 @Service
 public class DietServiceImpl implements DietService {
 
+	@Autowired
+	private RecipeFeignClient recipeFeignClient;
 	@Autowired
 	private DietRepository dietRepository;
 	

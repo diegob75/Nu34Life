@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -16,4 +17,7 @@ public class Recipe {
 	@Id
 	@GeneratedValue
 	private Long id;
+	
+	@Transient
+	private String name;
 }
