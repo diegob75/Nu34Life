@@ -47,6 +47,11 @@ public class RecipeController {
 		return recipeService.save(recipe);
 	}
 	
+	@PutMapping
+	public Recipe updateRecipe(@RequestBody Recipe recipe) {
+		return recipeService.save(recipe);
+	}
+	
 	@GetMapping("/pageable")
 	public Page<Recipe> getFoods(@RequestParam(value = "q", defaultValue = "") String query,
 			@RequestParam(value = "sort", required = false) String column,

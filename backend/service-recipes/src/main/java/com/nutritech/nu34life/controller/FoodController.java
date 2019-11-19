@@ -71,6 +71,10 @@ public class FoodController {
 	public Food createFood(@RequestBody Food requestBody) {
 		return foodService.save(requestBody);
 	}
+	@PutMapping
+	public Food updateFood(@RequestBody Food requestBody) {
+		return foodService.save(requestBody);
+	}
 
 	@PutMapping("/{id}")
 	public Boolean deactivateFood(@PathVariable Long id) {
