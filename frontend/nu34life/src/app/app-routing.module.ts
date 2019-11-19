@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {FoodsComponent} from './foods/foods.component';
+
 import {IngredientsComponent} from './ingredients/ingredients.component';
 import {NutritionFactsComponent} from './nutritionfacts/nutritionfacts.component';
 import {PlanRecipesComponent} from './plan-recipes/plan-recipes.component';
@@ -20,6 +20,8 @@ import {RegisterComponent} from './components/auth/register/register.component';
 import {PatientsComponent} from './components/patient/patients/patients.component';
 import {Recipes2Component} from './components/recipe/recipes/recipes.component';
 import {LoginComponent} from './components/auth/login/login.component';
+import {FoodsComponent} from './foods/foods.component';
+import { Food2Component } from './components/food/food.component';
 
 const routes: Routes = [
   {
@@ -64,7 +66,7 @@ const routes: Routes = [
   },
   {
     path: 'foods',
-    component: FoodsComponent,
+    component: Food2Component,
     data: {title: 'Foods List'}
   },
   {

@@ -5,7 +5,6 @@ import {Recipe} from '../model/recipe';
 import {Meal} from '../model/meal';
 import {Diet} from '../model/diet';
 import {API_ROUTES, ApiRoutes} from './api-routes';
-import {MOCK_ROUTES} from '../mocks/mock-routes';
 import {Patient} from '../model/patient';
 
 const ENDPOINTS: ApiRoutes = API_ROUTES;

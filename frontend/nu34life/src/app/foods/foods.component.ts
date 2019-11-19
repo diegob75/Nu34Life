@@ -12,7 +12,7 @@ export class FoodsComponent implements OnInit {
 
   foods: Food[] = [];
 
-  constructor(public rest:RestService, private route: ActivatedRoute, private router: Router) { }
+  constructor(public rest: RestService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.getFoods();
@@ -22,7 +22,7 @@ export class FoodsComponent implements OnInit {
     this.foods = [];
     this.rest.getFoods().subscribe((data: {}) => {
       console.log(data);
-      this.foods = data;
+      this.foods = data as Food[];
     });
   }
 

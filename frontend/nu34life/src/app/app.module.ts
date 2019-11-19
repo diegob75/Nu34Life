@@ -21,9 +21,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {FlexLayoutModule} from '@angular/flex-layout';
 
-import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
-import {InMemoryDataService} from './mocks/in-memory-data.service';
-
 import {
   MatButtonModule,
   MatCardModule,
@@ -54,6 +51,7 @@ import {Recipes2Component} from './components/recipe/recipes/recipes.component';
 import {AffiliateComponent} from './components/patient/affiliate/affiliate.component';
 import {ModalComponent} from './components/recipe/dish/modal/modal.component';
 import {LoginComponent} from './components/auth/login/login.component';
+import { Food2Component } from './components/food/food.component';
 
 
 @NgModule({
@@ -85,7 +83,8 @@ import {LoginComponent} from './components/auth/login/login.component';
     FactsComponent,
     Recipes2Component,
     AffiliateComponent,
-    LoginComponent
+    LoginComponent,
+    Food2Component,
   ],
   imports: [
     FormsModule,
@@ -111,9 +110,6 @@ import {LoginComponent} from './components/auth/login/login.component';
     MatSidenavModule,
     FlexLayoutModule,
     AvatarModule,
-    // HttpClientInMemoryWebApiModule.forRoot(
-    //   InMemoryDataService, { dataEncapsulation: false }
-    // ),
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
