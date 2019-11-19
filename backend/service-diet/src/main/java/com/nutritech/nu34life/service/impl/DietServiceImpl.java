@@ -1,5 +1,6 @@
 package com.nutritech.nu34life.service.impl;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,7 +20,7 @@ public class DietServiceImpl implements DietService {
 	public Diet save(Diet entity) {
 		entity.getDietDays().forEach(x -> x.setDiet(entity));
 		entity.getDietDays().forEach(x -> x.getDetails().forEach(y-> y.setDietDay(x)));
-		
+		entity.setCreationDate(LocalDate.now());
 		return dietRepository.save(entity);
 	}
 
@@ -37,6 +38,11 @@ public class DietServiceImpl implements DietService {
 	@Override
 	public void delete(Long id) {
 		dietRepository.deleteById(id);
+	}
+	
+	@Override
+	public Diet findDietsbyPatient(Long id){
+		return dietRepository.findByPatientId(id);
 	}
 
 }

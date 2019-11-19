@@ -38,7 +38,7 @@ export class OauthService {
 
   login(user: User): Observable<any> {
 
-    const urlEndpoint = 'http://localhost:8090/api/service-oauth/oauth/token';
+    const urlEndpoint = 'http://localhost:8090/service-oauth/oauth/token';
 
     const credentials = btoa('frontendapp' + ':' + '12345');
 

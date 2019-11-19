@@ -32,11 +32,9 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 
-		//http.authorizeRequests().antMatchers("/api/service-oauth/oauth/token").permitAll()
-		http
-        .authorizeRequests()
-        .antMatchers("/**").authenticated()
-        .antMatchers("/").permitAll()
+		http.authorizeRequests().antMatchers("/api/service-oauth/oauth/token").permitAll()
+
+				.antMatchers("/**").permitAll()
 				/*
 				 * .antMatchers(HttpMethod.GET, "/service-diets/diets",
 				 * "/service-recipes/recipes", "/service-recipes/foods", "/service-users/users")
@@ -112,8 +110,9 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 		tokenConverter.setSigningKey("algun_codigo_secreto_aeiou");
 		return tokenConverter;
 	}
-	   @Bean
-	    public BCryptPasswordEncoder passwordEncoder(){ 
-	        return new BCryptPasswordEncoder(); 
-	    }
+
+	@Bean
+	public BCryptPasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 }

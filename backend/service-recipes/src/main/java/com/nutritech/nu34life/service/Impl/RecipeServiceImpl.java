@@ -21,7 +21,7 @@ public class RecipeServiceImpl implements RecipeService{
 	private FoodRepository foodRepository;
 
 	@Override
-	public Recipe create(Recipe entity) {
+	public Recipe save(Recipe entity) {
 		
 		entity.getIngredients().forEach(x -> {
 			x.setFood(foodRepository.findById(x.getFood().getId()).get());

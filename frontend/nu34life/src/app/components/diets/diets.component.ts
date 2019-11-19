@@ -56,6 +56,7 @@ export class DietsComponent implements OnInit {
         });
       },
       err => {
+        console.log(err);
       }
     );
   }
@@ -97,6 +98,7 @@ export class DietsComponent implements OnInit {
         this.recipesList = res;
       },
       err => {
+        console.log(err);
       }
     );
   }
@@ -104,7 +106,11 @@ export class DietsComponent implements OnInit {
   createDiet() {
     const diet = mapDiet(this.dietPlanner);
     console.log(diet);
-    this.apiService.postDiet(diet);
+    this.apiService.postDiet(diet).subscribe(res => {
+      console.log('Exito!', res);
+    }, err => {
+      console.log('Error!', err);
+    });
   }
 
   toggleMeals(event) {

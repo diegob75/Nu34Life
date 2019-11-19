@@ -5,7 +5,7 @@ import java.util.Optional;
 
 public interface CrudService<T, ID> {
 	
-	T create(T  entity);
+	T save(T  entity);
 
 	List<T> getAll();
 

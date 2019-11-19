@@ -25,19 +25,23 @@ export class Recipes2Component implements OnInit {
   dataSource: MatTableDataSource<Recipe>;
   selection = new SelectionModel<Recipe>(true, []);
 
+  get expanded(): boolean {
+    return this.expandedElement != null;
+  }
+
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
+    this.dataSource = new MatTableDataSource<Recipe>([]);
     this.apiService.getAllRecipes().subscribe(res => {
       this.recipes = res;
       this.dataSource = new MatTableDataSource<Recipe>(this.recipes);
       this.dataSource.sort = this.sort;
     }, err => {
-
+      console.log(err);
     });
-
   }
 
   applyFilter(filterValue: string) {

@@ -16,5 +16,4 @@ public class Recipe {
 	@Id
 	@GeneratedValue
 	private Long id;
-
 }

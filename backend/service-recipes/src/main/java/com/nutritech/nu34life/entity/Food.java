@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -23,11 +25,18 @@ public class Food {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+	@Column(name = "created_by")
+	public Long createdBy;
+	
 	@Column(name = "name", length = 50)
 	private String name;
 	
-	@Column(name="imagen")
-	private String imagen;
+	@Column(name="image")
+	private String image;
+	
+	@JsonIgnore
+	@Column(name="active")
+	private Boolean active = true;
 
 	@OneToOne(fetch=FetchType.LAZY,cascade={CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE},optional=false)
 	@JoinColumn(name = "nutr_fact_id")

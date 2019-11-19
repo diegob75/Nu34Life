@@ -13,5 +13,4 @@ public class ServiceGatewayApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ServiceGatewayApplication.class, args);
 	}
-
 }

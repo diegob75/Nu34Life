@@ -15,6 +15,9 @@ public class Recipe {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long id;
 
+	@Column(name = "created_by")
+	public Long createdBy;
+	
 	@Column(name = "name", nullable = false, length = 50)
 	public String name;
 	

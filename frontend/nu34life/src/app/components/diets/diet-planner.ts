@@ -1,5 +1,7 @@
 import {Diet} from '../../model/diet';
 import {DietDetail} from '../../model/diet-detail';
+import * as moment from 'moment';
+
 
 export interface  DietPlanner {
   fromDate: Date;
@@ -14,11 +16,13 @@ export interface MealSchedule {
 }
 
 export const mapDiet = (dietPlanner: DietPlanner): Diet => {
+  const date = dietPlanner.fromDate == null ? new Date() : dietPlanner.fromDate;
+
   const diet: Diet =  {
     id: undefined,
     nutritionistId: undefined,
     patientId: undefined,
-    starDate: dietPlanner.fromDate,
+    starDate: moment(date).format('YYYY-MM-DD'),
     duration: dietPlanner.duration,
     dietDays: []
   };
@@ -28,4 +32,5 @@ export const mapDiet = (dietPlanner: DietPlanner): Diet => {
     diet.dietDays[i] = {id: null, day: i + 1, details: [...details]};
   }
   return diet;
-}
+};
+

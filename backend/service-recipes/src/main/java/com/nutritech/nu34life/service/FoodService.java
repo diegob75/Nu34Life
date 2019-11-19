@@ -8,4 +8,8 @@ public interface FoodService extends CrudService<Food, Long>{
 
 	public List<Food> getByNameLike(String string);
 	
+	public List<Food> getOwnRecipes(Long id);
+	
+	public Integer deactivateFood(Long id, Long userId);
+	
 }

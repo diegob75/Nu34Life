@@ -21,15 +21,20 @@ public class FoodServiceImpl implements FoodService{
 	
 	@Transactional
 	@Override
-	public Food create(Food entity) {
+	public Food save(Food entity) {
 		return foodRepository.save(entity);
 	}
-
+	
 	@Override
 	public List<Food> getAll() {
 		List<Food> foods = new ArrayList<>();
-		foodRepository.findAll().iterator().forEachRemaining(foods::add);
+		foodRepository.getBaseRecipes().iterator().forEachRemaining(foods::add);
 		return foods;
+	}
+	
+	@Override
+	public List<Food> getOwnRecipes(Long id) {
+		return foodRepository.getOwnRecipes(id);
 	}
 
 	@Override
@@ -46,6 +51,11 @@ public class FoodServiceImpl implements FoodService{
 	@Override
 	public List<Food> getByNameLike(String string){
 		return foodRepository.findByNameContainingIgnoreCase(string);
+	}
+
+	@Override
+	public Integer deactivateFood(Long id, Long userId) {
+		return foodRepository.deactivateEntry(id, userId);
 	}
 
 }

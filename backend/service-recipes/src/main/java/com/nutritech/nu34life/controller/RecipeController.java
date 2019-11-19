@@ -38,6 +38,6 @@ public class RecipeController {
 	
 	@PostMapping
 	public Recipe createRecipe(@RequestBody Recipe recipe) {
-		return recipeService.create(recipe);
+		return recipeService.save(recipe);
 	}
 }

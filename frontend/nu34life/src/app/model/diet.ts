@@ -2,9 +2,9 @@ import {DietDay} from './diet-day';
 
 export class Diet {
   id: number;
-  nutritionistId: { id: number };
-  patientId: { id: number };
+  nutritionistId: number;
+  patientId: number;
   duration: number;
-  starDate: Date;
+  starDate: string;
   dietDays: DietDay[];
 }
