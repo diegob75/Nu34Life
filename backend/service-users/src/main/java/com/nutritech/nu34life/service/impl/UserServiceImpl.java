@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService {
 		roles.add(role);
 		account.setRoles(roles);
 		account.setRegisterDate(new Date());
-		account.setEmail_validated(false);
+		account.setEmailValidated(false);
 		account.setAccountStatus(1);
 		account.setPassword(passwordEncoder.encode(account.getPassword()));
 		

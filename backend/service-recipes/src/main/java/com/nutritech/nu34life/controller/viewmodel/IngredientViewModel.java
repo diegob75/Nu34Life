@@ -1,6 +1,6 @@
 package com.nutritech.nu34life.controller.viewmodel;
 
-import com.nutritech.nu34life.entity.*;
+import com.nutritech.nu34life.model.entity.*;
 
 public class IngredientViewModel {
 	private Food food;

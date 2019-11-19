@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.nutritech.nu34life.entity.*;
+import com.nutritech.nu34life.model.entity.*;
 
 @Repository
 public interface RecipeRepository extends JpaRepository<Recipe, Long>{

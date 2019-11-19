@@ -1,4 +1,4 @@
-package com.nutritech.nu34life.entity;
+package com.nutritech.nu34life.model.entity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -38,7 +38,7 @@ public class Food {
 	@Column(name="active")
 	private Boolean active = true;
 
-	@OneToOne(fetch=FetchType.LAZY,cascade={CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE},optional=false)
+	@OneToOne(cascade={CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE},optional=false)
 	@JoinColumn(name = "nutr_fact_id")
 	private NutritionFact nutrFact;
 }

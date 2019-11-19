@@ -7,9 +7,11 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.nutritech.nu34life.entity.*;
+import com.nutritech.nu34life.model.entity.*;
 import com.nutritech.nu34life.model.repository.FoodRepository;
 import com.nutritech.nu34life.service.FoodService;
 
@@ -28,13 +30,8 @@ public class FoodServiceImpl implements FoodService{
 	@Override
 	public List<Food> getAll() {
 		List<Food> foods = new ArrayList<>();
-		foodRepository.getBaseRecipes().iterator().forEachRemaining(foods::add);
+		foodRepository.findAll().iterator().forEachRemaining(foods::add);
 		return foods;
-	}
-	
-	@Override
-	public List<Food> getOwnRecipes(Long id) {
-		return foodRepository.getOwnRecipes(id);
 	}
 
 	@Override
@@ -56,6 +53,11 @@ public class FoodServiceImpl implements FoodService{
 	@Override
 	public Integer deactivateFood(Long id, Long userId) {
 		return foodRepository.deactivateEntry(id, userId);
+	}
+
+	@Override
+	public Page<Food> searchFood(Long userId, String query, Pageable pageable) {
+		return foodRepository.findFood(userId, query, pageable);
 	}
 
 }

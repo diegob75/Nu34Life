@@ -2,7 +2,7 @@ package com.nutritech.nu34life.service;
 
 import java.util.List;
 
-import com.nutritech.nu34life.entity.*;
+import com.nutritech.nu34life.model.entity.*;
 
 public interface RecipeService extends CrudService<Recipe, Long>{
 

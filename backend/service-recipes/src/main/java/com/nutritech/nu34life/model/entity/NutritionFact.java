@@ -1,4 +1,4 @@
-package com.nutritech.nu34life.entity;
+package com.nutritech.nu34life.model.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
