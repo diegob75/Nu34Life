@@ -1,7 +1,7 @@
-import { User } from '../model/user';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {User} from '../model/user';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,8 @@ export class OauthService {
   // tslint:disable-next-line:variable-name
   private _token: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   public get user(): User {
     if (this._user != null) {
@@ -53,7 +54,7 @@ export class OauthService {
     params.set('username', user.username);
     params.set('password', user.password);
     console.log(params.toString());
-    return this.http.post<any>(urlEndpoint, params.toString(), { headers: httpHeaders });
+    return this.http.post<any>(urlEndpoint, params.toString(), {headers: httpHeaders});
   }
 
   saveUser(accessToken: string): void {

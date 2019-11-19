@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from '../rest.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import {Food} from '../model/food';
 @Component({
   selector: 'app-foods',
   templateUrl: './foods.component.html',
@@ -9,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 export class FoodsComponent implements OnInit {
 
-  foods:any = [];
+  foods: Food[] = [];
 
   constructor(public rest:RestService, private route: ActivatedRoute, private router: Router) { }
 
