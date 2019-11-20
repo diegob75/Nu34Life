@@ -92,8 +92,10 @@ public class UserServiceImpl implements UserService {
 		nutritionist.setImagen(request.getImagen());
 		nutritionist.setUserId(account.getId());
 		profileFeignClient.saveNutritionist(nutritionist);
+		
+
 		System.out.println("Enhorabuena "+request.getFirstName()+" "+request.getLastName()+" su cuenta se ha registrado correctamente.\n Con nombre de usuario : "+request.getUsername()+"\n Y contrasena : na mentira xd.");
-		emailService.sendEmail("Registro Exitoso !!", "Enhorabuena "+request.getFirstName()+" "+request.getLastName()+" su cuenta se ha registrado correctamente.\n Con nombre de usuario : "+request.getUsername()+"\n Y contrasena : na mentira xd.", request.getEmail());
+		emailService.sendEmail("Registro Exitoso !!", "<h1>Enhorabuena "+request.getFirstName()+" "+request.getLastName()+" su cuenta se ha registrado correctamente.</h1>\n <p>Con nombre de usuario : "+request.getUsername()+".</p>", request.getEmail());
 		System.out.println("Enhorabuena "+request.getFirstName()+" "+request.getLastName()+" su cuenta se ha registrado correctamente.\n Con nombre de usuario : "+request.getUsername()+"\n Y contrasena : na mentira xd.");
 		return account;
 	}
