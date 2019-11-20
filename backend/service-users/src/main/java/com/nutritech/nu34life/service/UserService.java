@@ -3,14 +3,17 @@ package com.nutritech.nu34life.service;
 import java.util.List;
 
 import com.nutritech.nu34life.model.entity.Account;
+import com.nutritech.nu34life.util.UserRequest;
+import com.nutritech.nu34life.util.UserResponse;
 
 public interface UserService {
 	
-	Account getByUsername(String username);
+	UserResponse getByUsername(String username);
 	
 	List<Account> getUsers();
 	
-	Account updateAndCreate(Account requestBody);
+	Account updateAndCreateNutritionist(UserRequest requestBody);
 	
+	Account updateAndCreatePatient(UserRequest requestBody);
 	
 }

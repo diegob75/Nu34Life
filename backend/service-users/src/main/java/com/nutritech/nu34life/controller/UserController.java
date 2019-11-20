@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.nutritech.nu34life.model.entity.Account;
 import com.nutritech.nu34life.service.UserService;
+import com.nutritech.nu34life.util.UserRequest;
+import com.nutritech.nu34life.util.UserResponse;
 
 @RestController
 @RequestMapping(path="/users")
@@ -21,7 +23,7 @@ public class UserController {
 	UserService userService;
 	
 	@GetMapping(path="/getByUserName")
-	Account getByUsername(@RequestParam String _username){
+	UserResponse getByUsername(@RequestParam String _username){
 		return userService.getByUsername(_username);
 	}
 	
@@ -30,9 +32,14 @@ public class UserController {
 		return userService.getUsers();
 	}
 	
-	@PostMapping(path="/register")
-	Account registerUser(@RequestBody Account requestBody)
+	@PostMapping(path="/registerNutritionist")
+	Account registerNutritionist(@RequestBody UserRequest requestBody)
 	{
-		return userService.updateAndCreate(requestBody);
+		return userService.updateAndCreateNutritionist(requestBody);
+	}
+	@PostMapping(path="/registerPatient")
+	Account registerPatient(@RequestBody UserRequest requestBody)
+	{
+		return userService.updateAndCreatePatient(requestBody);
 	}
 }

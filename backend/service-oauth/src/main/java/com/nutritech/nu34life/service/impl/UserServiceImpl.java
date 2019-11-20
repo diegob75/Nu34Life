@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import com.nutritech.nu34life.client.UserFeignClient;
 import com.nutritech.nu34life.model.entity.Account;
 import com.nutritech.nu34life.service.UserService;
+import com.nutritech.nu34life.util.UserResponse;
 
 
 @Service
@@ -24,10 +25,10 @@ public class UserServiceImpl implements UserDetailsService,UserService {
 	private UserFeignClient userClient;
 
 	@Override
-	public UserDetails loadUserByUsername(String username)
+	public UserDetails loadUserByUsername(String username) 
 			 throws UsernameNotFoundException {
 
-		Account user = userClient.findByUserName(username);
+		UserResponse user = userClient.findByUserName(username);
 
 		if (user == null) {
 			throw new UsernameNotFoundException(
@@ -46,7 +47,7 @@ public class UserServiceImpl implements UserDetailsService,UserService {
 	}
 
 	@Override
-	public Account findByUsername(String username) {
+	public UserResponse findByUsername(String username) {
 		return userClient.findByUserName(username);
 	}
 

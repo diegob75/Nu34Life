@@ -4,12 +4,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.nutritech.nu34life.model.entity.Account;
+import com.nutritech.nu34life.util.UserResponse;
 
 @FeignClient(name = "service-users")
 public interface UserFeignClient {
 
 	@GetMapping("/users/getByUserName")
-	Account findByUserName(@RequestParam String username);
+	UserResponse findByUserName(@RequestParam String username);
 
 }

@@ -1,8 +1,8 @@
 package com.nutritech.nu34life.model.entity;
 
 
+import java.time.LocalDate;
 import java.util.List;
-import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -39,7 +39,7 @@ public class Account {
 	private String password;
 	
 	@Column(name = "register_date")
-	private Date registerDate;
+	private LocalDate registerDate;
 	
 	@Column(name = "username", unique = true, length = 20)
 	private String username;
