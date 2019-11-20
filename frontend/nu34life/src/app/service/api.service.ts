@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {Recipe} from '../model/recipe';
@@ -12,7 +12,7 @@ import swal from 'sweetalert2';
 import {OauthService} from './oauth.service';
 import {Router} from '@angular/router';
 import {catchError, map} from 'rxjs/operators';
-import { User } from '../model/user';
+import {User} from '../model/user';
 
 const ENDPOINTS: ApiRoutes = API_ROUTES;
 
@@ -21,12 +21,13 @@ const ENDPOINTS: ApiRoutes = API_ROUTES;
 })
 export class ApiService {
 
-  private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
+  private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
-  constructor(private http: HttpClient, private authService: OauthService, private router: Router) { }
+  constructor(private http: HttpClient, private authService: OauthService, private router: Router) {
+  }
 
   private addAuthorizationHeader() {
-    let token = this.authService.token;
+    const token = this.authService.token;
     if (token != null) {
       return this.httpHeaders.append('Authorization', 'Bearer ' + token);
     }
@@ -57,7 +58,7 @@ export class ApiService {
   }
 
   postDiet(diet: Diet): Observable<any> {
-    return this.http.post(ENDPOINTS.diets.POST_DIET, diet, { headers: this.addAuthorizationHeader() })
+    return this.http.post(ENDPOINTS.diets.POST_DIET, diet, {headers: this.addAuthorizationHeader()})
       .pipe(
         map((response: any) => response.diet as Diet),
         catchError(e => {
@@ -80,29 +81,30 @@ export class ApiService {
   getAllRecipes(): Observable<Recipe[]> {
     return this.http.get<Recipe[]>(ENDPOINTS.recipes.GET_RECIPES);
   }
+
   findRecipe(id: number): Observable<Recipe> {
     return this.http.get<Recipe>(ENDPOINTS.recipes.GET_RECIPE_BY_ID + '/' + id);
   }
 
 
   getAllPatients(): Observable<Patient[]> {
-    return this.http.get<Patient[]>(ENDPOINTS.patients.GET_PATIENTS,{ headers: this.addAuthorizationHeader() })
-    .pipe(
-      map((response: any) => response.patients as Patient[]),
-      catchError(e => {
-        if (this.unAthorized(e)) {
-          return throwError(e);
-        }
+    return this.http.get<Patient[]>(ENDPOINTS.patients.GET_PATIENTS, {headers: this.addAuthorizationHeader()})
+      .pipe(
+        map((response: any) => response.patients as Patient[]),
+        catchError(e => {
+          if (this.unAthorized(e)) {
+            return throwError(e);
+          }
 
-        if (e.status == 400) {
-          return throwError(e);
-        }
+          if (e.status == 400) {
+            return throwError(e);
+          }
 
-        console.error(e.error.mensaje);
-        swal.fire(e.error.mensaje, e.error.error, 'error');
-        return throwError(e);
-      })
-    );
+          console.error(e.error.mensaje);
+          swal.fire(e.error.mensaje, e.error.error, 'error');
+          return throwError(e);
+        })
+      );
   }
 
   postPatient(patient: Patient) {
@@ -124,8 +126,9 @@ export class ApiService {
         })
       );
   }
+
   putPatient(patient: Patient) {
-    return this.http.put(ENDPOINTS.patients.POST_PATIENT, patient, { headers: this.addAuthorizationHeader() })
+    return this.http.put(ENDPOINTS.patients.POST_PATIENT, patient, {headers: this.addAuthorizationHeader()})
       .pipe(
         map((response: any) => response.patient as Patient),
         catchError(e => {
@@ -143,29 +146,29 @@ export class ApiService {
         })
       );
   }
-  
+
   findPatient(id: number): Observable<Food> {
     return this.http.get<Food>(ENDPOINTS.patients.GET_PATIENT_BY_ID + '/' + id);
   }
 
   getAffiliatedPatients(id: number): Observable<Patient[]> {
     return this.http.get<Patient[]>(`${ENDPOINTS.patients.GET_PATIENTS_AFFILIATED}/${id}`)
-    .pipe(
-      map((response: any) => response.patients as Patient[]),
-      catchError(e => {
-        if (this.unAthorized(e)) {
-          return throwError(e);
-        }
+      .pipe(
+        map((response: any) => response.patients as Patient[]),
+        catchError(e => {
+          if (this.unAthorized(e)) {
+            return throwError(e);
+          }
 
-        if (e.status == 400) {
-          return throwError(e);
-        }
+          if (e.status == 400) {
+            return throwError(e);
+          }
 
-        console.error(e.error.mensaje);
-        swal.fire(e.error.mensaje, e.error.error, 'error');
-        return throwError(e);
-      })
-    );
+          console.error(e.error.mensaje);
+          swal.fire(e.error.mensaje, e.error.error, 'error');
+          return throwError(e);
+        })
+      );
   }
 
   getFoods(query: string, sort: string, order: string, page: number, perPage: number, id: number): Observable<Page<Food>> {
@@ -179,7 +182,7 @@ export class ApiService {
   }
 
   postFood(food: Food) {
-    return this.http.post(ENDPOINTS.foods.POST_FOOD, food, { headers: this.addAuthorizationHeader() })
+    return this.http.post(ENDPOINTS.foods.POST_FOOD, food, {headers: this.addAuthorizationHeader()})
       .pipe(
         map((response: any) => response.food as Food),
         catchError(e => {
@@ -199,7 +202,7 @@ export class ApiService {
   }
 
   putFood(food: Food) {
-    return this.http.put(ENDPOINTS.foods.PUT_FOOD, food, { headers: this.addAuthorizationHeader() })
+    return this.http.put(ENDPOINTS.foods.PUT_FOOD, food, {headers: this.addAuthorizationHeader()})
       .pipe(
         map((response: any) => response.food as Food),
         catchError(e => {
@@ -222,12 +225,12 @@ export class ApiService {
     return this.http.get<Food>(ENDPOINTS.foods.GET_FOOD_BY_ID + '/' + id);
   }
 
-  desactivateFood(id: number): Observable<Boolean>{
-    return this.http.put(ENDPOINTS.foods.DEACTIVATE_FOOD + '/' + id,{headers: this.addAuthorizationHeader()})
+  desactivateFood(id: number): Observable<boolean> {
+    return this.http.put(ENDPOINTS.foods.DEACTIVATE_FOOD + '/' + id, {headers: this.addAuthorizationHeader()})
       .pipe(
-        map((response:any)=> response.recipe as Boolean),
-        catchError(e=>{
-          if(this.unAthorized(e) || e.status == 400){
+        map((response: any) => response.recipe as boolean),
+        catchError(e => {
+          if (this.unAthorized(e) || e.status == 400) {
             swal.fire('Usted no posee permisos para esta accion', 'error');
             return throwError(e);
           }
@@ -235,18 +238,18 @@ export class ApiService {
           console.error(e.error.mensaje);
           swal.fire(e.error.mensaje, e.error.error, 'error');
           return throwError(e);
-          
+
         })
       );
   }
 
 
-  postRecipe(recipe: Recipe){
-    return this.http.post(ENDPOINTS.recipes.POST_RECIPE,recipe,{headers: this.addAuthorizationHeader()})
+  postRecipe(recipe: Recipe) {
+    return this.http.post(ENDPOINTS.recipes.POST_RECIPE, recipe, {headers: this.addAuthorizationHeader()})
       .pipe(
-        map((response:any)=> response.recipe as Recipe),
-        catchError(e=>{
-          if(this.unAthorized(e) || e.status == 400){
+        map((response: any) => response.recipe as Recipe),
+        catchError(e => {
+          if (this.unAthorized(e) || e.status == 400) {
             swal.fire('Usted no posee permisos para esta accion', 'error');
             return throwError(e);
           }
@@ -254,7 +257,7 @@ export class ApiService {
           console.error(e.error.mensaje);
           swal.fire(e.error.mensaje, e.error.error, 'error');
           return throwError(e);
-          
+
         })
       );
   }
@@ -270,7 +273,7 @@ export class ApiService {
   }
 
   putRecipe(recipe: Recipe) {
-    return this.http.put(ENDPOINTS.recipes.PUT_RECIPE, recipe, { headers: this.addAuthorizationHeader() })
+    return this.http.put(ENDPOINTS.recipes.PUT_RECIPE, recipe, {headers: this.addAuthorizationHeader()})
       .pipe(
         map((response: any) => response.recipe as Recipe),
         catchError(e => {
@@ -289,12 +292,12 @@ export class ApiService {
       );
   }
 
-  desactivateRecipe(id: number): Observable<Boolean>{
-    return this.http.put(ENDPOINTS.recipes.DEACTIVATE_RECIPE + '/' + id,{headers: this.addAuthorizationHeader()})
+  desactivateRecipe(id: number): Observable<boolean> {
+    return this.http.put(ENDPOINTS.recipes.DEACTIVATE_RECIPE + '/' + id, {headers: this.addAuthorizationHeader()})
       .pipe(
-        map((response:any)=> response.recipe as Boolean),
-        catchError(e=>{
-          if(this.unAthorized(e) || e.status == 400){
+        map((response: any) => response.recipe as boolean),
+        catchError(e => {
+          if (this.unAthorized(e) || e.status == 400) {
             swal.fire('Usted no posee permisos para esta accion', 'error');
             return throwError(e);
           }
@@ -302,34 +305,17 @@ export class ApiService {
           console.error(e.error.mensaje);
           swal.fire(e.error.mensaje, e.error.error, 'error');
           return throwError(e);
-          
+
         })
       );
   }
 
-  registerNutritionist(user: User): Observable<User>{
-    return this.http.post(ENDPOINTS.users.REGISTER_NUTRITIONIST,user)
+  registerNutritionist(user: User): Observable<User> {
+    return this.http.post(ENDPOINTS.users.REGISTER_NUTRITIONIST, user)
       .pipe(
-        map((response:any) => response.user as User),
-        catchError(e=>{
-          if( e.status == 400){
-            swal.fire('Usted no posee permisos para esta accion', 'error');
-            return throwError(e);
-          }
-
-          console.error(e.error.mensaje);
-          swal.fire(e.error.mensaje, e.error.error, 'error');
-          return throwError(e);
-        })
-      );
-  }
-
-  registerPatient(user: User): Observable<User>{
-    return this.http.post(ENDPOINTS.users.REGISTER_PATIENT,user)
-      .pipe(
-        map((response:any) => response.user as User),
-        catchError(e=>{
-          if( e.status == 400){
+        map((response: any) => response.user as User),
+        catchError(e => {
+          if (e.status == 400) {
             swal.fire('Usted no posee permisos para esta accion', 'error');
             return throwError(e);
           }
@@ -341,15 +327,32 @@ export class ApiService {
       );
   }
 
-  requestAffiliation(idPatient:number,idNutritionist:number): Observable<Boolean>{
+  registerPatient(user: User): Observable<User> {
+    return this.http.post(ENDPOINTS.users.REGISTER_PATIENT, user)
+      .pipe(
+        map((response: any) => response.user as User),
+        catchError(e => {
+          if (e.status == 400) {
+            swal.fire('Usted no posee permisos para esta accion', 'error');
+            return throwError(e);
+          }
+
+          console.error(e.error.mensaje);
+          swal.fire(e.error.mensaje, e.error.error, 'error');
+          return throwError(e);
+        })
+      );
+  }
+
+  requestAffiliation(idPatient: number, idNutritionist: number): Observable<boolean> {
     const params = new URLSearchParams();
     params.set('nutritionistId', idNutritionist.toString());
     params.set('patientId', idPatient.toString());
-    return this.http.post(ENDPOINTS.affiliations.AFFILIATION_REQUEST + '?' + params.toString(),null,{headers: this.addAuthorizationHeader()})
+    return this.http.post(ENDPOINTS.affiliations.AFFILIATION_REQUEST + '?' + params.toString(), null, {headers: this.addAuthorizationHeader()})
       .pipe(
-        map((response:any)=>response as Boolean),
-        catchError(e=>{
-          if( e.status == 400){
+        map((response: any) => response as boolean),
+        catchError(e => {
+          if (e.status == 400) {
             swal.fire('Usted no posee permisos para esta accion', 'error');
             return throwError(e);
           }
@@ -359,18 +362,19 @@ export class ApiService {
           return throwError(e);
         })
       )
-    ;
+      ;
   }
 
-  confirmAffiliation(idPatient:number,id:number): Observable<Boolean>{
+  confirmAffiliation(idPatient: number, id: number): Observable<boolean> {
     const params = new URLSearchParams();
     params.set('id', id.toString());
     params.set('patientId', idPatient.toString());
-    return this.http.post(ENDPOINTS.affiliations.AFFILIATION_CONFIRM + '?' + params.toString(),null,{headers: this.addAuthorizationHeader()})
+    return this.http.post(ENDPOINTS.affiliations.AFFILIATION_CONFIRM + '?' + params.toString(),
+      null, {headers: this.addAuthorizationHeader()})
       .pipe(
-        map((response:any)=>response as Boolean),
-        catchError(e=>{
-          if( e.status == 400){
+        map((response: any) => response as boolean),
+        catchError(e => {
+          if (e.status == 400) {
             swal.fire('Usted no posee permisos para esta accion', 'error');
             return throwError(e);
           }
@@ -380,18 +384,19 @@ export class ApiService {
           return throwError(e);
         })
       )
-    ;
+      ;
   }
 
-  deactiveAffiliation(idPatient:number,idNutritionist:number): Observable<Boolean>{
+  deactiveAffiliation(idPatient: number, idNutritionist: number): Observable<boolean> {
     const params = new URLSearchParams();
     params.set('nutritionistId', idNutritionist.toString());
     params.set('patientId', idPatient.toString());
-    return this.http.post(ENDPOINTS.affiliations.AFFILIATION_DEACTIVATE + '?' + params.toString(),null,{headers: this.addAuthorizationHeader()})
+    return this.http.post(ENDPOINTS.affiliations.AFFILIATION_DEACTIVATE + '?' + params.toString(),
+      null, {headers: this.addAuthorizationHeader()})
       .pipe(
-        map((response:any)=>response as Boolean),
-        catchError(e=>{
-          if( e.status == 400){
+        map((response: any) => response as boolean),
+        catchError(e => {
+          if (e.status == 400) {
             swal.fire('Usted no posee permisos para esta accion', 'error');
             return throwError(e);
           }
@@ -401,9 +406,8 @@ export class ApiService {
           return throwError(e);
         })
       )
-    ;
+      ;
   }
-
 
 
 }

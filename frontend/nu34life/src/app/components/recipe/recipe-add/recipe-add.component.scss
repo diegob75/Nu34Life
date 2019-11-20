@@ -1,8 +1,16 @@
 mat-card {
   margin-top: 40px;
-  width: 300px;
+  width: 500px;
 }
 .wrapper {
   display: flex;
   justify-content: center;
+}
+
+textarea {
+  height: 150px;
+}
+.ingredients {
+  padding: 10px;
+  max-height: 500px;
 }

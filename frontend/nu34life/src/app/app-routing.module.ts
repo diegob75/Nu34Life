@@ -22,6 +22,7 @@ import {LoginComponent} from './components/auth/login/login.component';
 import {RecipeAddComponent} from './components/recipe/recipe-add/recipe-add.component';
 import {FoodsComponent} from './components/food/foods/foods.component';
 import {FoodCreateComponent} from './components/food/food-create/food-create.component';
+import {PatientCreateComponent} from './components/patient/patient-create/patient-create.component';
 
 const routes: Routes = [
   {
@@ -57,7 +58,12 @@ const routes: Routes = [
   {
     path: 'patients',
     component: PatientsComponent,
-    data: {title: 'Mis pacientes'}
+    data: {title: 'Pacientes'}
+  },
+  {
+    path: 'patients/create',
+    component: PatientCreateComponent,
+    data: {title: 'Crear paciente'}
   },
   {
     path: 'diets',

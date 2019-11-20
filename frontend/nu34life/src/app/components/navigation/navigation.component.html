@@ -1,72 +1,25 @@
 <div id="root-container">
   <mat-toolbar color="primary">
     <div>
-      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true">
+<!--      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true">
         <mat-icon>menu</mat-icon>
-      </button>
+      </button>-->
       <a mat-button routerLink="/home">
         <span>Nut34Life</span>
       </a>
     </div>
     <div class="bar-menu">
-      <button mat-icon-button (click)="myPatients.toggle()">
-        <mat-icon>people_alt</mat-icon>
-      </button>
       <ngx-avatar size="40" [matMenuTriggerFor]="account" [src]="avatar" [name]="name"></ngx-avatar>
       <mat-menu #account="matMenu" xPosition="before">
         <button mat-menu-item routerLink="/account/edit-profile">Editar Perfil</button>
         <button mat-menu-item routerLink="/account/edit-account">Cambiar Contraseña</button>
-        <button mat-menu-item routerLink="/logout" (click)="logout()">Log out</button>
+        <button mat-menu-item (click)="logout()">Log out</button>
       </mat-menu>
 
     </div>
   </mat-toolbar>
 
   <mat-sidenav-container autosize hasBackdrop="false">
-    <mat-sidenav #sidenav [(opened)]="opened">
-      <mat-nav-list dense>
-        <!-- TODO: Avatar -->
-        <p matSubheader>Pacientes</p>
-        <div fxLayout="row">
-          <mat-list-item fxLayout="column">
-            <a mat-list-item (click)="sidenav.toggle()" routerLink="/patients">Mis pacientes</a>
-          </mat-list-item>
-          <mat-list-item fxLayout="column">
-            <a mat-list-item (click)="sidenav.toggle()" routerLink="/patients/add">Agregar</a>
-          </mat-list-item>
-          <mat-list-item fxLayout="column">
-            <a mat-list-item (click)="sidenav.toggle()" routerLink="/patients">Buscar Paciente</a>
-          </mat-list-item>
-        </div>
-        <p matSubheader>Recetas</p>
-        <div fxLayout="row">
-          <mat-list-item fxLayout="column">
-            <a mat-list-item (click)="sidenav.toggle()" routerLink="/recipes">Todas las recetas</a>
-          </mat-list-item>
-          <mat-list-item fxLayout="column">
-            <a mat-list-item (click)="sidenav.toggle()" routerLink="/home">Crear</a>
-          </mat-list-item>
-        </div>
-        <p matSubheader>Alimentos</p>
-        <div fxLayout="row">
-          <mat-list-item fxLayout="column">
-            <a mat-list-item (click)="sidenav.toggle()" routerLink="/foods">Todos los alimentos</a>
-          </mat-list-item>
-          <mat-list-item fxLayout="column">
-            <a mat-list-item (click)="sidenav.toggle()" routerLink="/home">Crear</a>
-          </mat-list-item>
-        </div>
-        <p matSubheader>Dietas</p>
-        <div fxLayout="row">
-          <mat-list-item fxLayout="column">
-            <a mat-list-item (click)="sidenav.toggle()" routerLink="/diets">Asignar dieta a pacientes</a>
-          </mat-list-item>
-          <mat-list-item fxLayout="column">
-            <a mat-list-item (click)="sidenav.toggle()" routerLink="/home">Dietas creadas¿?</a>
-          </mat-list-item>
-        </div>
-      </mat-nav-list>
-    </mat-sidenav>
     <mat-sidenav-content fxFlexFill>
       <ng-content></ng-content>
     </mat-sidenav-content>

@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {Recipe} from '../../../model/recipe';
 import {AwsService} from '../../../service/aws.service';
 import {RecipeStep} from '../../../model/recipe-step';
+import {Ingredient} from '../../../model/ingredient';
+import {Food} from '../../../model/food';
 
 @Component({
   selector: 'app-recipe-add',
@@ -15,6 +17,7 @@ export class RecipeAddComponent implements OnInit {
   recipe: Recipe;
   directions: string;
   file: string;
+  foods: Food[] = [];
 
   constructor(public rest: RestService,
               private route: ActivatedRoute,
@@ -23,13 +26,25 @@ export class RecipeAddComponent implements OnInit {
 
   ngOnInit() {
     this.recipe = new Recipe();
+    this.loadFoods();
+  }
+
+  addIngredient(foods) {
+    console.log(foods);
+  }
+
+  loadFoods() {
+    this.rest.getFoods().subscribe(x => {
+      this.foods = x;
+    }, err => {
+      console.log(err);
+    });
   }
 
   addRecipe() {
     this.recipe.image = this.file;
     this.recipe.steps = mapSteps(this.directions);
 
-    console.log(JSON.stringify(this.recipe,null,2));
     this.rest.addRecipe(this.recipe).subscribe((result) => {
       this.router.navigate(['/recipes']);
     }, (err) => {
@@ -52,5 +67,6 @@ export class RecipeAddComponent implements OnInit {
 
 const mapSteps = (text: string): RecipeStep[] => {
   const arr = text.split('\n\n');
-  return arr.map((x, i) => ({ instruction: x, stepNumber: i })) as RecipeStep[];
+  return arr.map((x, i) => ({ instruction: x, stepNumber: i +1 })) as RecipeStep[];
 }
+

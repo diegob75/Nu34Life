@@ -6,6 +6,7 @@ import {SelectionModel} from '@angular/cdk/collections';
 import {MockResources} from '../../../mocks/mock-resources';
 import {AffiliateComponent} from '../affiliate/affiliate.component';
 import {ApiService} from '../../../service/api.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-patients',
@@ -23,7 +24,8 @@ export class PatientsComponent implements OnInit {
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   constructor(private apiService: ApiService,
-              private dialog: MatDialog) { }
+              private dialog: MatDialog,
+              private router: Router) { }
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource<Patient>(this.patients);
@@ -38,12 +40,13 @@ export class PatientsComponent implements OnInit {
   }
 
   affiliatePatient() {
-    const dialogRef = this.dialog.open(AffiliateComponent, {
-      width: '300px'
-    });
-    dialogRef.afterClosed().subscribe(res => {
-
-    });
+    // const dialogRef = this.dialog.open(AffiliateComponent, {
+    //   width: '300px'
+    // });
+    // dialogRef.afterClosed().subscribe(res => {
+    //
+    // });
+    this.router.navigate(['/patients/create']);
   }
 
   get length(): number {
