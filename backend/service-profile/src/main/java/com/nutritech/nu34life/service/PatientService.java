@@ -1,5 +1,7 @@
 package com.nutritech.nu34life.service;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -13,4 +15,6 @@ public interface PatientService extends CrudService<Patient, Long>{
 	Boolean deaffiliate(Long patientId, Long nutritionistId);
 	
 	Boolean confirmAffiliation(Long id, Long patientId);
+	
+	List<Patient> findPatientAffiliated(Long id);
 }

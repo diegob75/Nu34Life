@@ -35,6 +35,11 @@ public class DietController {
 		Diet result = dietService.save(diet);
 		return new ResponseEntity<Diet>(result, HttpStatus.CREATED);
 	}
+	@PutMapping
+	public ResponseEntity<Diet> updateDiet(@RequestBody Diet diet) {
+		Diet result = dietService.save(diet);
+		return new ResponseEntity<Diet>(result, HttpStatus.CREATED);
+	}
 	
 	@GetMapping(path = "/patient/{id}")
 	public Diet getPatientDiet(@PathVariable Long id) {
