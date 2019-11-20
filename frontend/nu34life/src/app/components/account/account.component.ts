@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MockResources} from '../../mocks/mock-resources';
+import {Nutritionist} from '../../model/nutritionist';
 
 @Component({
   selector: 'app-account',

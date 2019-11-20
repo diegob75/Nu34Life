@@ -6,12 +6,12 @@
     </button>
   </div>
   <div class="patient-table">
-    <mat-form-field>
-      <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Buscar">
-    </mat-form-field>
+<!--    <mat-form-field>-->
+<!--      <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Buscar">-->
+<!--    </mat-form-field>-->
 
     <table [dataSource]="dataSource" mat-table matSort>
-      <!-- FirstName Column -->
+
       <ng-container matColumnDef="avatar">
         <th *matHeaderCellDef mat-header-cell mat-sort-header>Paciente</th>
         <td *matCellDef="let element" mat-cell>
@@ -19,27 +19,36 @@
         </td>
       </ng-container>
 
-      <!-- FirstName Column -->
+
       <ng-container matColumnDef="firstName">
         <th *matHeaderCellDef mat-header-cell mat-sort-header>Nombres</th>
         <td *matCellDef="let element" mat-cell> {{element.firstName}} </td>
       </ng-container>
 
-      <!-- LastName Column -->
+
       <ng-container matColumnDef="lastName">
         <th *matHeaderCellDef mat-header-cell mat-sort-header>Apellidos</th>
         <td *matCellDef="let element" mat-cell> {{element.lastName}} </td>
       </ng-container>
 
-      <!-- Email Column -->
+
       <ng-container matColumnDef="email">
         <th *matHeaderCellDef mat-header-cell>Correo electronico</th>
         <td *matCellDef="let element" mat-cell> {{element.email}} </td>
       </ng-container>
 
+      <ng-container matColumnDef="action">
+        <th *matHeaderCellDef mat-header-cell>Correo electronico</th>
+        <td *matCellDef="let element" mat-cell>
+          <button mat-icon-button (click)="affiliatePatient()">
+            <mat-icon>person_add</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
       <tr *matHeaderRowDef="columns" mat-header-row></tr>
       <tr *matRowDef="let row; columns: columns;" mat-row></tr>
     </table>
-    <mat-paginator [length]="length" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    <mat-paginator [length]="length" pageSize="20" showFirstLastButtons></mat-paginator>
   </div>
 </div>

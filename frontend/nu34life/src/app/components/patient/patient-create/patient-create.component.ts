@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Patient} from '../../../model/patient';
+import {PatientForm} from './patient-form';
 
 @Component({
   selector: 'app-patient-create',
@@ -8,7 +9,7 @@ import {Patient} from '../../../model/patient';
 })
 export class PatientCreateComponent implements OnInit {
 
-  patient: Patient;
+  patient: PatientForm;
 
   constructor() { }
 

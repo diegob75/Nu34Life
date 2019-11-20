@@ -16,7 +16,7 @@ export class PatientsComponent implements OnInit {
 
   // @ts-ignore
   patients: Patient[];
-  columns = [ 'select', 'avatar', 'firstName', 'lastName', 'email'];
+  columns = ['avatar', 'firstName', 'lastName', 'email'];
   dataSource: MatTableDataSource<Patient>;
   selection = new SelectionModel<Patient>(true, []);
 

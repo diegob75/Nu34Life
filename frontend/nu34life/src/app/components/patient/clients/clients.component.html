@@ -1,9 +1,10 @@
 <mat-list>
   <h3 mat-subheader>Mis pacientes</h3>
   <mat-list-item *ngFor="let patient of patients">
-    <img matListAvatar [src]="getAvatar(patient.image)">
-    <h4 mat-line>{{patient.firstName}} {{patient.lastName}}</h4>
-    <p mat-line> {{patient.lastName | date}} </p>
+    <mat-card>
+      <img mat-card-avatar>
+      <mat-card-title>{{patient.firstName}} {{patient.lastName}}</mat-card-title>
+    </mat-card>
   </mat-list-item>
   <mat-divider></mat-divider>
 </mat-list>

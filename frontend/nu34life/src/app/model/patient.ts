@@ -6,6 +6,7 @@ export class Patient {
   userId: number;
   firstName: string;
   lastName: string;
-  email: string;
   image: string;
+  height: number;
+  weight: number;
 }

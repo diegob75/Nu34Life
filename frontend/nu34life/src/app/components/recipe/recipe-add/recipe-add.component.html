@@ -1,23 +1,35 @@
-<div class="container">
-  <h2>Agregar Receta</h2>
-  <form #recipeForm="ngForm">
-    <div class="group">
-      <input [(ngModel)]="recipeData.name" required type="text"/>
-      <span class="highlight"></span>
-      <span class="bar"></span>
-      <label>Name</label>
-    </div>
-    <div class="group">
-      <input [(ngModel)]="recipeData.servings" required type="text"/>
-      <span class="highlight"></span>
-      <span class="bar"></span>
-      <label>Servings</label>
-    </div>
-    <button (click)="addRecipe()" class="learn-more">
-          <span class="circle">
-            <span class="icon arrow"></span>
-          </span>
-      <span class="button-text">Agregar</span>
-    </button>
-  </form>
+<div class="wrapper">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        Crear Receta
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+      <div fxLayout="column">
+        <mat-form-field>
+          <input [(ngModel)]="recipe.name" matInput placeholder="Nombre" type="text">
+        </mat-form-field>
+
+        <label class="file-upload">
+          <input (change)="fileEvent($event)" id="imageUpload" name="imageUpload" type="file"/>
+          Subir imagen
+        </label>
+
+        <mat-form-field>
+          <input [(ngModel)]="recipe.servings" matInput placeholder="Porciones" type="text">
+        </mat-form-field>
+        <mat-form-field>
+          <textarea [(ngModel)]="directions" matInput placeholder="Instrucciones" type="text"></textarea>
+          <mat-hint>Separe cada instruccion con 2 saltos de linea</mat-hint>
+        </mat-form-field>
+
+      </div>
+      <mat-card-actions align="end">
+        <button mat-raised-button (click)="cancel()">Cancelar</button>
+        <button color="primary" mat-raised-button (click)="addRecipe()">Crear</button>
+      </mat-card-actions>
+    </mat-card-content>
+  </mat-card>
 </div>
