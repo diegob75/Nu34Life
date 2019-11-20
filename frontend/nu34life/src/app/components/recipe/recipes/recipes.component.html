@@ -1,65 +1,72 @@
-<div class="view-body">
-  <h1>Recetas</h1>
-  <button mat-mini-fab  routerLink="/recipes-add"></button>
-  <div class="recipe-dashboard" fxLayout="column" fxLayout.gt-sm="row">
-
-    <div class="recipe-detail" *ngIf="expandedElement != null" fxFlex.gt-sm="40" fxFlexOrder.gt-sm="2">
-      <app-dish [recipe]="expandedElement"></app-dish>
+<div class="recipe-body">
+  <button mat-mini-fab  routerLink="/recipe-add">
+    <mat-icon>add</mat-icon>
+  </button>
+<h1>Recetas</h1>
+<div class="recipe-dashboard">
+  <div class="example-loading-shade"
+       *ngIf="isLoadingResults || connectionError">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    <div class="example-rate-limit-reached" *ngIf="connectionError">
     </div>
-
-    <div class="recipe-table" fxFlex.gt-sm="60">
-      <mat-form-field>
-        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar">
-      </mat-form-field>
-
-      <table mat-table [dataSource]="dataSource" matSort>
-        <!-- Checkbox Column -->
-        <ng-container matColumnDef="select">
-          <th mat-header-cell *matHeaderCellDef>
-            <mat-checkbox (change)="$event ? masterToggle() : null"
-                          [checked]="selection.hasValue() && isAllSelected()"
-                          [indeterminate]="selection.hasValue() && !isAllSelected()"
-                          [aria-label]="checkboxLabel()">
-            </mat-checkbox>
-          </th>
-          <td mat-cell *matCellDef="let row">
-            <mat-checkbox (click)="$event.stopPropagation()"
-                          (change)="$event ? selection.toggle(row) : null"
-                          [checked]="selection.isSelected(row)"
-                          [aria-label]="checkboxLabel(row)">
-            </mat-checkbox>
-          </td>
-        </ng-container>
-        <!-- Image Column -->
-        <ng-container matColumnDef="image">
-          <th mat-header-cell *matHeaderCellDef> </th>
-          <td mat-cell *matCellDef="let element">
-            <ngx-avatar size="35" [src]="element.image" [round]="false"></ngx-avatar>
-          </td>
-        </ng-container>
-        <!-- Name Column -->
-        <ng-container matColumnDef="name">
-          <th mat-header-cell mat-sort-header *matHeaderCellDef>Nombre</th>
-          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-        </ng-container>
-        <!-- Servings Column -->
-        <ng-container matColumnDef="servings">
-          <th mat-header-cell mat-sort-header *matHeaderCellDef>Porciones</th>
-          <td mat-cell *matCellDef="let element"> {{element.servings}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="actions">
-          <th mat-header-cell mat-sort-header *matHeaderCellDef>Porciones</th>
-          <td mat-cell *matCellDef="let element"> {{element.servings}} </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="columns"></tr>
-        <tr mat-row *matRowDef="let recipe; columns: columns;"
-            [class.example-expanded-row]="expandedElement === recipe"
-            (click)="expandedElement = expandedElement === recipe ? null : recipe"></tr>
-      </table>
-      <mat-paginator [length]="recipes.length" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-    </div>
-
   </div>
+  <div class="recipe-table">
+    <table mat-table [dataSource]="recipes" matSort
+           matSortDisableClear matSortActive="name"
+           matSortDirection="desc">
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef>Nombre</th>
+        <td mat-cell *matCellDef="let recipe"> {{recipe.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="image">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let recipe">
+          <ngx-avatar size="35" [src]="getPhoto(recipe.image)"></ngx-avatar>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef>Servings</th>
+        <td mat-cell *matCellDef="let recipe"> {{recipe.servings}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="energeticValue">
+        <th mat-header-cell *matHeaderCellDef>Valor energetico</th>
+        <td mat-cell *matCellDef="let recipe"> {{recipe.nutrFact.energeticValue}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="totalFat">
+        <th mat-header-cell *matHeaderCellDef>Grasas totales</th>
+        <td mat-cell *matCellDef="let recipe"> {{recipe.nutrFact.totalFat}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="carbohydrates">
+        <th mat-header-cell *matHeaderCellDef>Carbohidratos</th>
+        <td mat-cell *matCellDef="let recipe"> {{recipe.nutrFact.carbohydrates}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="sugars">
+        <th mat-header-cell *matHeaderCellDef>Azucares</th>
+        <td mat-cell *matCellDef="let recipe"> {{recipe.nutrFact.sugars}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="protein">
+        <th mat-header-cell *matHeaderCellDef>Proteinas</th>
+        <td mat-cell *matCellDef="let recipe"> {{recipe.nutrFact.protein}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="salt">
+        <th mat-header-cell *matHeaderCellDef>Sal</th>
+        <td mat-cell *matCellDef="let recipe"> {{recipe.nutrFact.salt}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columns"></tr>
+      <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+    </table>
+    <mat-paginator [length]="length" pageSize="20" showFirstLastButtons></mat-paginator>
+  </div>
+</div>
 </div>

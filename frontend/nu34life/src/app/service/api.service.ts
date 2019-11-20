@@ -259,14 +259,14 @@ export class ApiService {
       );
   }
 
-  getRecipes(query: string, sort: string, order: string, page: number, perPage: number, id: number): Observable<Page<Food>> {
+  getRecipes(query: string, sort: string, order: string, page: number, perPage: number, id: number): Observable<Page<Recipe>> {
     const params = new URLSearchParams();
     params.set('sort', sort);
     params.set('order', order);
     params.set('page', page.toString());
     console.log(params.toString());
 
-    return this.http.get<Page<Food>>(ENDPOINTS.recipes.PAGE_RECIPES + '?' + params.toString());
+    return this.http.get<Page<Recipe>>(ENDPOINTS.recipes.PAGE_RECIPES + '?' + params.toString());
   }
 
   putRecipe(recipe: Recipe) {
