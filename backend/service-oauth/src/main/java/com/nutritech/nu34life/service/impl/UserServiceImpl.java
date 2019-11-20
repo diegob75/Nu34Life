@@ -13,7 +13,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.nutritech.nu34life.client.UserFeignClient;
-import com.nutritech.nu34life.model.entity.Account;
 import com.nutritech.nu34life.service.UserService;
 import com.nutritech.nu34life.util.UserResponse;
 

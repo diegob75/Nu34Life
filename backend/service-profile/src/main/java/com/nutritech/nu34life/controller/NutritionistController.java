@@ -12,9 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nutritech.nu34life.entity.Nutritionist;
-import com.nutritech.nu34life.entity.Patient;
 import com.nutritech.nu34life.service.NutritionistService;
-import com.nutritech.nu34life.service.PatientService;
+
 
 @RestController
 @RequestMapping("/nutritionist")
