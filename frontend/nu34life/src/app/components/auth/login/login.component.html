@@ -1,6 +1,6 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>Login</mat-card-title>
+    <mat-card-title >Login</mat-card-title>
   </mat-card-header>
   <mat-card-content>
 
@@ -12,9 +12,13 @@
       <mat-form-field>
         <input #password matInput placeholder="Password" type="password">
       </mat-form-field>
-
+      <div fxLayout="row" class="login-buttons">
       <div class="button">
         <button (click)="login(username.value, password.value)" mat-button>Login</button>
+      </div>
+      <div class="button">
+        <button routerLink="/auth/register" mat-button>Registrarme</button>
+      </div>
       </div>
     </div>
   </mat-card-content>

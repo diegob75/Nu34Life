@@ -13,6 +13,7 @@ mat-card-title,
 mat-card-content {
   display: flex;
   justify-content: center;
+  text-align : center;
 }
 
 .error {
@@ -26,3 +27,8 @@ mat-card-content {
   width: 100px!important;
   min-width: unset!important;
 }
+
+.login-buttons{
+  justify-content: center;
+}
+

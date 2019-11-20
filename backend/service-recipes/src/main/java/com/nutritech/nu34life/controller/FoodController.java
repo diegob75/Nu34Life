@@ -46,6 +46,8 @@ public class FoodController {
 
 		Sort sort = Sort.unsorted();
 
+		System.out.println(userId);
+		
 		if (column != null) {
 			sort = Sort.by(column).ascending();
 			if (order.equalsIgnoreCase("desc"))
