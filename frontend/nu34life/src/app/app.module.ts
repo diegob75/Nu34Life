@@ -15,15 +15,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {FlexLayoutModule} from '@angular/flex-layout';
 
-import {
-  MatButtonModule,
-  MatCardModule,
-  MatCheckboxModule, MatDatepickerModule, MatRadioModule,
-  MatFormFieldModule, MatIconModule, MatInputModule,
-  MatListModule,
-  MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatSelectModule, MatSidenavModule, MatSortModule, MatTableModule,
-  MatToolbarModule, NativeDateModule, MatSnackBarModule, MatAutocompleteModule, MatProgressSpinnerModule, MatChipsModule
-} from '@angular/material';
 import {RecipeAddComponent} from './components/recipe/recipe-add/recipe-add.component';
 import {HomeComponent} from './components/home/home.component';
 import {DatePipe, LocationStrategy, PathLocationStrategy} from '@angular/common';
@@ -43,10 +34,11 @@ import {Recipes2Component} from './components/recipe/recipes/recipes.component';
 import {AffiliateComponent} from './components/patient/affiliate/affiliate.component';
 import {ModalComponent} from './components/recipe/dish/modal/modal.component';
 import {LoginComponent} from './components/auth/login/login.component';
-import { PatientCreateComponent } from './components/patient/patient-create/patient-create.component';
-import { FoodCreateComponent } from './components/food/food-create/food-create.component';
+import {PatientCreateComponent} from './components/patient/patient-create/patient-create.component';
+import {FoodCreateComponent} from './components/food/food-create/food-create.component';
 import {FoodsComponent} from './components/food/foods/foods.component';
-import { ClientsComponent } from './components/patient/clients/clients.component';
+import {ClientsComponent} from './components/patient/clients/clients.component';
+import {AppMaterialModule} from './app-material.module';
 
 
 @NgModule({
@@ -83,31 +75,10 @@ import { ClientsComponent } from './components/patient/clients/clients.component
     HttpClientModule,
     BrowserAnimationsModule,
     DragDropModule,
-    MatCardModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatMenuModule,
-    MatCheckboxModule,
-    MatListModule,
-    MatFormFieldModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    NativeDateModule,
-    MatInputModule,
-    MatSelectModule,
     ReactiveFormsModule,
-    MatIconModule,
-    MatSidenavModule,
     FlexLayoutModule,
     AvatarModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatRadioModule,
-    MatSnackBarModule,
-    MatAutocompleteModule,
-    MatProgressSpinnerModule,
-    MatChipsModule
+    AppMaterialModule
   ],
   providers: [
     DatePipe,
