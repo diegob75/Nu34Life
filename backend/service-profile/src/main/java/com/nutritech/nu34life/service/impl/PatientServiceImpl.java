@@ -102,5 +102,10 @@ public class PatientServiceImpl implements PatientService{
 		patientRepository.save(p);
 		return true;
 	}
+	
+	@Override
+	public List<Patient> findPatientAffiliated(Long id){
+		return patientRepository.getAffiliatedPatient(id);
+	}
 
 }

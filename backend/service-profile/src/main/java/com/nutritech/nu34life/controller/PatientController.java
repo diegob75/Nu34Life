@@ -10,6 +10,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -52,8 +53,18 @@ public class PatientController {
 		return patientService.getById(id);
 	}
 	
+	@GetMapping(path="/byNutritionist/{id}")
+	public List<Patient> findByNutritionist(@PathVariable Long id){
+		return patientService.findPatientAffiliated(id);
+	}
+	
 	@PostMapping
 	public Patient savePatient(@RequestBody Patient requestBody) {
+		return patientService.save(requestBody);
+	}
+	
+	@PutMapping
+	public Patient updatePatient(@RequestBody Patient requestBody) {
 		return patientService.save(requestBody);
 	}
 	
@@ -74,4 +85,5 @@ public class PatientController {
 		
 		return patientService.deaffiliate(patientId, nutritionistId);
 	}
+	
 }

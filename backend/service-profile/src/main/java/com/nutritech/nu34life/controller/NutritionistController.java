@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,6 +39,12 @@ public class NutritionistController {
 	public Nutritionist saveNutritionist(@RequestBody Nutritionist requestBody) {
 		return nutritionistService.save(requestBody);
 	}
+	
+	@PutMapping
+	public Nutritionist updateNutritionist(@RequestBody Nutritionist requestBody) {
+		return nutritionistService.save(requestBody);
+	}
+	
 	@GetMapping(path="/byUserId/{id}")
 	public Nutritionist getByUserId(@PathVariable Long id) {
 		return nutritionistService.findByUserId(id);

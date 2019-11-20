@@ -53,7 +53,7 @@ public class RecipeController {
 	}
 	
 	@GetMapping("/pageable")
-	public Page<Recipe> getFoods(@RequestParam(value = "q", defaultValue = "") String query,
+	public Page<Recipe> getRecipes(@RequestParam(value = "q", defaultValue = "") String query,
 			@RequestParam(value = "sort", required = false) String column,
 			@RequestParam(value = "order", defaultValue = "desc") String order,
 			@RequestParam(value = "page", defaultValue = "0") Integer page,
