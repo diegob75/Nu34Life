@@ -50,6 +50,7 @@ public class UserServiceImpl implements UserService {
 			response.setFirstName(nutritionist.getFirstName());
 			response.setLastName(nutritionist.getLastName());
 			response.setImagen(nutritionist.getImagen());
+			response.setProfileId(nutritionist.getId());
 		}else {
 			response.setProfileCreated(Boolean.FALSE);
 		}

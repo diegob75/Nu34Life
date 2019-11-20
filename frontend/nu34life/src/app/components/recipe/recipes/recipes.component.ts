@@ -1,69 +1,77 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatSort, MatTableDataSource} from '@angular/material';
-import {SelectionModel} from '@angular/cdk/collections';
-import {Recipe} from '../../../model/recipe';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import { of } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {getResource} from '../../../service/aws.service';
 import {ApiService} from '../../../service/api.service';
-import {animate, state, style, transition, trigger} from '@angular/animations';
+import {merge, Observable} from 'rxjs';
+import {catchError, map, startWith, switchMap} from 'rxjs/operators';
+import {Page} from '../../../service/page';
+import {Recipe} from '../../../model/recipe';
+
 
 @Component({
   selector: 'app-recipes2',
   templateUrl: './recipes.component.html',
   styleUrls: ['./recipes.component.scss'],
-  animations: [
-    trigger('detailExpand', [
-      state('collapsed', style({height: '0px', minHeight: '0'})),
-      state('expanded', style({height: '*'})),
-      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
-    ]),
-  ],
 })
-export class Recipes2Component implements OnInit {
+export class Recipes2Component implements AfterViewInit {
 
+  columns = ['image', 'name', 'energeticValue', 'totalFat', 'carbohydrates', 'sugars', 'protein', 'salt'];
   recipes: Recipe[] = [];
-  expandedElement: Recipe | null;
-  columns = [ 'select', 'image', 'name', 'servings', 'actions'];
-  dataSource: MatTableDataSource<Recipe>;
-  selection = new SelectionModel<Recipe>(true, []);
+  isLoadingResults = true;
+  connectionError = false;
+  resultLength = 0;
 
-  get expanded(): boolean {
-    return this.expandedElement != null;
+  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: false}) sort: MatSort;
+
+  constructor(private rest: ApiService,
+              private route: ActivatedRoute,
+              private router: Router) { }
+
+  ngAfterViewInit(): void {
+    this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
+
+    merge(this.sort.sortChange, this.paginator.page)
+      .pipe(
+        startWith({}),
+        switchMap(() => {
+          this.isLoadingResults = true;
+          return this.rest.getRecipes(null, this.sort.active, this.sort.direction, this.paginator.pageIndex,
+            null, null);
+        }),
+        map((data: Page<Recipe>) => {
+          this.isLoadingResults = false;
+          this.connectionError = false;
+          this.resultLength = data.totalElements;
+
+          return data.content;
+        }),
+        catchError(() => {
+          this.isLoadingResults = false;
+          this.connectionError = true;
+          return of([]);
+        })
+      ).subscribe((data: Recipe[]) => this.recipes = data);
   }
 
-  @ViewChild(MatSort, {static: true}) sort: MatSort;
-
-  constructor(private apiService: ApiService) { }
-
-  ngOnInit() {
-    this.dataSource = new MatTableDataSource<Recipe>([]);
-    this.apiService.getAllRecipes().subscribe(res => {
-      this.recipes = res;
-      this.dataSource = new MatTableDataSource<Recipe>(this.recipes);
-      this.dataSource.sort = this.sort;
-    }, err => {
-      console.log(err);
-    });
+  getPhoto(filename) {
+    return getResource(filename);
   }
 
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  get length(): number {
+    return this.recipes == null ? 0 : this.recipes.length;
   }
 
-  isAllSelected(): boolean {
-    const numSelected = this.selection.selected.length;
-    const numRows = this.dataSource.data.length;
-    return numSelected === numRows;
-  }
+/*  delete(id) {
+    this.rest.deleteProduct(id)
+      .subscribe(res => {
+          this.getProducts();
+        }, (err) => {
+          console.log(err);
+        }
+      );
+  }*/
 
-  masterToggle() {
-    this.isAllSelected() ?
-      this.selection.clear() :
-      this.dataSource.data.forEach(row => this.selection.select(row));
-  }
-
-  checkboxLabel(row?: Recipe): string {
-    if (!row) {
-      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
-    }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id}`;
-  }
 }

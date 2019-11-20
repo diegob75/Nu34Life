@@ -5,6 +5,7 @@ import lombok.Data;
 
 @Data
 public class Nutritionist {
+	private Long id;
     private String firstName;
     private String lastName;
     private String imagen;
