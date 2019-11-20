@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatSort, MatTableDataSource} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
 import {Recipe} from '../../../model/recipe';
-import {ApiService} from '../../../shared/api.service';
+import {ApiService} from '../../../service/api.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({

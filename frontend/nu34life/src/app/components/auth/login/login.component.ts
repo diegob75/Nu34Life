@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {User} from '../../../model/user';
-import {OauthService} from '../../../shared/oauth.service';
+import {OauthService} from '../../../service/oauth.service';
 import {Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material';
 

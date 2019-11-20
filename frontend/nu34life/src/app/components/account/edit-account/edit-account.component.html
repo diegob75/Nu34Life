@@ -1,26 +1,20 @@
 <div fxLayout="column">
-    <mat-card>
-        <mat-card-header>
-          <mat-card-title>Cambiar Contraseña</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
 
-          <div fxLayout="column">
-            <mat-form-field>
-              <input #currentPassword matInput placeholder="Contraseña Actual" type="password">
-            </mat-form-field>
+  <div fxLayout="column">
+    <mat-form-field>
+      <input #currentPassword matInput placeholder="Contraseña Actual" type="password">
+    </mat-form-field>
 
-            <mat-form-field>
-              <input #newPassword matInput placeholder="Contraseña Nueva" type="password">
-            </mat-form-field>
-            <mat-form-field>
-                <input #confirmPassword matInput placeholder="Confirmar Contraseña" type="password">
-            </mat-form-field>
+    <mat-form-field>
+      <input #newPassword matInput placeholder="Contraseña Nueva" type="password">
+    </mat-form-field>
+    <mat-form-field>
+      <input #confirmPassword matInput placeholder="Confirmar Contraseña" type="password">
+    </mat-form-field>
 
-            <div class="button">
-              <button (click)="changePassword(currentPassword.value,newPassword.value,confirmPassword.value)" mat-button>Login</button>
-            </div>
-          </div>
-        </mat-card-content>
-      </mat-card>
+    <div class="button">
+      <button (click)="changePassword(currentPassword.value,newPassword.value,confirmPassword.value)" mat-button>Login
+      </button>
     </div>
+  </div>
+</div>

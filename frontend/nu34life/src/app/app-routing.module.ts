@@ -7,7 +7,6 @@ import {PlanRecipesComponent} from './plan-recipes/plan-recipes.component';
 import {StepsComponent} from './steps/steps.component';
 import {DietsComponent} from './components/diets/diets.component';
 import {FoodAddComponent} from './food-add/food-add.component';
-import {RecipeAddComponent} from './recipe-add/recipe-add.component';
 import {HomeComponent} from './components/home/home.component';
 import {AccountComponent} from './components/account/account.component';
 import {EditAccountComponent} from './components/account/edit-account/edit-account.component';
@@ -20,8 +19,9 @@ import {RegisterComponent} from './components/auth/register/register.component';
 import {PatientsComponent} from './components/patient/patients/patients.component';
 import {Recipes2Component} from './components/recipe/recipes/recipes.component';
 import {LoginComponent} from './components/auth/login/login.component';
-import {FoodsComponent} from './foods/foods.component';
-import { Food2Component } from './components/food/food.component';
+import {RecipeAddComponent} from './components/recipe/recipe-add/recipe-add.component';
+import {FoodsComponent} from './components/food/foods/foods.component';
+import {FoodCreateComponent} from './components/food/food-create/food-create.component';
 
 const routes: Routes = [
   {
@@ -66,7 +66,7 @@ const routes: Routes = [
   },
   {
     path: 'foods',
-    component: Food2Component,
+    component: FoodsComponent,
     data: {title: 'Foods List'}
   },
   {
@@ -80,7 +80,6 @@ const routes: Routes = [
     children: [
       {path: 'edit-account', component: EditAccountComponent, data: { title: 'Editar cuenta'}},
       {path: 'edit-profile', component: EditProfileComponent, data: { title: 'Editar Perfil'}},
-      {path: 'edit-payment', component: EditPaymentComponent, data: { title: 'Editar métodos de pago'}},
       {path: 'close-account', component: CloseAccountComponent, data: { title: 'Cerrar cuenta'}}
     ]
   },
@@ -106,7 +105,7 @@ const routes: Routes = [
   },
   {
     path: 'food-add',
-    component: FoodAddComponent,
+    component: FoodCreateComponent,
     data: { title: 'Food Add' }
   },
   {

@@ -5,7 +5,7 @@ import {Patient} from '../../../model/patient';
 import {SelectionModel} from '@angular/cdk/collections';
 import {MockResources} from '../../../mocks/mock-resources';
 import {AffiliateComponent} from '../affiliate/affiliate.component';
-import {ApiService} from '../../../shared/api.service';
+import {ApiService} from '../../../service/api.service';
 
 @Component({
   selector: 'app-patients',
@@ -26,11 +26,12 @@ export class PatientsComponent implements OnInit {
               private dialog: MatDialog) { }
 
   ngOnInit() {
+    this.dataSource = new MatTableDataSource<Patient>(this.patients);
+    this.dataSource.sort = this.sort;
     this.apiService.getAllPatients().subscribe(res => {
       console.log(res);
       this.patients = res;
       this.dataSource = new MatTableDataSource<Patient>(this.patients);
-      this.dataSource.sort = this.sort;
     }, err => {
 
     });
@@ -43,6 +44,10 @@ export class PatientsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(res => {
 
     });
+  }
+
+  get length(): number {
+    return this.patients == null ? 0 : this.patients.length;
   }
 
   applyFilter(filterValue: string) {

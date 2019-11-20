@@ -1,0 +1,67 @@
+<div class="recipe-body">
+    <button mat-mini-fab  routerLink="/food-add">
+      <mat-icon>add</mat-icon>
+    </button>
+  <h1>Alimentos</h1>
+  <div class="recipe-dashboard">
+    <div class="example-loading-shade"
+         *ngIf="isLoadingResults || connectionError">
+      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+      <div class="example-rate-limit-reached" *ngIf="connectionError">
+      </div>
+    </div>
+    <div class="recipe-table">
+      <table mat-table [dataSource]="foods" matSort
+             matSortDisableClear matSortActive="name"
+             matSortDirection="desc">
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>Nombre</th>
+          <td mat-cell *matCellDef="let food"> {{food.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="image">
+          <th mat-header-cell *matHeaderCellDef> </th>
+          <td mat-cell *matCellDef="let food">
+            <ngx-avatar size="35" [src]="getPhoto(food.image)"></ngx-avatar>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="energeticValue">
+          <th mat-header-cell *matHeaderCellDef>Valor energetico</th>
+          <td mat-cell *matCellDef="let food"> {{food.nutrFact.energeticValue}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="totalFat">
+          <th mat-header-cell *matHeaderCellDef>Grasas totales</th>
+          <td mat-cell *matCellDef="let food"> {{food.nutrFact.totalFat}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="carbohydrates">
+          <th mat-header-cell *matHeaderCellDef>Carbohidratos</th>
+          <td mat-cell *matCellDef="let food"> {{food.nutrFact.carbohydrates}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="sugars">
+          <th mat-header-cell *matHeaderCellDef>Azucares</th>
+          <td mat-cell *matCellDef="let food"> {{food.nutrFact.sugars}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="protein">
+          <th mat-header-cell *matHeaderCellDef>Proteinas</th>
+          <td mat-cell *matCellDef="let food"> {{food.nutrFact.protein}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="salt">
+          <th mat-header-cell *matHeaderCellDef>Sal</th>
+          <td mat-cell *matCellDef="let food"> {{food.nutrFact.salt}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columns"></tr>
+        <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+      </table>
+      <mat-paginator [length]="length" pageSize="20" showFirstLastButtons></mat-paginator>
+    </div>
+  </div>
+</div>

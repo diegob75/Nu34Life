@@ -5,7 +5,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app-routing.module';
 
 import {AppComponent} from './app.component';
-import {FoodsComponent} from './foods/foods.component';
 import {IngredientsComponent} from './ingredients/ingredients.component';
 import {NutritionFactsComponent} from './nutritionfacts/nutritionfacts.component';
 import {PlanRecipesComponent} from './plan-recipes/plan-recipes.component';
@@ -28,10 +27,10 @@ import {
   MatFormFieldModule, MatIconModule, MatInputModule,
   MatListModule,
   MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatSelectModule, MatSidenavModule, MatSortModule, MatTableModule,
-  MatToolbarModule, NativeDateModule, MatSnackBarModule
+  MatToolbarModule, NativeDateModule, MatSnackBarModule, MatAutocompleteModule, MatProgressSpinnerModule
 } from '@angular/material';
 import {FoodAddComponent} from './food-add/food-add.component';
-import {RecipeAddComponent} from './recipe-add/recipe-add.component';
+import {RecipeAddComponent} from './components/recipe/recipe-add/recipe-add.component';
 import {HomeComponent} from './components/home/home.component';
 import {DatePipe, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import {AvatarModule} from 'ngx-avatar';
@@ -51,7 +50,10 @@ import {Recipes2Component} from './components/recipe/recipes/recipes.component';
 import {AffiliateComponent} from './components/patient/affiliate/affiliate.component';
 import {ModalComponent} from './components/recipe/dish/modal/modal.component';
 import {LoginComponent} from './components/auth/login/login.component';
-import { Food2Component } from './components/food/food.component';
+import { PatientCreateComponent } from './components/patient/patient-create/patient-create.component';
+import { FoodCreateComponent } from './components/food/food-create/food-create.component';
+import {FoodsComponent} from './components/food/foods/foods.component';
+import { ClientsComponent } from './components/patient/clients/clients.component';
 
 
 @NgModule({
@@ -84,7 +86,9 @@ import { Food2Component } from './components/food/food.component';
     Recipes2Component,
     AffiliateComponent,
     LoginComponent,
-    Food2Component,
+    PatientCreateComponent,
+    FoodCreateComponent,
+    ClientsComponent,
   ],
   imports: [
     FormsModule,
@@ -114,7 +118,9 @@ import { Food2Component } from './components/food/food.component';
     MatPaginatorModule,
     MatSortModule,
     MatRadioModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatAutocompleteModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     DatePipe,

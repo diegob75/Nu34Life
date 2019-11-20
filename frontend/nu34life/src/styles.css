@@ -9,3 +9,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .card-dialog .mat-dialog-container {
   padding: 0;
 }
+input[type="file"] {
+  display: none;
+}
+.file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  width: 100px;
+}

@@ -9,11 +9,14 @@
       </a>
     </div>
     <div class="bar-menu">
+      <button mat-icon-button (click)="myPatients.toggle()">
+        <mat-icon>people_alt</mat-icon>
+      </button>
       <ngx-avatar size="40" [matMenuTriggerFor]="account" [src]="avatar" [name]="name"></ngx-avatar>
       <mat-menu #account="matMenu" xPosition="before">
         <button mat-menu-item routerLink="/account/edit-account">Editar Perfil</button>
         <button mat-menu-item routerLink="/account/edit-account">Cambiar Contraseña</button>
-        <button mat-menu-item routerLink="/account/close-account">Log out</button>
+        <button mat-menu-item routerLink="/logout" (click)="logout()">Log out</button>
       </mat-menu>
 
     </div>
@@ -29,10 +32,10 @@
             <a mat-list-item (click)="sidenav.toggle()" routerLink="/patients">Mis pacientes</a>
           </mat-list-item>
           <mat-list-item fxLayout="column">
-            <a mat-list-item (click)="sidenav.toggle()" routerLink="/home">Agregar</a>
+            <a mat-list-item (click)="sidenav.toggle()" routerLink="/patients/add">Agregar</a>
           </mat-list-item>
           <mat-list-item fxLayout="column">
-            <a mat-list-item (click)="sidenav.toggle()" routerLink="/home">Buscar Paciente</a>
+            <a mat-list-item (click)="sidenav.toggle()" routerLink="/patients">Buscar Paciente</a>
           </mat-list-item>
         </div>
         <p matSubheader>Recetas</p>
@@ -67,5 +70,7 @@
     <mat-sidenav-content fxFlexFill>
       <ng-content></ng-content>
     </mat-sidenav-content>
+    <mat-sidenav #myPatients position="end">
+    </mat-sidenav>
   </mat-sidenav-container>
 </div>

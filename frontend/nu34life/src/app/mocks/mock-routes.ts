@@ -1,4 +1,4 @@
-import {ApiRoutes} from '../shared/api-routes';
+import {ApiRoutes} from '../service/api-routes';
 
 // ROUTE
 export const MOCK_ROUTES: ApiRoutes = {

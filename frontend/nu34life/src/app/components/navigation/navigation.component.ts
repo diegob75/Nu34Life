@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {MockResources} from '../../mocks/mock-resources';
+import {OauthService} from '../../service/oauth.service';
 
 @Component({
   selector: 'app-navigation',
@@ -11,7 +12,7 @@ export class NavigationComponent implements OnInit {
 
   opened: boolean;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private authService: OauthService) {
     router.events.subscribe(e => {
       if (e instanceof NavigationEnd) {
         this.opened = false;
@@ -27,5 +28,9 @@ export class NavigationComponent implements OnInit {
   }
   get avatar() {
     return MockResources.avatar();
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

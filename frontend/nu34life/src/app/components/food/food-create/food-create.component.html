@@ -1,0 +1,49 @@
+<div class="wrapper">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        Crear Alimento
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+      <div fxLayout="column">
+        <mat-form-field>
+          <input [(ngModel)]="food.name" matInput placeholder="Nombre" type="text">
+        </mat-form-field>
+
+        <label class="file-upload">
+          <input (change)="fileEvent($event)" id="imageUpload" name="imageUpload" type="file"/>
+          Subir imagen
+        </label>
+
+        <mat-form-field>
+          <input [(ngModel)]="food.nutrFact.energeticValue" matInput placeholder="Valor energetico" type="text">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input [(ngModel)]="food.nutrFact.totalFat" matInput placeholder="Grasa total" type="text">
+        </mat-form-field>
+        <mat-form-field>
+          <input [(ngModel)]="food.nutrFact.saturatedFats" matInput placeholder="Grasas saturadas" type="text">
+        </mat-form-field>
+        <mat-form-field>
+          <input [(ngModel)]="food.nutrFact.carbohydrates" matInput placeholder="Carbohidratos" type="text">
+        </mat-form-field>
+        <mat-form-field>
+          <input [(ngModel)]="food.nutrFact.sugars" matInput placeholder="Azucares" type="text">
+        </mat-form-field>
+        <mat-form-field>
+          <input [(ngModel)]="food.nutrFact.protein" matInput placeholder="Proteina" type="text">
+        </mat-form-field>
+        <mat-form-field>
+          <input [(ngModel)]="food.nutrFact.salt" matInput placeholder="Sal" type="text">
+        </mat-form-field>
+      </div>
+      <mat-card-actions align="end">
+        <button mat-raised-button (click)="cancel()">Cancelar</button>
+        <button color="primary" mat-raised-button (click)="saveFood()">Crear</button>
+      </mat-card-actions>
+    </mat-card-content>
+  </mat-card>
+</div>

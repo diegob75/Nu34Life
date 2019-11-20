@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AwsService} from '../../../service/aws.service';
 
 @Component({
   selector: 'app-edit-profile',
@@ -7,11 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditProfileComponent implements OnInit {
 
-  constructor() { }
+  file: string;
+  firstName: string;
+  lastName: string;
+
+  constructor(private awsService: AwsService) { }
 
   ngOnInit() {
   }
-  registro(username, password,name,lastname,email){
-    // TO DO REGISTRO :v
+  fileEvent(input) {
+    this.file = this.awsService.uploadFile(input.target.files);
+    console.log(this.file);
+  }
+
+  updateProfile(){
+
   }
 }

@@ -2,11 +2,12 @@ import {Component, OnInit} from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import {DietDetail} from '../../model/diet-detail';
 import {Meal} from '../../model/meal';
-import {ApiService} from '../../shared/api.service';
+import {ApiService} from '../../service/api.service';
 import {Recipe} from '../../model/recipe';
 import {MatDialog} from '@angular/material';
 import {ModalComponent} from '../recipe/dish/modal/modal.component';
 import {DietPlanner, mapDiet, MealSchedule} from './diet-planner';
+import {Patient} from '../../model/patient';
 
 @Component({
   selector: 'app-diets',
@@ -19,6 +20,8 @@ export class DietsComponent implements OnInit {
   meals: Meal[];
   dietPlanner: DietPlanner;
   selected: MealSchedule;
+
+  patients: Patient[];
 
   // REMOVE?
   recipesList: Recipe[];
@@ -44,6 +47,15 @@ export class DietsComponent implements OnInit {
 
   selectMeal(mealSch: MealSchedule) {
     this.selected = mealSch;
+  }
+
+  loadPatients() {
+    const id = 0;
+    this.apiService.getAffiliatedPatients(id).subscribe(res => {
+
+    }, err => {
+      console.log(err);
+    });
   }
 
   loadMeals() {
