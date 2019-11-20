@@ -25,17 +25,19 @@ export class RegisterComponent implements OnInit {
     user.firstName = name;
     user.lastName = lastName;
     user.email = email;
-
+    console.log(user);
     this.apiService.registerNutritionist(user)
       .subscribe(
-        product => {
-          this.router.navigate(['/products']);
-          swal.fire('Nuevo Producto', `El product ${product.name} ha sido creado con éxito`, 'success');
+        user => {
+          this.router.navigate(['/login']);
         },
         err => {
           this.errors = err.error.errors as string[];
           console.error('Código del error desde el backend: ' + err.status);
           console.error(err.error.errors);
+          if(err.status == 504){
+            this.router.navigate(['/login']);
+          }
         }
       );
   }

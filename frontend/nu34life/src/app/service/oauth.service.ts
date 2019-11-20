@@ -39,7 +39,7 @@ export class OauthService {
 
   login(user: User): Observable<any> {
 
-    const urlEndpoint = 'http://localhost:8090/service-oauth/oauth/token';
+    const urlEndpoint = 'http://localhost:8090/api/service-oauth/oauth/token';
 
     const credentials = btoa('frontendapp' + ':' + '12345');
 
@@ -63,7 +63,9 @@ export class OauthService {
     this._user.lastName = payload.lastName;
     this._user.email = payload.email;
     this._user.username = payload.user_name;
+    this._user.id = payload.id;
     this._user.roles = payload.authorities;
+    console.log(payload);
     sessionStorage.setItem('user', JSON.stringify(this._user));
   }
 

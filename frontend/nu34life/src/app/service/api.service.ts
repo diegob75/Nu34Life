@@ -311,17 +311,19 @@ export class ApiService {
   }
 
   registerNutritionist(user: User): Observable<User> {
+    console.log(user);
     return this.http.post(ENDPOINTS.users.REGISTER_NUTRITIONIST, user)
       .pipe(
-        map((response: any) => response.user as User),
+        map((response: any) => response as User),
         catchError(e => {
+         
           if (e.status == 400) {
             swal.fire('Usted no posee permisos para esta accion', 'error');
             return throwError(e);
           }
 
           console.error(e.error.mensaje);
-          swal.fire(e.error.mensaje, e.error.error, 'error');
+          console.log(user);
           return throwError(e);
         })
       );

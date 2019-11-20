@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     let user = new User();
     user.username = username;
     user.password = password;
-
+    console.log(user);
     this.authService.login(user).subscribe(response => {
         console.log(response);
         this.authService.saveUser(response.access_token);
@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
           console.log(err);
           this.message('Usuario o contraseña oncorrecta', 'Ok');
         }
+        console.log(user);
       }
     );
   }
