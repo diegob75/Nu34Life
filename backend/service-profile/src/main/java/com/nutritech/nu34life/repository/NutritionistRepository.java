@@ -7,5 +7,5 @@ import com.nutritech.nu34life.entity.Nutritionist;
 
 @Repository
 public interface NutritionistRepository extends JpaRepository<Nutritionist, Long>{
-	
+	Nutritionist findByUserId(Long id);
 }

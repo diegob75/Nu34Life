@@ -46,4 +46,22 @@ public class Affiliation {
 
     @Column
     LocalDateTime terminationDate; 
+    
+    public Affiliation() {}
+
+	public Affiliation(Long id, Long nutritionistId, Long patientId, Nutritionist nutritionist, Patient patient,
+			Boolean confirmed, Boolean active, LocalDateTime creationDate, LocalDate affiliationDate,
+			LocalDateTime terminationDate) {
+		super();
+		this.id = id;
+		this.nutritionistId = nutritionistId;
+		this.patientId = patientId;
+		this.nutritionist = nutritionist;
+		this.patient = patient;
+		this.confirmed = confirmed;
+		this.active = active;
+		this.creationDate = creationDate;
+		this.affiliationDate = affiliationDate;
+		this.terminationDate = terminationDate;
+	}
 }

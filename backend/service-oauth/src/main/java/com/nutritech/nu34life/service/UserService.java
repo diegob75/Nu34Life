@@ -1,7 +1,8 @@
 package com.nutritech.nu34life.service;
 
 import com.nutritech.nu34life.model.entity.Account;
+import com.nutritech.nu34life.util.UserResponse;
 
 public interface UserService {
-	public Account findByUsername(String username);
+	public UserResponse findByUsername(String username);
 }

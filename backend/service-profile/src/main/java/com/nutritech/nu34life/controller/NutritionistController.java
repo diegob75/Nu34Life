@@ -38,6 +38,10 @@ public class NutritionistController {
 	public Nutritionist saveNutritionist(@RequestBody Nutritionist requestBody) {
 		return nutritionistService.save(requestBody);
 	}
+	@GetMapping(path="/byUserId/{id}")
+	public Nutritionist getByUserId(@PathVariable Long id) {
+		return nutritionistService.findByUserId(id);
+	}
 
 	
 	

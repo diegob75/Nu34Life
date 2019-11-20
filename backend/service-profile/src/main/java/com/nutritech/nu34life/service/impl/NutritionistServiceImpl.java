@@ -33,4 +33,10 @@ public class NutritionistServiceImpl implements NutritionistService {
 		return nutritionistRepository.save(entity);
 	}
 
+	@Override
+	public Nutritionist findByUserId(Long id) {
+		// TODO Auto-generated method stub
+		return nutritionistRepository.findByUserId(id);
+	}
+
 }
