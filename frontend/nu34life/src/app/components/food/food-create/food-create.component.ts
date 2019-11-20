@@ -35,8 +35,10 @@ export class FoodCreateComponent implements OnInit {
   }
 
   saveFood() {
+    const user = JSON.parse(sessionStorage.getItem('user'));
+
+    this.food.createdBy = user.id;
     this.food.image = this.file;
-    this.food.createdBy = 0;
     console.log(JSON.stringify(this.food, null, 2));
     this.apiService.postFood(this.food).subscribe(food => {
       this.router.navigate(['/foods']);

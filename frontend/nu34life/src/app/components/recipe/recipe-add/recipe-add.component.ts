@@ -60,13 +60,11 @@ export class RecipeAddComponent implements OnInit {
     this.file = this.awsService.uploadFile(input.target.files);
     console.log(this.file);
   }
-
-
-
 }
 
 const mapSteps = (text: string): RecipeStep[] => {
   const arr = text.split('\n\n');
-  return arr.map((x, i) => ({ instruction: x, stepNumber: i +1 })) as RecipeStep[];
+  return arr.map((x, i) => ({ instruction: x, stepNumber: i + 1 })) as RecipeStep[];
 }
+
 
