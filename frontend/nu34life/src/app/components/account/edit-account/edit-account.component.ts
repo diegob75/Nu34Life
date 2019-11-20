@@ -11,7 +11,7 @@ export class EditAccountComponent implements OnInit {
 
   ngOnInit() {
   }
-  cambiarContraseña(actualPassword,newPassword,confirmPassword){
+  changePassword(actualPassword, newPassword, confirmPassword){
     // TO DO CAMBIAR CONTRASEÑA :v
   }
 
