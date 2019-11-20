@@ -10,7 +10,6 @@ import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.stereotype.Component;
 
-import com.nutritech.nu34life.model.entity.Account;
 import com.nutritech.nu34life.service.UserService;
 import com.nutritech.nu34life.util.UserResponse;
 

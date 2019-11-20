@@ -7,7 +7,6 @@ import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.nutritech.nu34life.util.Account;
 
-import java.util.List;
 
 @Data
 @Entity
