@@ -101,7 +101,7 @@ public class UserServiceImpl implements UserService {
 	public Account updateAndCreatePatient(UserRequest request) {
 		Account account = new Account();
 		Role role = new Role();
-		role.setId(Long.valueOf(1));
+		role.setId(Long.valueOf(2));
 		List<Role> roles = new ArrayList<>();
 		roles.add(role);
 		account.setRoles(roles);
