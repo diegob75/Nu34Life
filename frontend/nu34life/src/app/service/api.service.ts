@@ -4,10 +4,10 @@ import {Observable, throwError} from 'rxjs';
 import {Recipe} from '../model/recipe';
 import {Meal} from '../model/meal';
 import {Diet} from '../model/diet';
-import {API_ROUTES, ApiRoutes} from './api-routes';
+import {API_ROUTES, ApiRoutes} from '../shared/api-routes';
 import {Patient} from '../model/patient';
 import {Food} from '../model/food';
-import {Page} from './page';
+import {Page} from '../shared/page';
 import swal from 'sweetalert2';
 import {OauthService} from './oauth.service';
 import {Router} from '@angular/router';
@@ -316,7 +316,7 @@ export class ApiService {
       .pipe(
         map((response: any) => response as User),
         catchError(e => {
-         
+
           if (e.status == 400) {
             swal.fire('Usted no posee permisos para esta accion', 'error');
             return throwError(e);

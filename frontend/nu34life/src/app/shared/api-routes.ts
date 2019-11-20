@@ -17,9 +17,10 @@ export const API_ROUTES: ApiRoutes = {
     PAGE_FOOD: `${BASE_URL_RECIPE}/foods/pageable`,
     POST_FOOD: `${BASE_URL_RECIPE}/foods`,
     PUT_FOOD: `${BASE_URL_RECIPE}/foods`,
-    DEACTIVATE_FOOD:`${BASE_URL_RECIPE}/foods`},
+    DEACTIVATE_FOOD: `${BASE_URL_RECIPE}/foods`
+  },
   nutritionists: {
-    GET_NUTRITIONIST_BY_ID: `${BASE_URL_PROFILE}/nutritionist`, 
+    GET_NUTRITIONIST_BY_ID: `${BASE_URL_PROFILE}/nutritionist`,
     POST_NUTRITIONIST: `${BASE_URL_PROFILE}/nutritionist`,
     PUT_NUTRITIONIST: `${BASE_URL_PROFILE}/nutritionist`,
     GET_NUTRITIONISTS: `${BASE_URL_PROFILE}/nutritionist`,
@@ -27,7 +28,7 @@ export const API_ROUTES: ApiRoutes = {
   oauth: {},
   users: {
     REGISTER_NUTRITIONIST: `${BASE_URL_USER}/users/registerNutritionist`,
-    REGISTER_PATIENT: `${BASE_URL_USER}/users/registerPatient`   
+    REGISTER_PATIENT: `${BASE_URL_USER}/users/registerPatient`
   },
   diets: {
     GET_DIETS: `${BASE_URL_DIET}/diets`,
@@ -51,7 +52,7 @@ export const API_ROUTES: ApiRoutes = {
     PUT_PATIENT: `${BASE_URL_PROFILE}/patients`,
     GET_PATIENTS_AFFILIATED: `${BASE_URL_PROFILE}/patients/byNutritionist`,
     POST_PATIENT: `${BASE_URL_PROFILE}/patients`,
-    GET_PATIENT_BY_ID:`${BASE_URL_PROFILE}/patients`
+    GET_PATIENT_BY_ID: `${BASE_URL_PROFILE}/patients`
 
   }
 };

@@ -7,7 +7,7 @@ import {getResource} from '../../../service/aws.service';
 import {ApiService} from '../../../service/api.service';
 import {merge, Observable} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
-import {Page} from '../../../service/page';
+import {Page} from '../../../shared/page';
 @Component({
   selector: 'app-foods',
   templateUrl: './foods.component.html',

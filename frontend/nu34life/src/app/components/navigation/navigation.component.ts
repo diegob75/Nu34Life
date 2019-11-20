@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {MockResources} from '../../mocks/mock-resources';
 import {OauthService} from '../../service/oauth.service';
 
 @Component({
@@ -24,10 +23,10 @@ export class NavigationComponent implements OnInit {
 
   }
   get name() {
-    return MockResources.nutritionist();
+    return '';
   }
   get avatar() {
-    return MockResources.avatar();
+    return '';
   }
 
   logout() {

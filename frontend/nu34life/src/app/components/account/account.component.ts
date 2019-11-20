@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {MockResources} from '../../mocks/mock-resources';
 import {Nutritionist} from '../../model/nutritionist';
 
 @Component({
@@ -17,9 +16,9 @@ export class AccountComponent implements OnInit {
   }
 
   get name() {
-    return MockResources.nutritionist();
+    return 'MockResources.nutritionist();';
   }
   get avatar() {
-    return MockResources.avatar();
+    return 'MockResources.avatar();';
   }
 }

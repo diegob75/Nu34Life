@@ -3,8 +3,6 @@ import {MatDialog, MatTableDataSource} from '@angular/material';
 import {MatSort} from '@angular/material/sort';
 import {Patient} from '../../../model/patient';
 import {SelectionModel} from '@angular/cdk/collections';
-import {MockResources} from '../../../mocks/mock-resources';
-import {AffiliateComponent} from '../affiliate/affiliate.component';
 import {ApiService} from '../../../service/api.service';
 import {Router} from '@angular/router';
 

@@ -5,11 +5,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app-routing.module';
 
 import {AppComponent} from './app.component';
-import {IngredientsComponent} from './ingredients/ingredients.component';
-import {NutritionFactsComponent} from './nutritionfacts/nutritionfacts.component';
-import {PlanRecipesComponent} from './plan-recipes/plan-recipes.component';
-import {RecipesComponent} from './recipes/recipes.component';
-import {StepsComponent} from './steps/steps.component';
 
 import {DietsComponent} from './components/diets/diets.component';
 import {NavigationComponent} from './components/navigation/navigation.component';
@@ -29,7 +24,6 @@ import {
   MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatSelectModule, MatSidenavModule, MatSortModule, MatTableModule,
   MatToolbarModule, NativeDateModule, MatSnackBarModule, MatAutocompleteModule, MatProgressSpinnerModule, MatChipsModule
 } from '@angular/material';
-import {FoodAddComponent} from './food-add/food-add.component';
 import {RecipeAddComponent} from './components/recipe/recipe-add/recipe-add.component';
 import {HomeComponent} from './components/home/home.component';
 import {DatePipe, LocationStrategy, PathLocationStrategy} from '@angular/common';
@@ -41,7 +35,6 @@ import {EditPaymentComponent} from './components/account/edit-payment/edit-payme
 import {CloseAccountComponent} from './components/account/close-account/close-account.component';
 import {EditProfileComponent} from './components/account/edit-profile/edit-profile.component';
 import {NotFoundComponent} from './components/not-found/not-found.component';
-import {RecipeDetailComponent} from './recipe-detail/recipe-detail.component';
 import {RegisterComponent} from './components/auth/register/register.component';
 import {DishComponent} from './components/recipe/dish/dish.component';
 import {PatientsComponent} from './components/patient/patients/patients.component';
@@ -64,12 +57,6 @@ import { ClientsComponent } from './components/patient/clients/clients.component
     ModalComponent,
     DishComponent,
     FoodsComponent,
-    IngredientsComponent,
-    NutritionFactsComponent,
-    PlanRecipesComponent,
-    RecipesComponent,
-    StepsComponent,
-    FoodAddComponent,
     RecipeAddComponent,
     HomeComponent,
     PatientsComponent,
@@ -80,7 +67,6 @@ import { ClientsComponent } from './components/patient/clients/clients.component
     CloseAccountComponent,
     EditProfileComponent,
     NotFoundComponent,
-    RecipeDetailComponent,
     RegisterComponent,
     FactsComponent,
     Recipes2Component,
