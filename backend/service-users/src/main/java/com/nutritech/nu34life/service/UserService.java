@@ -16,4 +16,6 @@ public interface UserService {
 	
 	Account updateAndCreatePatient(UserRequest requestBody);
 	
+	Boolean validateUser(Long id);
+	
 }

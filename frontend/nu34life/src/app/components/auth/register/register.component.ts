@@ -35,9 +35,8 @@ export class RegisterComponent implements OnInit {
           this.errors = err.error.errors as string[];
           console.error('Código del error desde el backend: ' + err.status);
           console.error(err.error.errors);
-          if(err.status == 504){
-            this.router.navigate(['/login']);
-          }
+          this.router.navigate(['/auth/login']);
+         
         }
       );
   }

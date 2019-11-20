@@ -16,6 +16,26 @@ export class OauthService {
   constructor(private http: HttpClient) {
   }
 
+  public get idUser(): number {
+    if (this._user != null) {
+      return this._user.id;
+    } else if (this._user == null && sessionStorage.getItem('user') != null) {
+      this._user = JSON.parse(sessionStorage.getItem('user')) as User;
+      return this._user.id;
+    }
+    return 0;
+  }
+
+  public get profileId(): number {
+    if (this._user != null) {
+      return this._user.profileId;
+    } else if (this._user == null && sessionStorage.getItem('user') != null) {
+      this._user = JSON.parse(sessionStorage.getItem('user')) as User;
+      return this._user.profileId;
+    }
+    return 0;
+  }
+
   public get user(): User {
     if (this._user != null) {
       return this._user;
@@ -64,8 +84,11 @@ export class OauthService {
     this._user.email = payload.email;
     this._user.username = payload.user_name;
     this._user.id = payload.id;
+    this._user.profileId = payload.profileId;
     this._user.roles = payload.authorities;
     console.log(payload);
+    console.log('OE MIRA ACA :v');
+    console.log(this._user);
     sessionStorage.setItem('user', JSON.stringify(this._user));
   }
 

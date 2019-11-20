@@ -25,10 +25,13 @@
         <input #email matInput placeholder="Email" type="email">
       </mat-form-field>
 
-      <div class="button">
+      <div fxLayout="row" clas="register-buttons">
         <button (click)="registro(username.value, password.value,name.value,lastName.value,email.value)" mat-button>
-          Login
+          Registrarme
         </button>
+        <a mat-button routerLink="/auth/login">
+          Regresar a Login
+        </a>
       </div>
     </div>
   </mat-card-content>

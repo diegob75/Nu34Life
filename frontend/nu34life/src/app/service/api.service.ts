@@ -171,17 +171,20 @@ export class ApiService {
       );
   }
 
-  getFoods(query: string, sort: string, order: string, page: number, perPage: number, id: number): Observable<Page<Food>> {
+  getFoods(query: string, sort: string, order: string, page: number, perPage: number): Observable<Page<Food>> {
     const params = new URLSearchParams();
     params.set('sort', sort);
     params.set('order', order);
     params.set('page', page.toString());
+    params.set('userId', this.authService.idUser.toString());
     console.log(params.toString());
 
     return this.http.get<Page<Food>>(ENDPOINTS.foods.PAGE_FOOD + '?' + params.toString());
   }
 
   postFood(food: Food) {
+    const user = this.authService.user;
+    food.createdBy = user.id;
     return this.http.post(ENDPOINTS.foods.POST_FOOD, food, {headers: this.addAuthorizationHeader()})
       .pipe(
         map((response: any) => response.food as Food),
