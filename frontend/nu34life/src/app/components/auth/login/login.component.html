@@ -4,16 +4,18 @@
   </mat-card-header>
   <mat-card-content>
 
-        <mat-form-field>
-          <input type="text" matInput placeholder="Username" #username>
-        </mat-form-field>
+    <div fxLayout="column">
+      <mat-form-field>
+        <input #username matInput placeholder="Username" type="text">
+      </mat-form-field>
 
-        <mat-form-field>
-          <input type="password" matInput placeholder="Password" #password>
-        </mat-form-field>
+      <mat-form-field>
+        <input #password matInput placeholder="Password" type="password">
+      </mat-form-field>
 
       <div class="button">
         <button (click)="login(username.value, password.value)" mat-button>Login</button>
       </div>
+    </div>
   </mat-card-content>
 </mat-card>

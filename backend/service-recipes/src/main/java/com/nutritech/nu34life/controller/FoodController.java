@@ -37,7 +37,7 @@ public class FoodController {
 	@GetMapping
 	public Page<Food> getFoods(@RequestParam(value = "q", defaultValue = "") String query,
 			@RequestParam(value = "sort", required = false) String column,
-			@RequestParam(value = "order", defaultValue = "desc") String order,
+			@RequestParam(value = "order", defaultValue = "asc") String order,
 			@RequestParam(value = "page", defaultValue = "0") Integer page,
 			@RequestParam(value = "per_page", defaultValue = "20") Integer size,
 			@RequestParam(value = "userId", defaultValue = "0") Long userId) {
@@ -46,9 +46,9 @@ public class FoodController {
 		Sort sort = Sort.unsorted();
 
 		if (column != null) {
-			sort = Sort.by(column).descending();
-			if (order == "asc")
-				sort = sort.ascending();
+			sort = Sort.by(column).ascending();
+			if (order.equalsIgnoreCase("desc"))
+				sort = sort.descending();
 		}
 
 		Pageable pageable = PageRequest.of(page, size, sort);

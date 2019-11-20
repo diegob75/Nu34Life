@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.nutritech.nu34life.util.Account;
 
 import java.util.List;
@@ -26,11 +27,11 @@ public class Nutritionist {
     @Column
     private String imagen;
 	
+    @JsonIgnore
 	@OneToOne(targetEntity = Account.class)
-	@JoinColumn(name = "user_id")
-	private Account idUser;
-
+	@JoinColumn(name = "user_id", insertable = false, updatable = false)
+	private Account user;
 	
-    @OneToMany(mappedBy = "nutritionist", cascade={CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE}, orphanRemoval = true)
-    private List<Affiliation> patients;
+	@Column(name = "user_id")
+	private Long userId;
 }

@@ -57,7 +57,7 @@ public class FoodServiceImpl implements FoodService{
 
 	@Override
 	public Page<Food> searchFood(Long userId, String query, Pageable pageable) {
-		return foodRepository.findFood(userId, query, pageable);
+		return foodRepository.findFood(userId, query.toLowerCase(), pageable);
 	}
 
 }

@@ -16,41 +16,29 @@ import com.nutritech.nu34life.service.NutritionistService;
 import com.nutritech.nu34life.service.PatientService;
 
 @RestController
-@RequestMapping("/profile")
-public class ProfileController {
+@RequestMapping("/nutritionist")
+public class NutritionistController {
 	@Autowired
 	NutritionistService nutritionistService;
+
 	
-	@Autowired
-	PatientService patientService;
-	
-	@GetMapping(path="/nutritionist")
+	@GetMapping
 	public List<Nutritionist> getAllNutritionist(){
 		return nutritionistService.getAll();
 	}
+
 	
-	@GetMapping(path="/patient")
-	public List<Patient> getAllPatient(){
-		return patientService.getAll();
-	}
-	
-	@GetMapping(path="/nutritionist/{id}")
+	@GetMapping(path="/{id}")
 	public Nutritionist getByIdNutritionist(@PathVariable Long id) {
 		return nutritionistService.getById(id);
 	}
-	@GetMapping(path="/patient/{id}")
-	public Patient getByIdPatient(@PathVariable Long id) {
-		return patientService.getById(id);
-	}
+
 	
-	@PostMapping(path="/nutritionist")
+	@PostMapping
 	public Nutritionist saveNutritionist(@RequestBody Nutritionist requestBody) {
 		return nutritionistService.save(requestBody);
 	}
-	@PostMapping(path="/patient")
-	public Patient savePatient(@RequestBody Patient requestBody) {
-		return patientService.save(requestBody);
-	}
+
 	
 	
 }

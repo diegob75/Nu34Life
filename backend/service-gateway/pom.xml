@@ -12,6 +12,7 @@
 	<groupId>com.nutritech.nu34life</groupId>
 	<artifactId>service-gateway</artifactId>
 	<version>1.0</version>
+	<packaging>jar</packaging>
 	<name>service-gateway</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>

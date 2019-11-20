@@ -1,36 +1,42 @@
 package com.nutritech.nu34life.entity;
 
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
 @Entity
+@Builder
 @Table(name = "affiliations")
 public class Affiliation {
-	@EmbeddedId
-	AffiliationId id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	Long id;
+
+	@Column(name = "nutritionist_id", nullable = false)
+	Long nutritionistId;
 	
-	@JsonProperty(access = Access.WRITE_ONLY)
+	@Column(name = "patient_id", nullable = false)
+	Long patientId;
+	
     @ManyToOne
-    @MapsId("nutritionistId")
-    @JoinColumn(name = "nutritionist_id")
+    @JoinColumn(name = "nutritionist_id", insertable = false, updatable = false)
     Nutritionist nutritionist;
 
-    @JsonProperty(access = Access.WRITE_ONLY)
     @ManyToOne
-    @MapsId("pataientId")
-    @JoinColumn(name = "patient_id")
+    @JoinColumn(name = "patient_id", insertable = false, updatable = false)
     Patient patient;
 
     @Column
     Boolean confirmed;
+    
+    @Column
+    Boolean active;
 
     @Column
     LocalDateTime creationDate;
