@@ -5,9 +5,14 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.nutritech.nu34life.model.entity.*;
+import com.nutritech.nu34life.model.entity.Ingredient;
+import com.nutritech.nu34life.model.entity.NutritionFact;
+import com.nutritech.nu34life.model.entity.Recipe;
 import com.nutritech.nu34life.model.repository.FoodRepository;
 import com.nutritech.nu34life.model.repository.RecipeRepository;
 import com.nutritech.nu34life.service.RecipeService;
@@ -54,10 +59,14 @@ public class RecipeServiceImpl implements RecipeService{
 	@Override
 	public List<Recipe> getAll() {
 		List<Recipe> recipes = recipeRepository.findAll();
-		for(Recipe r : recipes) {
-			r.setIngredients(null);
-			r.setSteps(null);
-			r.setNutrFact(null);
+		if(recipes != null) {
+			for(Recipe r : recipes) {
+				if(r!=null) {
+					r.setIngredients(null);
+					r.setSteps(null);
+					r.setNutrFact(null);
+				}
+			}
 		}
 		return recipes;
 	}
@@ -75,10 +84,14 @@ public class RecipeServiceImpl implements RecipeService{
 	@Override
 	public List<Recipe> getByNameLike(String string){
 		List<Recipe> recipes = recipeRepository.findByNameContainingIgnoreCase(string);
-		for(Recipe r : recipes) {
-			r.setIngredients(null);
-			r.setSteps(null);
-			r.setNutrFact(null);
+		if(recipes != null) {
+			for(Recipe r : recipes) {
+				if (r!=null) {
+					r.setIngredients(null);
+					r.setSteps(null);
+					r.setNutrFact(null);
+				}
+			}
 		}
 		return recipes;
 	}
@@ -111,6 +124,17 @@ public class RecipeServiceImpl implements RecipeService{
 		}
 		entity.setNutrFact(nutrFact);
 		return recipeRepository.save(entity);
+	}
+	
+	@Transactional
+	@Override
+	public Integer deactivateRecipe(Long id, Long userId) {
+		return recipeRepository.deactivateEntry(id, userId);
+	}
+
+	@Override
+	public Page<Recipe> searchRecipe(Long userId, String query, Pageable pageable) {
+		return recipeRepository.findRecipe(userId, query, pageable);
 	}
 
 }

@@ -27,6 +27,9 @@ public class Recipe {
 	@Column(name = "imagen")
 	public String imagen;
 	
+	@Column(name="active")
+	public boolean active;
+	
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "recipe_id")
 	public List<Step> steps;

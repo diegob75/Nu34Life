@@ -11,5 +11,7 @@ export class EditProfileComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  registro(username, password,name,lastname,email){
+    // TO DO REGISTRO :v
+  }
 }

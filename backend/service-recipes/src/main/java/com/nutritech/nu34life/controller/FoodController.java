@@ -33,8 +33,12 @@ public class FoodController {
 	public List<Food> getFoodsByNameLike(@PathVariable String string) {
 		return foodService.getByNameLike(string);
 	}
-
 	@GetMapping
+	public List<Food> getAllFoods(){
+		return foodService.getAll();
+	}
+
+	@GetMapping("/pageable")
 	public Page<Food> getFoods(@RequestParam(value = "q", defaultValue = "") String query,
 			@RequestParam(value = "sort", required = false) String column,
 			@RequestParam(value = "order", defaultValue = "asc") String order,
@@ -65,6 +69,10 @@ public class FoodController {
 
 	@PostMapping
 	public Food createFood(@RequestBody Food requestBody) {
+		return foodService.save(requestBody);
+	}
+	@PutMapping
+	public Food updateFood(@RequestBody Food requestBody) {
 		return foodService.save(requestBody);
 	}
 
