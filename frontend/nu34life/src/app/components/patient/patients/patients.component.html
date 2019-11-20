@@ -11,24 +11,6 @@
     </mat-form-field>
 
     <table [dataSource]="dataSource" mat-table matSort>
-      <!-- Checkbox Column -->
-      <ng-container matColumnDef="select">
-        <th *matHeaderCellDef mat-header-cell>
-          <mat-checkbox (change)="$event ? masterToggle() : null"
-                        [aria-label]="checkboxLabel()"
-                        [checked]="selection.hasValue() && isAllSelected()"
-                        [indeterminate]="selection.hasValue() && !isAllSelected()">
-          </mat-checkbox>
-        </th>
-        <td *matCellDef="let row" mat-cell>
-          <mat-checkbox (change)="$event ? selection.toggle(row) : null"
-                        (click)="$event.stopPropagation()"
-                        [aria-label]="checkboxLabel(row)"
-                        [checked]="selection.isSelected(row)">
-          </mat-checkbox>
-        </td>
-      </ng-container>
-
       <!-- FirstName Column -->
       <ng-container matColumnDef="avatar">
         <th *matHeaderCellDef mat-header-cell mat-sort-header>Paciente</th>

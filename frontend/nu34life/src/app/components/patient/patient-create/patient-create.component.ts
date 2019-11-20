@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Patient} from '../../../model/patient';
 
 @Component({
   selector: 'app-patient-create',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./patient-create.component.scss']
 })
 export class PatientCreateComponent implements OnInit {
+
+  patient: Patient;
 
   constructor() { }
 

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Patient} from '../../../model/patient';
 import {ApiService} from '../../../service/api.service';
+import {getResource} from '../../../service/aws.service';
 
 @Component({
   selector: 'app-clients',
@@ -9,9 +10,10 @@ import {ApiService} from '../../../service/api.service';
 })
 export class ClientsComponent implements OnInit {
 
-  patients: Patient[];
-
   constructor(private apiService: ApiService) { }
+
+  patients: Patient[] = [];
+  @Input() toggle: any;
 
   ngOnInit() {
     const id = 0;
@@ -21,6 +23,10 @@ export class ClientsComponent implements OnInit {
     }, err => {
       console.log(err);
     });
+  }
+
+  getAvatar(file) {
+    return getResource(file);
   }
 
 }

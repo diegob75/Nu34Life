@@ -1,6 +1,6 @@
 <div class="container">
   <h2>Agregar Receta</h2>
-  <form>
+  <form #recipeForm="ngForm">
     <div class="group">
       <input [(ngModel)]="recipeData.name" required type="text"/>
       <span class="highlight"></span>

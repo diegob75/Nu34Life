@@ -8,6 +8,8 @@ import {MockResources} from '../../mocks/mock-resources';
 })
 export class AccountComponent implements OnInit {
 
+  nutritionist: Nutritionist;
+
   constructor() { }
 
   ngOnInit() {

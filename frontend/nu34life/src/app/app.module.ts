@@ -27,7 +27,7 @@ import {
   MatFormFieldModule, MatIconModule, MatInputModule,
   MatListModule,
   MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatSelectModule, MatSidenavModule, MatSortModule, MatTableModule,
-  MatToolbarModule, NativeDateModule, MatSnackBarModule, MatAutocompleteModule, MatProgressSpinnerModule
+  MatToolbarModule, NativeDateModule, MatSnackBarModule, MatAutocompleteModule, MatProgressSpinnerModule, MatChipsModule
 } from '@angular/material';
 import {FoodAddComponent} from './food-add/food-add.component';
 import {RecipeAddComponent} from './components/recipe/recipe-add/recipe-add.component';
@@ -120,7 +120,8 @@ import { ClientsComponent } from './components/patient/clients/clients.component
     MatRadioModule,
     MatSnackBarModule,
     MatAutocompleteModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatChipsModule
   ],
   providers: [
     DatePipe,
