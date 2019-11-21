@@ -343,7 +343,7 @@ export class ApiService {
   createPatient(user: User): Observable<User>{
     console.log(user);
     user.userId = this.authService.user.id;
-    this.http.post(ENDPOINTS.users.CREATE_PATIENT,user)
+    return this.http.post(ENDPOINTS.users.CREATE_PATIENT,user)
       .pipe(
         map((response: any)=>response as User),
         catchError(e => {
