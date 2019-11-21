@@ -43,6 +43,11 @@ public class UserController {
 	{
 		return userService.updateAndCreatePatient(requestBody);
 	}
+	@PostMapping(path="/createPatient")
+	Account createPatient(@RequestBody UserRequest requestBody)
+	{
+		return userService.createPatient(requestBody);
+	}
 	@PutMapping(path="/newPassword")
 	Account newPassword(@RequestBody UserRequest requestBody){
 		return userService.updateAccount(requestBody);
