@@ -33,7 +33,7 @@ public class RecipeServiceImpl implements RecipeService{
 			x.setRecipe(entity);
 		});
 		entity.getSteps().forEach(x -> x.setRecipe(entity));
-		
+		entity.setActive(true);
 		NutritionFact nutrFact = new NutritionFact();
 		nutrFact.setCarbohydrates(Double.valueOf(0));
 		nutrFact.setEnergeticValue(Double.valueOf(0));

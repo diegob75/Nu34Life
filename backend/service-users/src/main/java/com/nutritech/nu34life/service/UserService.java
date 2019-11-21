@@ -18,4 +18,6 @@ public interface UserService {
 	
 	Boolean validateUser(Long id);
 	
+	Account updateAccount(UserRequest requestBody);
+	
 }

@@ -9,5 +9,6 @@ export class User {
   imagen: string;
   height: number;
   weight: number;
+  userId: number;
   roles: string[];
 }

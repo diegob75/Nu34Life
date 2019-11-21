@@ -43,6 +43,10 @@ public class UserController {
 	{
 		return userService.updateAndCreatePatient(requestBody);
 	}
+	@PutMapping(path="/newPassword")
+	Account newPassword(@RequestBody UserRequest requestBody){
+		return userService.updateAccount(requestBody);
+	}
 	
 	@GetMapping(path="/validateEmail/{id}")
 	Boolean validateEmail(@PathVariable Long id) {

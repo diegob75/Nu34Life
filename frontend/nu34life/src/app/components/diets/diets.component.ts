@@ -9,6 +9,7 @@ import {ModalComponent} from '../recipe/dish/modal/modal.component';
 import {DietPlanner, mapDiet, MealSchedule} from './diet-planner';
 import {Patient} from '../../model/patient';
 import {FormControl} from '@angular/forms';
+import { OauthService } from 'src/app/service/oauth.service';
 
 @Component({
   selector: 'app-diets',
@@ -29,7 +30,8 @@ export class DietsComponent implements OnInit {
   recipesList: Recipe[];
 
   constructor(private apiService: ApiService,
-              private dialog: MatDialog) { }
+              private dialog: MatDialog,
+              private oauthService: OauthService) { }
 
   ngOnInit() {
     this.dietPlanner = {
@@ -53,9 +55,10 @@ export class DietsComponent implements OnInit {
   }
 
   loadPatients() {
-    const id = 0;
+    const id = this.oauthService.user.profileId;
     this.apiService.getAffiliatedPatients(id).subscribe(res => {
       this.patients = res;
+      console.log(res);
     }, err => {
       console.log(err);
     });
@@ -119,7 +122,11 @@ export class DietsComponent implements OnInit {
   }
 
   createDiet() {
+    const user = this.oauthService.user;
+
     const diet = mapDiet(this.dietPlanner);
+    diet.nutritionistId = user.profileId;
+
     console.log(diet);
     this.apiService.postDiet(diet).subscribe(res => {
       console.log('Exito!', res);
