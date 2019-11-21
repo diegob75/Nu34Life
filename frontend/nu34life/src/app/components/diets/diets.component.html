@@ -34,17 +34,9 @@
       <!-- Configuration forms -->
       <div class="control-bar">
         <div>
-          <button mat-button [mat-menu-trigger-for]="mealMenu">
-            <span>Seleccionar Turnos</span>
-            <mat-icon>keyboard_arrow_down</mat-icon>
-          </button>
-          <mat-menu #mealMenu>
-            <mat-selection-list #mealList (selectionChange)="toggleMeals($event)">
-              <mat-list-option *ngFor="let meal of meals" [value]="meal" selected="true">
-                {{meal.name}}
-              </mat-list-option>
-            </mat-selection-list>
-          </mat-menu>
+
+
+           
         </div>
 
         <div>
