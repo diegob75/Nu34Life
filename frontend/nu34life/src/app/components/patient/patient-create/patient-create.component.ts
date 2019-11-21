@@ -10,7 +10,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class PatientCreateComponent implements OnInit {
 
-  patient: User;
+  username:string;
+  password:string;
+  email:string;
+  firstName:string;
+  lastName:string;
+  weight:number;
+  height:number;
+
 
   constructor(private rest: ApiService,
     private route: ActivatedRoute,
@@ -20,9 +27,20 @@ export class PatientCreateComponent implements OnInit {
   }
 
   registrarPaciente(){
-    this.rest.createPatient(this.patient).subscribe(p => {
+    let patient = new User();
+    patient.email = this.email;
+    patient.firstName = this.firstName;
+    patient.lastName = this.lastName;
+    patient.height = this.height;
+    patient.weight = this.weight;
+    patient.username = this.username;
+    patient.password = this.password;
+    console.log(patient);
+
+    this.rest.createPatient(patient).subscribe(p => {
       this.router.navigate(['/patients']);
     }, err => {
+      this.router.navigate(['/patients']);
       console.error('Código del error desde el backend: ' + err.status);
     });
   }

@@ -1,18 +1,18 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import {Observable, throwError} from 'rxjs';
-import {Recipe} from '../model/recipe';
-import {Meal} from '../model/meal';
-import {Diet} from '../model/diet';
-import {API_ROUTES, ApiRoutes} from '../shared/api-routes';
-import {Patient} from '../model/patient';
-import {Food} from '../model/food';
-import {Page} from '../shared/page';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { Recipe } from '../model/recipe';
+import { Meal } from '../model/meal';
+import { Diet } from '../model/diet';
+import { API_ROUTES, ApiRoutes } from '../shared/api-routes';
+import { Patient } from '../model/patient';
+import { Food } from '../model/food';
+import { Page } from '../shared/page';
 import swal from 'sweetalert2';
-import {OauthService} from './oauth.service';
-import {Router} from '@angular/router';
-import {catchError, map} from 'rxjs/operators';
-import {User} from '../model/user';
+import { OauthService } from './oauth.service';
+import { Router } from '@angular/router';
+import { catchError, map } from 'rxjs/operators';
+import { User } from '../model/user';
 
 const ENDPOINTS: ApiRoutes = API_ROUTES;
 
@@ -21,7 +21,7 @@ const ENDPOINTS: ApiRoutes = API_ROUTES;
 })
 export class ApiService {
 
-  private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
+  private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient, private authService: OauthService, private router: Router) {
   }
@@ -58,7 +58,7 @@ export class ApiService {
   }
 
   postDiet(diet: Diet): Observable<any> {
-    return this.http.post(ENDPOINTS.diets.POST_DIET, diet, {headers: this.addAuthorizationHeader()})
+    return this.http.post(ENDPOINTS.diets.POST_DIET, diet, { headers: this.addAuthorizationHeader() })
       .pipe(
         map((response: any) => response as Diet),
         catchError(e => {
@@ -90,7 +90,7 @@ export class ApiService {
   getAllPatients(query: string, sort: string, order: string, page: number, perPage: number): Observable<Page<Patient>> {
     const params = this.buildParams(null, sort, order, page, perPage, null);
 
-    return this.http.get<Patient[]>(ENDPOINTS.patients.GET_PATIENTS + '?' + params.toString(), {headers: this.addAuthorizationHeader()})
+    return this.http.get<Patient[]>(ENDPOINTS.patients.GET_PATIENTS + '?' + params.toString(), { headers: this.addAuthorizationHeader() })
       .pipe(
         map((response: any) => response as Page<Patient>),
         catchError(e => {
@@ -130,7 +130,7 @@ export class ApiService {
   }
 
   putPatient(patient: Patient) {
-    return this.http.put(ENDPOINTS.patients.POST_PATIENT, patient, {headers: this.addAuthorizationHeader()})
+    return this.http.put(ENDPOINTS.patients.POST_PATIENT, patient, { headers: this.addAuthorizationHeader() })
       .pipe(
         map((response: any) => response as Patient),
         catchError(e => {
@@ -194,7 +194,7 @@ export class ApiService {
   postFood(food: Food) {
     const user = this.authService.user;
     food.createdBy = user.id;
-    return this.http.post(ENDPOINTS.foods.POST_FOOD, food, {headers: this.addAuthorizationHeader()})
+    return this.http.post(ENDPOINTS.foods.POST_FOOD, food, { headers: this.addAuthorizationHeader() })
       .pipe(
         map((response: any) => response as Food),
         catchError(e => {
@@ -214,7 +214,7 @@ export class ApiService {
   }
 
   putFood(food: Food) {
-    return this.http.put(ENDPOINTS.foods.PUT_FOOD, food, {headers: this.addAuthorizationHeader()})
+    return this.http.put(ENDPOINTS.foods.PUT_FOOD, food, { headers: this.addAuthorizationHeader() })
       .pipe(
         map((response: any) => response as Food),
         catchError(e => {
@@ -238,7 +238,7 @@ export class ApiService {
   }
 
   desactivateFood(id: number): Observable<boolean> {
-    return this.http.put(ENDPOINTS.foods.DEACTIVATE_FOOD + '/' + id, {headers: this.addAuthorizationHeader()})
+    return this.http.put(ENDPOINTS.foods.DEACTIVATE_FOOD + '/' + id, { headers: this.addAuthorizationHeader() })
       .pipe(
         map((response: any) => response as boolean),
         catchError(e => {
@@ -259,7 +259,7 @@ export class ApiService {
   postRecipe(recipe: Recipe) {
     recipe.createdBy = this.authService.idUser;
 
-    return this.http.post(ENDPOINTS.recipes.POST_RECIPE, recipe, {headers: this.addAuthorizationHeader()})
+    return this.http.post(ENDPOINTS.recipes.POST_RECIPE, recipe, { headers: this.addAuthorizationHeader() })
       .pipe(
         map((response: any) => response as Recipe),
         catchError(e => {
@@ -284,7 +284,7 @@ export class ApiService {
   }
 
   putRecipe(recipe: Recipe) {
-    return this.http.put(ENDPOINTS.recipes.PUT_RECIPE, recipe, {headers: this.addAuthorizationHeader()})
+    return this.http.put(ENDPOINTS.recipes.PUT_RECIPE, recipe, { headers: this.addAuthorizationHeader() })
       .pipe(
         map((response: any) => response as Recipe),
         catchError(e => {
@@ -304,7 +304,7 @@ export class ApiService {
   }
 
   desactivateRecipe(id: number): Observable<boolean> {
-    return this.http.put(ENDPOINTS.recipes.DEACTIVATE_RECIPE + '/' + id, {headers: this.addAuthorizationHeader()})
+    return this.http.put(ENDPOINTS.recipes.DEACTIVATE_RECIPE + '/' + id, { headers: this.addAuthorizationHeader() })
       .pipe(
         map((response: any) => response as boolean),
         catchError(e => {
@@ -340,12 +340,12 @@ export class ApiService {
       );
   }
 
-  createPatient(user: User): Observable<User>{
+  createPatient(user: User): Observable<User> {
     console.log(user);
-    user.userId = this.authService.user.id;
-    return this.http.post(ENDPOINTS.users.CREATE_PATIENT,user)
+    user.userId = this.authService.user.profileId;
+    return this.http.post(ENDPOINTS.users.CREATE_PATIENT, user)
       .pipe(
-        map((response: any)=>response as User),
+        map((response: any) => response as User),
         catchError(e => {
           if (e.status == 400) {
             swal.fire('Usted no posee permisos para esta accion', 'error');
@@ -399,7 +399,7 @@ export class ApiService {
     const params = new URLSearchParams();
     params.set('nutritionistId', idNutritionist.toString());
     params.set('patientId', idPatient.toString());
-    return this.http.post(ENDPOINTS.affiliations.AFFILIATION_REQUEST + '?' + params.toString(), null, {headers: this.addAuthorizationHeader()})
+    return this.http.post(ENDPOINTS.affiliations.AFFILIATION_REQUEST + '?' + params.toString(), null, { headers: this.addAuthorizationHeader() })
       .pipe(
         map((response: any) => response as boolean),
         catchError(e => {
@@ -421,7 +421,7 @@ export class ApiService {
     params.set('id', id.toString());
     params.set('patientId', idPatient.toString());
     return this.http.post(ENDPOINTS.affiliations.AFFILIATION_CONFIRM + '?' + params.toString(),
-      null, {headers: this.addAuthorizationHeader()})
+      null, { headers: this.addAuthorizationHeader() })
       .pipe(
         map((response: any) => response as boolean),
         catchError(e => {
@@ -443,7 +443,7 @@ export class ApiService {
     params.set('nutritionistId', idNutritionist.toString());
     params.set('patientId', idPatient.toString());
     return this.http.post(ENDPOINTS.affiliations.AFFILIATION_DEACTIVATE + '?' + params.toString(),
-      null, {headers: this.addAuthorizationHeader()})
+      null, { headers: this.addAuthorizationHeader() })
       .pipe(
         map((response: any) => response as boolean),
         catchError(e => {

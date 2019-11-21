@@ -11,4 +11,5 @@ public class Patient {
 	private Double weight;
 	private Double height;
 	private Long id;
+	private Long nutritionistId;
 }

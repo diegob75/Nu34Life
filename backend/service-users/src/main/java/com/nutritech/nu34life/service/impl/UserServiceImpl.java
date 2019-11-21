@@ -184,7 +184,7 @@ public class UserServiceImpl implements UserService {
 		patient.setUserId(account.getId());
 		patient.setHeight(requestBody.getHeight());
 		patient.setWeight(requestBody.getWeight());		
-		
+		patient.setNutritionistId(requestBody.getUserId());
 		patient = profileFeignClient.savePatient(patient);
 		
 		profileFeignClient.requestAffiliation(patient.getId(), requestBody.getUserId());
