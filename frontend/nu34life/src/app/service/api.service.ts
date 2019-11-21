@@ -254,6 +254,8 @@ export class ApiService {
 
 
   postRecipe(recipe: Recipe) {
+    recipe.createdBy = this.authService.idUser;
+
     return this.http.post(ENDPOINTS.recipes.POST_RECIPE, recipe, {headers: this.addAuthorizationHeader()})
       .pipe(
         map((response: any) => response.recipe as Recipe),

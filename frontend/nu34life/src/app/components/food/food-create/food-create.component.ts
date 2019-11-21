@@ -32,7 +32,7 @@ export class FoodCreateComponent implements OnInit {
   fileEvent(input) {
     this.awsService.uploadFile(input.target.files).subscribe(res => {
       console.log(res);
-      this.file = res.Location;
+      this.file = res.Key;
       console.log(this.file);
     }, err => {
       console.log(err);
@@ -40,11 +40,11 @@ export class FoodCreateComponent implements OnInit {
   }
 
   saveFood() {
-    const user = JSON.parse(sessionStorage.getItem('user'));
-
-    this.food.createdBy = user.id;
     this.food.image = this.file;
     console.log(JSON.stringify(this.food, null, 2));
+    console.log('GAAAAAA');
+
+
     this.apiService.postFood(this.food).subscribe(food => {
       this.router.navigate(['/foods']);
     }, err => {

@@ -63,7 +63,7 @@ export class RecipeAddComponent implements AfterViewInit {
   addIngredient(food) {
     if (this.ingredients.findIndex(x => x.food.id === food.id) !== -1)
       return;
-    this.ingredients.push({ id: null , quantity: 0, food });
+    this.ingredients.push({ quantity: 0, food });
   }
 
   addRecipe() {
@@ -71,6 +71,8 @@ export class RecipeAddComponent implements AfterViewInit {
     this.recipe.steps = mapSteps(this.directions);
 
     this.recipe.ingredients = this.ingredients;
+
+    console.log(JSON.stringify(this.recipe, null, 2));
 
     this.rest.postRecipe(this.recipe).subscribe((result) => {
       this.router.navigate(['/recipes']);
@@ -101,7 +103,7 @@ export class RecipeAddComponent implements AfterViewInit {
 
 const mapSteps = (text: string): RecipeStep[] => {
   const arr = text.split('\n\n');
-  return arr.map((x, i) => ({instruction: x, stepNumber: i + 1})) as RecipeStep[];
+  return arr.map((x, i) => ({instruction: x, id: { stepNumber: i + 1 }})) as RecipeStep[];
 };
 
 

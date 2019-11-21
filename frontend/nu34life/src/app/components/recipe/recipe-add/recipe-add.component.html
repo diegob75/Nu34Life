@@ -30,7 +30,7 @@
         </div>
         <div fxFlex="40">
           <div *ngFor="let ing of ingredients">
-            <button mat-icon-button></button>
+
             <label class="ingredient">{{ing.food.name}}
               <input class="quantity-input" [value]="ing.quantity">
             </label>
@@ -42,10 +42,11 @@
           </mat-form-field>
 
           <mat-list dense>
-            <mat-list-item *ngFor="let f of foods" fxLayout="row" fxLayoutAlign="space-between">{{f.name}}
+            <mat-list-item *ngFor="let f of foods" fxLayout="row" fxLayoutAlign="space-between">
               <button mat-icon-button (click)="addIngredient(f)">
                 <mat-icon>add</mat-icon>
               </button>
+              <span>{{f.name}}</span>
             </mat-list-item>
           </mat-list>
           <mat-paginator [length]="resultLength"

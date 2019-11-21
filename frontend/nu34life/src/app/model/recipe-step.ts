@@ -1,5 +1,7 @@
 export class RecipeStep {
-  id: number;
+  id: {
+    stepNumber: number;
+    recipeId: number;
+  };
   instruction: string;
-  stepNumber: number;
 }
