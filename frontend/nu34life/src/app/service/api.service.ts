@@ -60,7 +60,7 @@ export class ApiService {
   postDiet(diet: Diet): Observable<any> {
     return this.http.post(ENDPOINTS.diets.POST_DIET, diet, {headers: this.addAuthorizationHeader()})
       .pipe(
-        map((response: any) => response.diet as Diet),
+        map((response: any) => response as Diet),
         catchError(e => {
           if (this.unAthorized(e)) {
             return throwError(e);
@@ -90,7 +90,7 @@ export class ApiService {
   getAllPatients(): Observable<Patient[]> {
     return this.http.get<Patient[]>(ENDPOINTS.patients.GET_PATIENTS, {headers: this.addAuthorizationHeader()})
       .pipe(
-        map((response: any) => response.patients as Patient[]),
+        map((response: any) => response as Patient[]),
         catchError(e => {
           if (this.unAthorized(e)) {
             return throwError(e);
@@ -110,7 +110,7 @@ export class ApiService {
   postPatient(patient: Patient) {
     return this.http.post(ENDPOINTS.patients.POST_PATIENT, patient)
       .pipe(
-        map((response: any) => response.patient as Patient),
+        map((response: any) => response as Patient),
         catchError(e => {
           if (this.unAthorized(e)) {
             return throwError(e);
@@ -130,7 +130,7 @@ export class ApiService {
   putPatient(patient: Patient) {
     return this.http.put(ENDPOINTS.patients.POST_PATIENT, patient, {headers: this.addAuthorizationHeader()})
       .pipe(
-        map((response: any) => response.patient as Patient),
+        map((response: any) => response as Patient),
         catchError(e => {
           if (this.unAthorized(e)) {
             return throwError(e);
@@ -155,7 +155,7 @@ export class ApiService {
     console.log(`${ENDPOINTS.patients.GET_PATIENTS_AFFILIATED}/${id}`);
     return this.http.get<Patient[]>(`${ENDPOINTS.patients.GET_PATIENTS_AFFILIATED}/${id}`)
       .pipe(
-        map((response: any) => response.patients as Patient[]),
+        map((response: any) => response as Patient[]),
         catchError(e => {
           if (this.unAthorized(e)) {
             return throwError(e);
@@ -194,7 +194,7 @@ export class ApiService {
     food.createdBy = user.id;
     return this.http.post(ENDPOINTS.foods.POST_FOOD, food, {headers: this.addAuthorizationHeader()})
       .pipe(
-        map((response: any) => response.food as Food),
+        map((response: any) => response as Food),
         catchError(e => {
           if (this.unAthorized(e)) {
             return throwError(e);
@@ -214,7 +214,7 @@ export class ApiService {
   putFood(food: Food) {
     return this.http.put(ENDPOINTS.foods.PUT_FOOD, food, {headers: this.addAuthorizationHeader()})
       .pipe(
-        map((response: any) => response.food as Food),
+        map((response: any) => response as Food),
         catchError(e => {
           if (this.unAthorized(e)) {
             return throwError(e);
@@ -238,7 +238,7 @@ export class ApiService {
   desactivateFood(id: number): Observable<boolean> {
     return this.http.put(ENDPOINTS.foods.DEACTIVATE_FOOD + '/' + id, {headers: this.addAuthorizationHeader()})
       .pipe(
-        map((response: any) => response.recipe as boolean),
+        map((response: any) => response as boolean),
         catchError(e => {
           if (this.unAthorized(e) || e.status == 400) {
             swal.fire('Usted no posee permisos para esta accion', 'error');
@@ -257,7 +257,7 @@ export class ApiService {
   postRecipe(recipe: Recipe) {
     return this.http.post(ENDPOINTS.recipes.POST_RECIPE, recipe, {headers: this.addAuthorizationHeader()})
       .pipe(
-        map((response: any) => response.recipe as Recipe),
+        map((response: any) => response as Recipe),
         catchError(e => {
           if (this.unAthorized(e) || e.status == 400) {
             swal.fire('Usted no posee permisos para esta accion', 'error');
@@ -282,7 +282,7 @@ export class ApiService {
   putRecipe(recipe: Recipe) {
     return this.http.put(ENDPOINTS.recipes.PUT_RECIPE, recipe, {headers: this.addAuthorizationHeader()})
       .pipe(
-        map((response: any) => response.recipe as Recipe),
+        map((response: any) => response as Recipe),
         catchError(e => {
           if (this.unAthorized(e)) {
             return throwError(e);
@@ -302,7 +302,7 @@ export class ApiService {
   desactivateRecipe(id: number): Observable<boolean> {
     return this.http.put(ENDPOINTS.recipes.DEACTIVATE_RECIPE + '/' + id, {headers: this.addAuthorizationHeader()})
       .pipe(
-        map((response: any) => response.recipe as boolean),
+        map((response: any) => response as boolean),
         catchError(e => {
           if (this.unAthorized(e) || e.status == 400) {
             swal.fire('Usted no posee permisos para esta accion', 'error');
@@ -358,7 +358,7 @@ export class ApiService {
   registerPatient(user: User): Observable<User> {
     return this.http.post(ENDPOINTS.users.REGISTER_PATIENT, user)
       .pipe(
-        map((response: any) => response.user as User),
+        map((response: any) => response as User),
         catchError(e => {
           if (e.status == 400) {
             swal.fire('Usted no posee permisos para esta accion', 'error');
