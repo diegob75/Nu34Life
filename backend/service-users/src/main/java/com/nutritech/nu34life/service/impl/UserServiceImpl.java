@@ -188,10 +188,10 @@ public class UserServiceImpl implements UserService {
 		patient = profileFeignClient.savePatient(patient);
 		
 		profileFeignClient.requestAffiliation(patient.getId(), requestBody.getUserId());
-		
+		// profileFeignClient.confirmAffiliation(requestBody.getUserId(),patient.getId());
 		Email email = new Email();
 		email.setHeader("Registro Exitoso!!");
-		email.setCuerpo("<h3>Enhorabuena "+requestBody.getFirstName()+" "+requestBody.getLastName()+" su cuenta se ha registrado correctamente.</h3>\n <p>Con nombre de usuario : "+requestBody.getUsername()+".</p><p>Contraseña : "+requestBody.getPassword()+".</p><a href=\"http://localhost:8090/api/service-users/users/validateEmail/"+account.getId()+"\">Activa tu cuenta dando click aqui!</a>"+"<p>Si desea activar su nutricionista acceda a  : </p>"+"<a href=\"localhost:8090/service-profiles/patients/affiliate/confirm/?id="+account.getId()+"&patientId="+patient.getId()+"\"</a>");
+		email.setCuerpo("<h3>Enhorabuena "+requestBody.getFirstName()+" "+requestBody.getLastName()+" su cuenta se ha registrado correctamente.</h3>\n <p>Con nombre de usuario : "+requestBody.getUsername()+".</p><p>Contraseña : "+requestBody.getPassword()+".</p><a href=\"http://localhost:8090/api/service-users/users/validateEmail/"+account.getId()+"\">Activa tu cuenta dando click aqui!</a>"+"<p>Si desea confirmar afiliacion con nutricionista de click al link de abajo  : </p>"+"<a href=\"http://localhost:8090/service-profiles/patients/affiliate/confirm/?id="+requestBody.getUserId()+"&patientId="+patient.getId()+"\">Click aqui para confirmar nutricionista</a>");
 		email.setSendTo(requestBody.getEmail());
 		System.out.println(email.toString());
 		emailService.sendEmail(email);

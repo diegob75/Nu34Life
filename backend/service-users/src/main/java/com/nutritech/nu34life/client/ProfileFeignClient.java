@@ -22,4 +22,7 @@ public interface ProfileFeignClient {
 	
 	@PostMapping("/patients/affiliate/request/")
 	public Boolean requestAffiliation(@RequestParam Long patientId, @RequestParam Long nutritionistId);
+	
+	@PostMapping("/patients/affiliate/confirm/")
+	public Boolean confirmAffiliation(@RequestParam Long id,@RequestParam Long patientId);
 }

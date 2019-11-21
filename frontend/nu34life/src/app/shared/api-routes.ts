@@ -28,7 +28,8 @@ export const API_ROUTES: ApiRoutes = {
   oauth: {},
   users: {
     REGISTER_NUTRITIONIST: `${BASE_URL_USER}/users/registerNutritionist`,
-    REGISTER_PATIENT: `${BASE_URL_USER}/users/registerPatient`
+    REGISTER_PATIENT: `${BASE_URL_USER}/users/registerPatient`,
+    CREATE_PATIENT: `${BASE_URL_USER}/users/createPatient`
   },
   diets: {
     GET_DIETS: `${BASE_URL_DIET}/diets`,
@@ -62,6 +63,7 @@ export interface ApiRoutes {
   users: {
     REGISTER_NUTRITIONIST: string;
     REGISTER_PATIENT: string;
+    CREATE_PATIENT: string;
   };
   nutritionists: {
     GET_NUTRITIONIST_BY_ID: string;

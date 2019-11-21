@@ -340,6 +340,25 @@ export class ApiService {
       );
   }
 
+  createPatient(user: User): Observable<User>{
+    console.log(user);
+    user.userId = this.authService.user.id;
+    this.http.post(ENDPOINTS.users.CREATE_PATIENT,user)
+      .pipe(
+        map((response: any)=>response as User),
+        catchError(e => {
+          if (e.status == 400) {
+            swal.fire('Usted no posee permisos para esta accion', 'error');
+            return throwError(e);
+          }
+
+          console.error(e.error.mensaje);
+          console.log(user);
+          return throwError(e);
+        })
+      );
+  }
+
   updateProfile(user: User): Observable<User> {
     console.log(user);
     return this.http.put(ENDPOINTS.nutritionists.PUT_NUTRITIONIST, user)

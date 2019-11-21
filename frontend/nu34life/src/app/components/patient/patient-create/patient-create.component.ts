@@ -20,6 +20,10 @@ export class PatientCreateComponent implements OnInit {
   }
 
   registrarPaciente(){
-
+    this.rest.createPatient(this.patient).subscribe(p => {
+      this.router.navigate(['/patients']);
+    }, err => {
+      console.error('Código del error desde el backend: ' + err.status);
+    });
   }
 }

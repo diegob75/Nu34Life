@@ -87,9 +87,9 @@ public class PatientServiceImpl implements PatientService{
 
 	@Transactional
 	@Override
-	public Boolean confirmAffiliation(Long id, Long patientId) {
+	public Boolean confirmAffiliation(Long nutritionistId, Long patientId) {
 
-		Affiliation aff = affiliationRepository.findById(id).orElse(null);
+		Affiliation aff = affiliationRepository.findLastActiveRequest(patientId, nutritionistId).orElse(null);
 		
 		if (aff == null || aff.getPatientId() != patientId || aff.getConfirmed() || !aff.getActive())
 			return false;
