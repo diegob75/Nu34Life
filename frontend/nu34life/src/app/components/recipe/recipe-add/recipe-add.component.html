@@ -32,7 +32,7 @@
           <div *ngFor="let ing of ingredients">
 
             <label class="ingredient">{{ing.food.name}}
-              <input class="quantity-input" [value]="ing.quantity">
+              <input class="quantity-input" [(ngModel)]="ing.quantity">
             </label>
           </div>
         </div>
