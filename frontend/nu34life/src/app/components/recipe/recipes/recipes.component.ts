@@ -60,6 +60,7 @@ export class Recipes2Component implements AfterViewInit {
     return getResource(filename);
   }
 
+
   get length(): number {
     return this.recipes == null ? 0 : this.resultLength;
   }

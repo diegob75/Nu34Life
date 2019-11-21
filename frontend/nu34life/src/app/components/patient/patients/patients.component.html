@@ -38,17 +38,24 @@
       </ng-container>
 
       <ng-container matColumnDef="action">
-        <th *matHeaderCellDef mat-header-cell>Correo electronico</th>
+        <th *matHeaderCellDef mat-header-cell></th>
         <td *matCellDef="let element" mat-cell>
-          <button mat-icon-button (click)="affiliatePatient()">
-            <mat-icon>person_add</mat-icon>
-          </button>
+          <div *ngIf="element.nutritionistId != nutritionistId; else affiliated" >
+            <button mat-icon-button (click)="requestAffiliation(element)">
+              <mat-icon>person_add</mat-icon>
+            </button>
+          </div>
+          <ng-template #affiliated >
+            <button mat-icon-button disabled>
+              <mat-icon>check_circle</mat-icon>
+            </button>
+          </ng-template>
         </td>
       </ng-container>
 
       <tr *matHeaderRowDef="columns" mat-header-row></tr>
       <tr *matRowDef="let row; columns: columns;" mat-row></tr>
     </table>
-    <mat-paginator [length]="length" pageSize="20" showFirstLastButtons></mat-paginator>
+    <mat-paginator [length]="resultLength" pageSize="20" [pageSizeOptions]="[20, 30, 50]" showFirstLastButtons></mat-paginator>
   </div>
 </div>

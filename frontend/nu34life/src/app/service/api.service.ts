@@ -87,10 +87,12 @@ export class ApiService {
   }
 
 
-  getAllPatients(): Observable<Patient[]> {
-    return this.http.get<Patient[]>(ENDPOINTS.patients.GET_PATIENTS, {headers: this.addAuthorizationHeader()})
+  getAllPatients(query: string, sort: string, order: string, page: number, perPage: number): Observable<Page<Patient>> {
+    const params = this.buildParams(null, sort, order, page, perPage, null);
+
+    return this.http.get<Patient[]>(ENDPOINTS.patients.GET_PATIENTS + '?' + params.toString(), {headers: this.addAuthorizationHeader()})
       .pipe(
-        map((response: any) => response as Patient[]),
+        map((response: any) => response as Page<Patient>),
         catchError(e => {
           if (this.unAthorized(e)) {
             return throwError(e);

@@ -66,7 +66,7 @@
         <tr mat-header-row *matHeaderRowDef="columns"></tr>
         <tr mat-row *matRowDef="let row; columns: columns;"></tr>
       </table>
-      <mat-paginator [length]="length" pageSize="20" showFirstLastButtons></mat-paginator>
+      <mat-paginator [length]="resultLength" pageSize="20" showFirstLastButtons></mat-paginator>
     </div>
   </div>
 </div>
