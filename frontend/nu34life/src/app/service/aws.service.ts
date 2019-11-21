@@ -1,5 +1,8 @@
 import {Injectable} from '@angular/core';
 import * as AWS from 'aws-sdk';
+import {Observable} from 'rxjs';
+import {ManagedUpload} from 'aws-sdk/lib/s3/managed_upload';
+
 
 const region = 'us-east-2';
 const bucketName = 'nu34life';
@@ -18,7 +21,7 @@ export class AwsService {
   constructor() {
   }
 
-  uploadFile(files: any): string {
+  uploadFile(files: any): Observable<ManagedUpload.SendData> {
     const file = files[0];
     // Configures the AWS service and initial authorization
     AWS.config.update({
@@ -32,13 +35,22 @@ export class AwsService {
       apiVersion: '2006-03-01',
       params: {Bucket: bucketName}
     });
+
+    const params = {
+      Key: file.name,
+      Bucket: bucketName,
+      Body: file,
+      ACL: 'public-read'
+    };
     // I store this in a variable for retrieval later
-    const image = file.name;
-    s3.upload({Key: file.name, Bucket: bucketName, Body: file, ACL: 'public-read'}, (err, data) => {
-      if (err) {
-        console.log(err, 'there was an error uploading your file');
-      }
+    return new Observable(observer => {
+      s3.upload(params, (err, data) => {
+        if (err) {
+          observer.error(err);
+        }
+        observer.next(data);
+        observer.complete();
+      });
     });
-    return image;
   }
 }

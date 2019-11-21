@@ -1,6 +1,7 @@
 mat-card {
   margin-top: 40px;
-  width: 500px;
+  width: 700px;
+  min-height: 600px;
 }
 .wrapper {
   display: flex;
@@ -10,7 +11,15 @@ mat-card {
 textarea {
   height: 150px;
 }
-.ingredients {
+.food-list {
   padding: 10px;
-  max-height: 500px;
+  max-height: 400px;
+}
+.ingredient {
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.quantity-input {
+  width: 20px;
 }

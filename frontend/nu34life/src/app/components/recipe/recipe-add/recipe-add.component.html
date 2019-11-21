@@ -8,38 +8,54 @@
     <mat-card-content>
 
       <div fxLayout="row">
-        <div fxLayout="column" fxFlex="50">
+        <div fxLayout="column" fxFlex="30">
           <mat-form-field>
             <input [(ngModel)]="recipe.name" matInput placeholder="Nombre" type="text">
           </mat-form-field>
+          <mat-form-field>
+            <input [(ngModel)]="recipe.servings" matInput placeholder="Porciones" type="text">
+          </mat-form-field>
 
+
+          <img *ngIf="file != null" [src]="file">
           <label class="file-upload">
             <input (change)="fileEvent($event)" id="imageUpload" name="imageUpload" type="file"/>
             Subir imagen
           </label>
 
           <mat-form-field>
-            <input [(ngModel)]="recipe.servings" matInput placeholder="Porciones" type="text">
-          </mat-form-field>
-          <mat-form-field>
             <textarea [(ngModel)]="directions" matInput placeholder="Instrucciones" type="text"></textarea>
             <mat-hint>Separe cada instruccion con 2 saltos de linea</mat-hint>
           </mat-form-field>
         </div>
-        <div class="ingredients" fxFlex="50">
-          <mat-selection-list #selectedFoods dense>
-            <mat-list-option *ngFor="let food of foods">
-              {{food.name}}
-            </mat-list-option>
-          </mat-selection-list>
-          <button mat-button (click)="addIngredient(selectedFoods)">Añadir ingrediente</button>
+        <div fxFlex="40">
+          <div *ngFor="let ing of ingredients">
+            <button mat-icon-button></button>
+            <label class="ingredient">{{ing.food.name}}
+              <input class="quantity-input" [value]="ing.quantity">
+            </label>
+          </div>
+        </div>
+        <div class="food-list" fxFlex="5030">
+          <mat-form-field>
+            <input matInput [formControl]="search" placeholder="Buscar alimentos">
+          </mat-form-field>
+
+          <mat-list dense>
+            <mat-list-item *ngFor="let f of foods" fxLayout="row" fxLayoutAlign="space-between">{{f.name}}
+              <button mat-icon-button (click)="addIngredient(f)">
+                <mat-icon>add</mat-icon>
+              </button>
+            </mat-list-item>
+          </mat-list>
+          <mat-paginator [length]="resultLength"
+                         [pageSize]="10">
+          </mat-paginator>
         </div>
       </div>
-
-    </mat-card-content>
-    <mat-card-actions align="end">
       <button mat-raised-button (click)="cancel()">Cancelar</button>
       <button color="primary" mat-raised-button (click)="addRecipe()">Crear</button>
-    </mat-card-actions>
+    </mat-card-content>
+
   </mat-card>
 </div>

@@ -171,13 +171,19 @@ export class ApiService {
       );
   }
 
-  getFoods(query: string, sort: string, order: string, page: number, perPage: number): Observable<Page<Food>> {
+  buildParams(query: string, sort: string, order: string, page: number, perPage: number, includeOwn: boolean) : URLSearchParams {
     const params = new URLSearchParams();
-    params.set('sort', sort);
-    params.set('order', order);
-    params.set('page', page.toString());
-    params.set('userId', this.authService.idUser.toString());
-    console.log(params.toString());
+    if (query != null) params.set('q', query);
+    if (sort != null) params.set('sort', sort);
+    if (order != null) params.set('order', order);
+    if (page != null) params.set('page', page.toString());
+    if (perPage != null) params.set('per_page', perPage.toString());
+    if (includeOwn) params.set('userId', this.authService.user.id.toString());
+    return params;
+  }
+
+  getFoods(query: string, sort: string, order: string, page: number, perPage: number, includeOwn: boolean): Observable<Page<Food>> {
+    const params = this.buildParams(query, sort, order, page, perPage, includeOwn);
 
     return this.http.get<Page<Food>>(ENDPOINTS.foods.PAGE_FOOD + '?' + params.toString());
   }
@@ -265,12 +271,9 @@ export class ApiService {
       );
   }
 
-  getRecipes(query: string, sort: string, order: string, page: number, perPage: number, id: number): Observable<Page<Recipe>> {
-    const params = new URLSearchParams();
-    params.set('sort', sort);
-    params.set('order', order);
-    params.set('page', page.toString());
-    console.log(params.toString());
+  getRecipes(query: string, sort: string, order: string, page: number, perPage: number, includeOwn: boolean): Observable<Page<Recipe>> {
+
+    const params = this.buildParams(query, sort, order, page, perPage, includeOwn);
 
     return this.http.get<Page<Recipe>>(ENDPOINTS.recipes.PAGE_RECIPES + '?' + params.toString());
   }

@@ -38,7 +38,7 @@ export class FoodsComponent implements AfterViewInit {
         switchMap(() => {
           this.isLoadingResults = true;
           return this.rest.getFoods(null, this.sort.active, this.sort.direction, this.paginator.pageIndex,
-            null);
+            null, null);
         }),
         map((data: Page<Food>) => {
           console.log(data);

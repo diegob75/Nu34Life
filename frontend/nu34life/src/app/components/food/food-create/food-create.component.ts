@@ -30,8 +30,13 @@ export class FoodCreateComponent implements OnInit {
   }
 
   fileEvent(input) {
-    this.file = this.awsService.uploadFile(input.target.files);
-    console.log(this.file);
+    this.awsService.uploadFile(input.target.files).subscribe(res => {
+      console.log(res);
+      this.file = res.Location;
+      console.log(this.file);
+    }, err => {
+      console.log(err);
+    });
   }
 
   saveFood() {
