@@ -270,6 +270,7 @@ export class ApiService {
     params.set('sort', sort);
     params.set('order', order);
     params.set('page', page.toString());
+    params.set('userId', this.authService.idUser.toString());
     console.log(params.toString());
 
     return this.http.get<Page<Recipe>>(ENDPOINTS.recipes.PAGE_RECIPES + '?' + params.toString());
