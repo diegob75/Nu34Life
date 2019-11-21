@@ -1,9 +1,10 @@
 <div class="view-body">
-
-  <h1>Recetas</h1>
-  <button mat-mini-fab routerLink="/recipe-add">
-    <mat-icon>add</mat-icon>
-  </button>
+  <div class="menu-toolbar">
+    <h1>Recetas</h1>
+    <button mat-mini-fab routerLink="/recipe-add">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
   <div class="example-loading-shade"
        *ngIf="isLoadingResults || connectionError">
     <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
