@@ -95,7 +95,7 @@ public class PatientServiceImpl implements PatientService{
 			return false;
 		
 		Patient p = aff.getPatient();
-		p.setNutritionistId(p.getNutritionistId());
+		p.setNutritionistId(aff.getNutritionistId());
 		aff.setConfirmed(true);
 		
 		affiliationRepository.save(aff);

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Patient} from '../../../model/patient';
-import {PatientForm} from './patient-form';
+import { User } from 'src/app/model/user';
+import { ApiService } from '../../../service/api.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-patient-create',
@@ -9,11 +10,16 @@ import {PatientForm} from './patient-form';
 })
 export class PatientCreateComponent implements OnInit {
 
-  patient: PatientForm;
+  patient: User;
 
-  constructor() { }
+  constructor(private rest: ApiService,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
   }
 
+  registrarPaciente(){
+
+  }
 }

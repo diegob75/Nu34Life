@@ -159,4 +159,44 @@ public class UserServiceImpl implements UserService {
 		return userRepository.save(account);
 	}
 
+	@Override
+	public Account createPatient(UserRequest requestBody) {
+		Account account = new Account();
+		Role role = new Role();
+		role.setId(Long.valueOf(2));
+		List<Role> roles = new ArrayList<>();
+		roles.add(role);
+		account.setRoles(roles);
+		account.setRegisterDate(LocalDate.now());
+		account.setEmailValidated(false);
+		account.setAccountStatus(1);
+		account.setPassword(passwordEncoder.encode(requestBody.getPassword()));
+		account.setEmail(requestBody.getEmail());
+		account.setUsername(requestBody.getUsername());
+		
+		account = userRepository.save(account);
+		account.setPassword("**************************");
+		Patient patient = new Patient();
+		
+		patient.setFirstName(requestBody.getFirstName());
+		patient.setLastName(requestBody.getLastName());
+		patient.setImagen(requestBody.getImagen());
+		patient.setUserId(account.getId());
+		patient.setHeight(requestBody.getHeight());
+		patient.setWeight(requestBody.getWeight());		
+		
+		patient = profileFeignClient.savePatient(patient);
+		
+		profileFeignClient.requestAffiliation(patient.getId(), requestBody.getUserId());
+		
+		Email email = new Email();
+		email.setHeader("Registro Exitoso!!");
+		email.setCuerpo("<h3>Enhorabuena "+requestBody.getFirstName()+" "+requestBody.getLastName()+" su cuenta se ha registrado correctamente.</h3>\n <p>Con nombre de usuario : "+requestBody.getUsername()+".</p><p>Contraseña : "+requestBody.getPassword()+".</p><a href=\"http://localhost:8090/api/service-users/users/validateEmail/"+account.getId()+"\">Activa tu cuenta dando click aqui!</a>"+"<p>Si desea activar su nutricionista acceda a  : </p>"+"<a href=\"localhost:8090/service-profiles/patients/affiliate/confirm/?id="+account.getId()+"&patientId="+patient.getId()+"\"</a>");
+		email.setSendTo(requestBody.getEmail());
+		System.out.println(email.toString());
+		emailService.sendEmail(email);
+		
+		return account;
+	}
+
 }

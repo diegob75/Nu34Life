@@ -10,4 +10,5 @@ public class Patient {
 	private Long userId;
 	private Double weight;
 	private Double height;
+	private Long id;
 }

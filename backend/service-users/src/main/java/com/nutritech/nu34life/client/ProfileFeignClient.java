@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.nutritech.nu34life.util.Nutritionist;
 import com.nutritech.nu34life.util.Patient;
@@ -18,4 +19,7 @@ public interface ProfileFeignClient {
 	
 	@GetMapping(path="/nutritionist/byUserId/{id}")
 	public Nutritionist getByUserId(@PathVariable Long id);
+	
+	@PostMapping("/patients/affiliate/request/")
+	public Boolean requestAffiliation(@RequestParam Long patientId, @RequestParam Long nutritionistId);
 }
