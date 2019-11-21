@@ -44,13 +44,13 @@ public class RecipeServiceImpl implements RecipeService{
 		nutrFact.setTotalFat(Double.valueOf(0));
 		
 		for(Ingredient i : entity.getIngredients()) {
-			nutrFact.setCarbohydrates(BigDecimal.valueOf(nutrFact.getCarbohydrates() + i.getFood().getNutrFact().getCarbohydrates() *  i.getQuantity()/100).setScale(4).doubleValue());
-			nutrFact.setEnergeticValue(BigDecimal.valueOf(nutrFact.getEnergeticValue() + i.getFood().getNutrFact().getEnergeticValue() *  i.getQuantity()/100).setScale(4).doubleValue());
-			nutrFact.setProtein(BigDecimal.valueOf(nutrFact.getProtein() + i.getFood().getNutrFact().getProtein() *  i.getQuantity()/100).setScale(4).doubleValue());
-			nutrFact.setSalt(BigDecimal.valueOf(nutrFact.getSalt() + i.getFood().getNutrFact().getSalt() *  i.getQuantity()/100).setScale(4).doubleValue());
-			nutrFact.setSaturatedFats(BigDecimal.valueOf(nutrFact.getSaturatedFats() + i.getFood().getNutrFact().getSaturatedFats() *  i.getQuantity()/100).setScale(4).doubleValue());
-			nutrFact.setSugars(BigDecimal.valueOf(nutrFact.getSugars() + i.getFood().getNutrFact().getSugars() *  i.getQuantity()/100).setScale(4).doubleValue());
-			nutrFact.setTotalFat(BigDecimal.valueOf(nutrFact.getTotalFat() + i.getFood().getNutrFact().getTotalFat() * i.getQuantity()/100).setScale(4).doubleValue());
+			nutrFact.setCarbohydrates(BigDecimal.valueOf(nutrFact.getCarbohydrates() + i.getFood().getNutrFact().getCarbohydrates() *  i.getQuantity()/100).setScale(4, BigDecimal.ROUND_HALF_DOWN).doubleValue());
+			nutrFact.setEnergeticValue(BigDecimal.valueOf(nutrFact.getEnergeticValue() + i.getFood().getNutrFact().getEnergeticValue() *  i.getQuantity()/100).setScale(4, BigDecimal.ROUND_HALF_DOWN).doubleValue());
+			nutrFact.setProtein(BigDecimal.valueOf(nutrFact.getProtein() + i.getFood().getNutrFact().getProtein() *  i.getQuantity()/100).setScale(4, BigDecimal.ROUND_HALF_DOWN).doubleValue());
+			nutrFact.setSalt(BigDecimal.valueOf(nutrFact.getSalt() + i.getFood().getNutrFact().getSalt() *  i.getQuantity()/100).setScale(4, BigDecimal.ROUND_HALF_DOWN).doubleValue());
+			nutrFact.setSaturatedFats(BigDecimal.valueOf(nutrFact.getSaturatedFats() + i.getFood().getNutrFact().getSaturatedFats() *  i.getQuantity()/100).setScale(4, BigDecimal.ROUND_HALF_DOWN).doubleValue());
+			nutrFact.setSugars(BigDecimal.valueOf(nutrFact.getSugars() + i.getFood().getNutrFact().getSugars() *  i.getQuantity()/100).setScale(4, BigDecimal.ROUND_HALF_DOWN).doubleValue());
+			nutrFact.setTotalFat(BigDecimal.valueOf(nutrFact.getTotalFat() + i.getFood().getNutrFact().getTotalFat() * i.getQuantity()/100).setScale(4, BigDecimal.ROUND_HALF_DOWN).doubleValue());
 		}
 		entity.setNutrFact(nutrFact);
 		return recipeRepository.save(entity);
@@ -114,13 +114,13 @@ public class RecipeServiceImpl implements RecipeService{
 		nutrFact.setTotalFat(Double.valueOf(0));
 		
 		for(Ingredient i : entity.getIngredients()) {
-			nutrFact.setCarbohydrates(BigDecimal.valueOf(nutrFact.getCarbohydrates() + i.getFood().getNutrFact().getCarbohydrates() *  i.getQuantity()/100).setScale(4).doubleValue());
-			nutrFact.setEnergeticValue(BigDecimal.valueOf(nutrFact.getEnergeticValue() + i.getFood().getNutrFact().getEnergeticValue() *  i.getQuantity()/100).setScale(4).doubleValue());
-			nutrFact.setProtein(BigDecimal.valueOf(nutrFact.getProtein() + i.getFood().getNutrFact().getProtein() *  i.getQuantity()/100).setScale(4).doubleValue());
-			nutrFact.setSalt(BigDecimal.valueOf(nutrFact.getSalt() + i.getFood().getNutrFact().getSalt() *  i.getQuantity()/100).setScale(4).doubleValue());
-			nutrFact.setSaturatedFats(BigDecimal.valueOf(nutrFact.getSaturatedFats() + i.getFood().getNutrFact().getSaturatedFats() *  i.getQuantity()/100).setScale(4).doubleValue());
-			nutrFact.setSugars(BigDecimal.valueOf(nutrFact.getSugars() + i.getFood().getNutrFact().getSugars() *  i.getQuantity()/100).setScale(4).doubleValue());
-			nutrFact.setTotalFat(BigDecimal.valueOf(nutrFact.getTotalFat() + i.getFood().getNutrFact().getTotalFat() * i.getQuantity()/100).setScale(4).doubleValue());
+			nutrFact.setCarbohydrates(BigDecimal.valueOf(nutrFact.getCarbohydrates() + i.getFood().getNutrFact().getCarbohydrates() *  i.getQuantity()/100).setScale(4, BigDecimal.ROUND_HALF_DOWN).doubleValue());
+			nutrFact.setEnergeticValue(BigDecimal.valueOf(nutrFact.getEnergeticValue() + i.getFood().getNutrFact().getEnergeticValue() *  i.getQuantity()/100).setScale(4, BigDecimal.ROUND_HALF_DOWN).doubleValue());
+			nutrFact.setProtein(BigDecimal.valueOf(nutrFact.getProtein() + i.getFood().getNutrFact().getProtein() *  i.getQuantity()/100).setScale(4, BigDecimal.ROUND_HALF_DOWN).doubleValue());
+			nutrFact.setSalt(BigDecimal.valueOf(nutrFact.getSalt() + i.getFood().getNutrFact().getSalt() *  i.getQuantity()/100).setScale(4, BigDecimal.ROUND_HALF_DOWN).doubleValue());
+			nutrFact.setSaturatedFats(BigDecimal.valueOf(nutrFact.getSaturatedFats() + i.getFood().getNutrFact().getSaturatedFats() *  i.getQuantity()/100).setScale(4, BigDecimal.ROUND_HALF_DOWN).doubleValue());
+			nutrFact.setSugars(BigDecimal.valueOf(nutrFact.getSugars() + i.getFood().getNutrFact().getSugars() *  i.getQuantity()/100).setScale(4, BigDecimal.ROUND_HALF_DOWN).doubleValue());
+			nutrFact.setTotalFat(BigDecimal.valueOf(nutrFact.getTotalFat() + i.getFood().getNutrFact().getTotalFat() * i.getQuantity()/100).setScale(4, BigDecimal.ROUND_HALF_DOWN).doubleValue());
 		}
 		entity.setNutrFact(nutrFact);
 		return recipeRepository.save(entity);
