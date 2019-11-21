@@ -1,15 +1,17 @@
-<div class="recipe-body">
-    <button mat-mini-fab  routerLink="/food-add">
-      <mat-icon>add</mat-icon>
-    </button>
+<div class="view-body">
+
   <h1>Alimentos</h1>
-  <div class="recipe-dashboard">
-    <div class="example-loading-shade"
-         *ngIf="isLoadingResults || connectionError">
-      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
-      <div class="example-rate-limit-reached" *ngIf="connectionError">
-      </div>
+  <button mat-mini-fab  routerLink="/food-add">
+    <mat-icon>add</mat-icon>
+  </button>
+
+  <div class="example-loading-shade"
+       *ngIf="isLoadingResults || connectionError">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    <div class="example-rate-limit-reached" *ngIf="connectionError">
     </div>
+  </div>
+  <div class="recipe-dashboard">
     <div class="recipe-table">
       <table mat-table [dataSource]="foods" matSort
              matSortDisableClear matSortActive="name"

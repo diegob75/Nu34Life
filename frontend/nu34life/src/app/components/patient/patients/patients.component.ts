@@ -71,4 +71,9 @@ export class PatientsComponent implements AfterViewInit {
       console.log(err);
     });
   }
+
+  isAffiliated(patient: Patient): boolean {
+    console.log(patient);
+    return patient.nutritionistId === this.nutritionistId;
+  }
 }

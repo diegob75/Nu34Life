@@ -14,6 +14,9 @@ table.mat-table {
   tr {
     background-color: #ffffff;
   }
+  tr.affiliated {
+    background-color: #dddddd;
+  }
 }
 .mat-column-select {
   width: 50px;
@@ -22,3 +25,7 @@ table.mat-table {
 .mat-column-avatar {
   width: 100px;
 }
+.mat-column-action {
+  width: 150px;
+}
+

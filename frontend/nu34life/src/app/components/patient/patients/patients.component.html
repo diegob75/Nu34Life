@@ -40,21 +40,23 @@
       <ng-container matColumnDef="action">
         <th *matHeaderCellDef mat-header-cell></th>
         <td *matCellDef="let element" mat-cell>
-          <div *ngIf="element.nutritionistId != nutritionistId; else affiliated" >
-            <button mat-icon-button (click)="requestAffiliation(element)">
-              <mat-icon>person_add</mat-icon>
+          <div >
+            <button mat-button (click)="requestAffiliation(element)" *ngIf="!isAffiliated(element); else affiliated" >
+              <mat-icon color="primary">person_add</mat-icon >
+              <span>Solicitar</span>
             </button>
           </div>
           <ng-template #affiliated >
-            <button mat-icon-button disabled>
+            <button mat-button disabled>
               <mat-icon>check_circle</mat-icon>
+              Ya affiliado
             </button>
           </ng-template>
         </td>
       </ng-container>
 
       <tr *matHeaderRowDef="columns" mat-header-row></tr>
-      <tr *matRowDef="let row; columns: columns;" mat-row></tr>
+      <tr *matRowDef="let row; columns: columns;" mat-row  [class.affiliated]="isAffiliated(row)"></tr>
     </table>
     <mat-paginator [length]="resultLength" pageSize="20" [pageSizeOptions]="[20, 30, 50]" showFirstLastButtons></mat-paginator>
   </div>
