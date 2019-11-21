@@ -58,7 +58,10 @@ export class PatientsComponent implements AfterViewInit {
           this.connectionError = true;
           return of([]);
         })
-      ).subscribe((data: Patient[]) => this.patients = data);
+      ).subscribe((data: Patient[]) => {
+      console.log(data);
+      this.patients = data;
+    });
   }
 
   requestAffiliation(patient: Patient) {
@@ -66,6 +69,6 @@ export class PatientsComponent implements AfterViewInit {
       console.log(res);
     }, err => {
       console.log(err);
-    })
+    });
   }
 }

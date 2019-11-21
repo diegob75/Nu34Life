@@ -17,11 +17,13 @@ import {FoodsComponent} from './components/food/foods/foods.component';
 import {FoodCreateComponent} from './components/food/food-create/food-create.component';
 import {PatientCreateComponent} from './components/patient/patient-create/patient-create.component';
 import {NavigationComponent} from './components/navigation/navigation.component';
+import {AuthGuard} from './guards/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: NavigationComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
