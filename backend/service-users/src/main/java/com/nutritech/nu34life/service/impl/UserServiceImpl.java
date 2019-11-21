@@ -98,11 +98,11 @@ public class UserServiceImpl implements UserService {
 		
 
 		System.out.println("Enhorabuena "+request.getFirstName()+" "+request.getLastName()+" su cuenta se ha registrado correctamente.\n Con nombre de usuario : "+request.getUsername()+"\n Y contrasena : na mentira xd.");
-		emailService.sendEmail("Registro Exitoso !!", "<h3>Enhorabuena "+request.getFirstName()+" "+request.getLastName()+" su cuenta se ha registrado correctamente.</h3>\n <p>Con nombre de usuario : "+request.getUsername()+".</p>", request.getEmail());
+		emailService.sendEmail("Registro Exitoso !!", "<h3>Enhorabuena "+request.getFirstName()+" "+request.getLastName()+" su cuenta se ha registrado correctamente.</h3>\n <p>Con nombre de usuario : "+request.getUsername()+".</p><a href=\"http://localhost:8090/api/service-users/users/validateEmail/"+account.getId()+"\">Activa tu cuenta dando click aqui!</a>", request.getEmail());
 		System.out.println("Enhorabuena "+request.getFirstName()+" "+request.getLastName()+" su cuenta se ha registrado correctamente.\n Con nombre de usuario : "+request.getUsername()+"\n Y contrasena : na mentira xd.");
 		return account;
 	}
-	@Transactional
+
 	@Override
 	public Account updateAndCreatePatient(UserRequest request) {
 		Account account = new Account();
@@ -139,6 +139,14 @@ public class UserServiceImpl implements UserService {
 	public Boolean validateUser(Long id) {
 		// TODO Auto-generated method stub
 		return (userRepository.validateEmail(id))>0;
+	}
+
+	@Override
+	public Account updateAccount(UserRequest requestBody) {
+		// TODO Auto-generated method stub
+		Account account = userRepository.findByUsername(requestBody.getUsername());
+		account.setPassword(passwordEncoder.encode(requestBody.getPassword()));
+		return userRepository.save(account);
 	}
 
 }

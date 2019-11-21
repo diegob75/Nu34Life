@@ -86,6 +86,8 @@ export class OauthService {
     this._user.id = payload.id;
     this._user.profileId = payload.profileId;
     this._user.roles = payload.authorities;
+    this._user.firstName = payload.firstName;
+    this._user.userId = payload.id;
     console.log(payload);
     console.log('OE MIRA ACA :v');
     console.log(this._user);
