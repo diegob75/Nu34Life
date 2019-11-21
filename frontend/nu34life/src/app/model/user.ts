@@ -1,14 +1,11 @@
-export class User {
-  id: number;
+import {Account} from './account';
+
+export class User extends Account {
   firstName: string;
   lastName: string;
-  username: string;
-  password: string;
-  email: string;
   profileId: number;
   imagen: string;
   height: number;
   weight: number;
   userId: number;
-  roles: string[];
 }

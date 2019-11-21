@@ -9,13 +9,12 @@
       </a>
     </div>
     <div class="bar-menu">
-      <ngx-avatar size="40" [matMenuTriggerFor]="account" [src]="avatar" [name]="name"></ngx-avatar>
+      <ngx-avatar size="40" [matMenuTriggerFor]="account" [src]="user.imagen" [name]="user.firstName + ' ' + user.lastName"></ngx-avatar>
       <mat-menu #account="matMenu" xPosition="before">
         <button mat-menu-item routerLink="/account/edit-profile">Editar Perfil</button>
         <button mat-menu-item routerLink="/account/edit-account">Cambiar Contraseña</button>
         <button mat-menu-item (click)="logout()">Log out</button>
       </mat-menu>
-
     </div>
   </mat-toolbar>
 

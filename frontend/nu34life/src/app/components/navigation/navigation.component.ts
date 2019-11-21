@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {OauthService} from '../../service/oauth.service';
+import {User} from '../../model/user';
 
 @Component({
   selector: 'app-navigation',
@@ -11,6 +12,8 @@ export class NavigationComponent implements OnInit {
 
   opened: boolean;
 
+  private user: User;
+
   constructor(private router: Router, private authService: OauthService) {
     router.events.subscribe(e => {
       if (e instanceof NavigationEnd) {
@@ -20,14 +23,9 @@ export class NavigationComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.user = this.authService.user;
+  }
 
-  }
-  get name() {
-    return '';
-  }
-  get avatar() {
-    return '';
-  }
 
   logout() {
     this.authService.logout();
