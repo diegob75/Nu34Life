@@ -74,7 +74,7 @@ public class PatientController {
 		return patientService.requestAffiliation(patientId, nutritionistId);
 	}
 	
-	@PostMapping("/affiliate/confirm/")
+	@GetMapping("/affiliate/confirm/")
 	public Boolean confirmAffiliation(@RequestParam Long id,@RequestParam Long patientId) {
 		
 		return patientService.confirmAffiliation(id, patientId);
