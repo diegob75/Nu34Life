@@ -171,7 +171,7 @@ export class ApiService {
       );
   }
 
-  buildParams(query: string, sort: string, order: string, page: number, perPage: number, includeOwn: boolean) : URLSearchParams {
+  buildParams(query: string, sort: string, order: string, page: number, perPage: number, includeOwn: boolean): URLSearchParams {
     const params = new URLSearchParams();
     if (query != null) params.set('q', query);
     if (sort != null) params.set('sort', sort);

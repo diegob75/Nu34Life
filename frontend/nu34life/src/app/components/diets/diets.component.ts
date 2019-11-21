@@ -8,6 +8,7 @@ import {MatDialog} from '@angular/material';
 import {ModalComponent} from '../recipe/dish/modal/modal.component';
 import {DietPlanner, mapDiet, MealSchedule} from './diet-planner';
 import {Patient} from '../../model/patient';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-diets',
@@ -21,6 +22,7 @@ export class DietsComponent implements OnInit {
   dietPlanner: DietPlanner;
   selected: MealSchedule;
 
+  myControl = new FormControl();
   patients: Patient[];
 
   // REMOVE?
@@ -43,6 +45,7 @@ export class DietsComponent implements OnInit {
     this.getDayNameList();
     this.loadMeals();
     this.loadRecipes(null);
+    this.loadPatients();
   }
 
   selectMeal(mealSch: MealSchedule) {
@@ -52,7 +55,7 @@ export class DietsComponent implements OnInit {
   loadPatients() {
     const id = 0;
     this.apiService.getAffiliatedPatients(id).subscribe(res => {
-
+      this.patients = res;
     }, err => {
       console.log(err);
     });

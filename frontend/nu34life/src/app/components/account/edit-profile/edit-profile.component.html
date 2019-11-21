@@ -1,9 +1,12 @@
-<label class="file-upload">
-  <input type="file" (change)="fileEvent($event)" name="imageUpload" id="imageUpload"/>
-  Subir imagen
-</label>
 
-<div fxLayout="column">
+
+<div fxLayout="column" class="alta">
+  <h1 display2>Perfil</h1>
+  <label class="file-upload">
+    <input type="file" (change)="fileEvent($event)" name="imageUpload" id="imageUpload"/>
+    Subir imagen
+  </label>
+
   <mat-form-field>
     <input matInput placeholder="Nombres" [(ngModel)]="firstName" type="text">
   </mat-form-field>
@@ -14,7 +17,8 @@
 
 
   <div class="button">
-    <button (click)="updateProfile()" mat-button>Login
+    <button (click)="updateProfile()" mat-button>Guardar Cambios
     </button>
+    <a routerLink="/home"></a>
   </div>
 </div>
