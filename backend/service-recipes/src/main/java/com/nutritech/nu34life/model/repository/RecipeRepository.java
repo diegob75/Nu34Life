@@ -21,7 +21,7 @@ public interface RecipeRepository extends JpaRepository<Recipe, Long>{
 	Page<Recipe> findRecipe(@Param("id") Long id, @Param("search") String search, Pageable pageable);
 
 	@Modifying
-	@Query("update Recipe r set r.active = FALSE where r.id = :id and r.createdBy = :userId")
+	@Query("update Recipe r set r.active = FALSE where r.id = :id and r.createdBy = :userId and r.createdBy != 0")
 	Integer deactivateEntry(@Param("id") Long id, @Param("userId") Long userId);
 	
 }

@@ -10,11 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.nutritech.nu34life.client.EmailFeignClient;
 import com.nutritech.nu34life.client.ProfileFeignClient;
 import com.nutritech.nu34life.model.entity.Account;
 import com.nutritech.nu34life.model.entity.Role;
 import com.nutritech.nu34life.model.repository.UserRepository;
 import com.nutritech.nu34life.service.UserService;
+import com.nutritech.nu34life.util.Email;
 import com.nutritech.nu34life.util.Nutritionist;
 import com.nutritech.nu34life.util.Patient;
 import com.nutritech.nu34life.util.UserRequest;
@@ -30,7 +32,7 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	ProfileFeignClient profileFeignClient;
 	@Autowired
-	private EmailService emailService;
+	private EmailFeignClient emailService;
 	
 	@Override
 	public UserResponse getByUsername(String username) {
@@ -96,10 +98,13 @@ public class UserServiceImpl implements UserService {
 		nutritionist.setUserId(account.getId());
 		profileFeignClient.saveNutritionist(nutritionist);
 		
-
-		System.out.println("Enhorabuena "+request.getFirstName()+" "+request.getLastName()+" su cuenta se ha registrado correctamente.\n Con nombre de usuario : "+request.getUsername()+"\n Y contrasena : na mentira xd.");
-		emailService.sendEmail("Registro Exitoso !!", "<h3>Enhorabuena "+request.getFirstName()+" "+request.getLastName()+" su cuenta se ha registrado correctamente.</h3>\n <p>Con nombre de usuario : "+request.getUsername()+".</p><a href=\"http://localhost:8090/api/service-users/users/validateEmail/"+account.getId()+"\">Activa tu cuenta dando click aqui!</a>", request.getEmail());
-		System.out.println("Enhorabuena "+request.getFirstName()+" "+request.getLastName()+" su cuenta se ha registrado correctamente.\n Con nombre de usuario : "+request.getUsername()+"\n Y contrasena : na mentira xd.");
+		Email email = new Email();
+		email.setHeader("Registro Exitoso!!");
+		email.setCuerpo("<h3>Enhorabuena "+request.getFirstName()+" "+request.getLastName()+" su cuenta se ha registrado correctamente.</h3>\n <p>Con nombre de usuario : "+request.getUsername()+".</p><a href=\"http://localhost:8090/api/service-users/users/validateEmail/"+account.getId()+"\">Activa tu cuenta dando click aqui!</a>");
+		email.setSendTo(request.getEmail());
+		System.out.println(email.toString());
+		emailService.sendEmail(email);
+	
 		return account;
 	}
 
@@ -129,9 +134,14 @@ public class UserServiceImpl implements UserService {
 		patient.setHeight(request.getHeight());
 		patient.setWeight(request.getWeight());
 		profileFeignClient.savePatient(patient);
-		System.out.println("Enhorabuena "+request.getFirstName()+" "+request.getLastName()+" su cuenta se ha registrado correctamente.\n Con nombre de usuario : "+request.getUsername()+"\n Y contrasena : na mentira xd.");
-		emailService.sendEmail("Registro Exitoso !!", "<h3>Enhorabuena "+request.getFirstName()+" "+request.getLastName()+" su cuenta se ha registrado correctamente.</h3>\n <p>Con nombre de usuario : "+request.getUsername()+".</p>", request.getEmail());
-		System.out.println("Enhorabuena "+request.getFirstName()+" "+request.getLastName()+" su cuenta se ha registrado correctamente.\n Con nombre de usuario : "+request.getUsername()+"\n Y contrasena : na mentira xd.");
+		
+		Email email = new Email();
+		email.setHeader("Registro Exitoso!!");
+		email.setCuerpo("<h3>Enhorabuena "+request.getFirstName()+" "+request.getLastName()+" su cuenta se ha registrado correctamente.</h3>\n <p>Con nombre de usuario : "+request.getUsername()+".</p><a href=\"http://localhost:8090/api/service-users/users/validateEmail/"+account.getId()+"\">Activa tu cuenta dando click aqui!</a>");
+		email.setSendTo(request.getEmail());
+		System.out.println(email.toString());
+		emailService.sendEmail(email);
+		
 		return account;
 	}
 	@Transactional
