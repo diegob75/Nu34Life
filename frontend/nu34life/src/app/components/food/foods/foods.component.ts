@@ -8,6 +8,7 @@ import { ApiService } from '../../../service/api.service';
 import { merge, Observable } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { Page } from '../../../shared/page';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-foods',
   templateUrl: './foods.component.html',
@@ -38,7 +39,7 @@ export class FoodsComponent implements AfterViewInit {
         switchMap(() => {
           this.isLoadingResults = true;
           return this.rest.getFoods(null, this.sort.active, this.sort.direction, this.paginator.pageIndex,
-            null, null);
+            null, true);
         }),
         map((data: Page<Food>) => {
           console.log(data);
@@ -65,6 +66,15 @@ export class FoodsComponent implements AfterViewInit {
     return this.foods == null ? 0 : this.resultLength;
   }
 
+  deafiliate(food : Food){
+    if(this.rest.desactivateFood(food.id).subscribe(response => {
+      return response as boolean;
+    })){
+      Swal.fire('Se elimino correctamente el alimento');
+    }else{
+      Swal.fire('No se pudo eliminar ese alimento');
+    }
+  }
   /*  delete(id) {
       this.rest.deleteProduct(id)
         .subscribe(res => {

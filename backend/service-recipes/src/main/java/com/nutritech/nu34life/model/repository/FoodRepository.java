@@ -22,7 +22,7 @@ public interface FoodRepository extends JpaRepository<Food, Long>{
 	Page<Food> findFood(@Param("id") Long id, @Param("search") String search, Pageable pageable);
 
 	@Modifying
-	@Query("update Food f set f.active = FALSE where f.id = :id and f.createdBy = :userId")
+	@Query("update Food f set f.active = FALSE where f.id = :id and f.createdBy = :userId and f.createdBy != 0")
 	Integer deactivateEntry(@Param("id") Long id, @Param("userId") Long userId);
 	
 	

@@ -42,7 +42,7 @@ export class RecipeAddComponent implements AfterViewInit {
         startWith({}),
         switchMap(() => {
           this.isLoadingResults = true;
-          return this.rest.getFoods(this.search.value, null, null, this.paginator.pageIndex, this.paginator.pageSize, null);
+          return this.rest.getFoods(this.search.value, null, null, this.paginator.pageIndex, this.paginator.pageSize, true);
         }),
         map((data: Page<Food>) => {
 

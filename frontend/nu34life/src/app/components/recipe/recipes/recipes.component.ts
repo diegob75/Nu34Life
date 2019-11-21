@@ -39,7 +39,7 @@ export class Recipes2Component implements AfterViewInit {
         switchMap(() => {
           this.isLoadingResults = true;
           return this.rest.getRecipes(null, this.sort.active, this.sort.direction, this.paginator.pageIndex,
-            null, null);
+            null, true);
         }),
         map((data: Page<Recipe>) => {
           this.isLoadingResults = false;
@@ -61,7 +61,7 @@ export class Recipes2Component implements AfterViewInit {
   }
 
   get length(): number {
-    return this.recipes == null ? 0 : this.recipes.length;
+    return this.recipes == null ? 0 : this.resultLength;
   }
 
 /*  delete(id) {
