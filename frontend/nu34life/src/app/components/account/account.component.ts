@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Nutritionist} from '../../model/nutritionist';
+import {OauthService} from '../../service/oauth.service';
+import {User} from '../../model/user';
+import {getResource} from '../../service/aws.service';
 
 @Component({
   selector: 'app-account',
@@ -8,17 +11,18 @@ import {Nutritionist} from '../../model/nutritionist';
 })
 export class AccountComponent implements OnInit {
 
-  nutritionist: Nutritionist;
+  user: User;
 
-  constructor() { }
+  constructor(private authService: OauthService) { }
 
   ngOnInit() {
+    this.user = this.authService.user;
   }
 
   get name() {
-    return 'MockResources.nutritionist();';
+    return this.user.firstName + ' ' + this.user.lastName;
   }
   get avatar() {
-    return 'MockResources.avatar();';
+    return getResource(this.user.imagen)
   }
 }

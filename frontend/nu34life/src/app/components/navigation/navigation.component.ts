@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {OauthService} from '../../service/oauth.service';
 import {User} from '../../model/user';
+import {getResource} from '../../service/aws.service';
 
 @Component({
   selector: 'app-navigation',
@@ -29,5 +30,12 @@ export class NavigationComponent implements OnInit {
 
   logout() {
     this.authService.logout();
+  }
+
+  get name() {
+    return this.user.firstName + ' ' + this.user.lastName;
+  }
+  get avatar() {
+    return getResource(this.user.imagen)
   }
 }
