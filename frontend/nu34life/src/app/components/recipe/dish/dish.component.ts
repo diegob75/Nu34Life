@@ -8,6 +8,8 @@ import {Recipe} from '../../../model/recipe';
 })
 export class DishComponent implements OnInit {
 
+  objectKeys = Object.keys;
+
   @Input() private recipe: Recipe;
 
   constructor() { }

@@ -36,39 +36,19 @@
           </td>
         </ng-container>
 
-        <ng-container matColumnDef="serving">
-          <th mat-header-cell mat-sort-header *matHeaderCellDef>Servings</th>
+        <ng-container matColumnDef="servings">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>Porciones</th>
           <td mat-cell *matCellDef="let recipe"> {{recipe.servings}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="energeticValue">
-          <th mat-header-cell *matHeaderCellDef>Valor energetico</th>
-          <td mat-cell *matCellDef="let recipe"> {{recipe.nutrFact.energeticValue}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="totalFat">
-          <th mat-header-cell *matHeaderCellDef>Grasas totales</th>
-          <td mat-cell *matCellDef="let recipe"> {{recipe.nutrFact.totalFat}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="carbohydrates">
-          <th mat-header-cell *matHeaderCellDef>Carbohidratos</th>
-          <td mat-cell *matCellDef="let recipe"> {{recipe.nutrFact.carbohydrates}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="sugars">
-          <th mat-header-cell *matHeaderCellDef>Azucares</th>
-          <td mat-cell *matCellDef="let recipe"> {{recipe.nutrFact.sugars}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="protein">
-          <th mat-header-cell *matHeaderCellDef>Proteinas</th>
-          <td mat-cell *matCellDef="let recipe"> {{recipe.nutrFact.protein}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="salt">
-          <th mat-header-cell *matHeaderCellDef>Sal</th>
-          <td mat-cell *matCellDef="let recipe"> {{recipe.nutrFact.salt}} </td>
+        <ng-container matColumnDef="details">
+          <th mat-header-cell *matHeaderCellDef> </th>
+          <td mat-cell *matCellDef="let recipe">
+            <button mat-icon-button (click)="viewRecipeDetails(recipe)">
+              <mat-icon>info</mat-icon>
+              <span> Detalles</span>
+            </button>
+          </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="columns"></tr>

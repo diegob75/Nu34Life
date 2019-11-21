@@ -1,13 +1,14 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import { of } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {getResource} from '../../../service/aws.service';
 import {ApiService} from '../../../service/api.service';
 import {merge, Observable} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 import {Page} from '../../../shared/page';
 import {Recipe} from '../../../model/recipe';
+import {ModalComponent} from '../dish/modal/modal.component';
 
 
 @Component({
@@ -17,7 +18,7 @@ import {Recipe} from '../../../model/recipe';
 })
 export class Recipes2Component implements AfterViewInit {
 
-  columns = ['image', 'name', 'energeticValue', 'totalFat', 'carbohydrates', 'sugars', 'protein', 'salt'];
+  columns = ['image', 'name', 'servings', 'details'];
   recipes: Recipe[] = [];
   isLoadingResults = true;
   connectionError = false;
@@ -28,7 +29,8 @@ export class Recipes2Component implements AfterViewInit {
 
   constructor(private rest: ApiService,
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private dialog: MatDialog) { }
 
   ngAfterViewInit(): void {
     this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
@@ -65,14 +67,16 @@ export class Recipes2Component implements AfterViewInit {
     return this.recipes == null ? 0 : this.resultLength;
   }
 
-/*  delete(id) {
-    this.rest.deleteProduct(id)
-      .subscribe(res => {
-          this.getProducts();
-        }, (err) => {
-          console.log(err);
-        }
-      );
-  }*/
 
+  viewRecipeDetails(recipe): void {
+    const dialogRef = this.dialog.open(ModalComponent, {
+      width: '800px',
+      panelClass: 'card-dialog',
+      data: recipe
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+    });
+  }
 }

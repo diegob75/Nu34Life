@@ -9,7 +9,10 @@
       <div class="ingredients" fxLayout="column" fxFlex.gt-xs="25">
         <h4>Ingredientes</h4>
         <ul>
-          <li *ngFor="let ing of recipe.ingredients">{{ing.food.name}}</li>
+          <li class="tuple" *ngFor="let ing of recipe.ingredients">
+            <span>{{ing.food.name}}</span>
+            <span>{{ing.quantity}}g.</span>
+          </li>
         </ul>
       </div>
       <div class="directions" fxLayout="column" fxFlex.gt-xs="45">
@@ -21,7 +24,39 @@
       <div class="information" fxLayout="column" fxFlex.gt-xs="30">
         <h4>Informacion Nutricional</h4>
         <ul>
-          <li>Test</li>
+          <li class="tuple">
+            <span class="fact">Valor energetico</span>
+            <span>{{recipe.nutrFact.energeticValue}} kcal</span>
+
+          <li class="tuple">
+            <span class="fact">Grasas totales</span>
+            <span>{{recipe.nutrFact.totalFat}} g.</span>
+          </li>
+
+          <li class="tuple">
+            <span class="fact">Grasas saturadas</span>
+            <span>{{recipe.nutrFact.saturatedFats}} g</span>
+          </li>
+
+          <li class="tuple">
+            <span class="fact">Carbohidratos</span>
+            <span>{{recipe.nutrFact.carbohydrates}} g</span>
+          </li>
+
+          <li class="tuple">
+            <span class="fact">Azucare</span>
+            <span>{{recipe.nutrFact.sugars}} g</span>
+          </li>
+
+          <li class="tuple">
+            <span class="fact">Proteinas</span>
+            <span>{{recipe.nutrFact.protein}} g</span>
+          </li>
+
+          <li class="tuple">
+            <span class="fact">Sal</span>
+            <span>{{recipe.nutrFact.salt}} g</span>
+          </li>
         </ul>
       </div>
     </div>

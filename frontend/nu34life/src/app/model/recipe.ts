@@ -11,6 +11,6 @@ export class Recipe {
   servings: number;
   steps: RecipeStep[];
   ingredients: Ingredient[];
-  nutritionFact: NutritionFact;
+  nutrFact: NutritionFact;
   image: string;
 }
